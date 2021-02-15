@@ -1830,6 +1830,7 @@ button.select-image {
     border-radius: 7px;
 }
 
+/*Responsive CSS*/
 @media (max-width: 1199px) {}
 @media (max-width: 991px) {
     .signup-icon a {

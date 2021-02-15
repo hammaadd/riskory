@@ -1829,3 +1829,40 @@ button.select-image {
     cursor: pointer;
     border-radius: 7px;
 }
+
+@media (max-width: 1199px) {}
+@media (max-width: 991px) {
+    .signup-icon a {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        line-height: 34px;
+        margin: 2px;
+    }
+    .ic---text {
+        display: none;
+    }
+    .signup-icon a.tw--icon {
+        background-color: #00acee;
+        color: #ffffff;
+    }
+    .signup-icon a.fb--icon {
+        background-color: #3b5998;
+        color: #ffffff;
+    }
+    .signup-icon a.gl--icon {
+        background-color: #DB4437;
+        color: #ffffff;
+    }
+    .signup-icon a.tw--icon:hover {
+        background: #0d95e8;
+    }
+    .signup-icon a.fb--icon:hover {
+        background: #344e86;
+    }
+    .signup-icon a.gl--icon:hover {
+        background: #e82e1e;
+    }
+}
+@media (max-width: 767px) {}
+@media (max-width: 575px) {}

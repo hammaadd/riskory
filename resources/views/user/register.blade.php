@@ -16,12 +16,12 @@
 <main role="main" class="inner cover pb-5 pb-sm-5 my-auto">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-md-5 col-lg-7 text-center">
+            <div class="col-12 col-md-5 col-lg-6 col-xl-7 text-center">
                 <img class="img-80" src="assets/images/Mask-Group-1.svg" width="100%">
             </div>
-            <div class="col-12 col-md-7 col-lg-5 text-center pb-2 pb-sm-3">
+            <div class="col-12 col-md-7 col-lg-6 col-xl-5 text-center pb-2 pb-sm-3">
 
-                <div class="bg-lgray br-7 mt-3 p-5 box-shadow">
+                <div class="bg-lgray br-7 mt-3 pt-5 px-3 px-md-5 box-shadow">
                     <p class="p-style font-18 font-b color-n">Signup With</p>
                     <div class="signup-icon">
                       <a class="tw--icon" href="{{route('twitterLogin')}}">

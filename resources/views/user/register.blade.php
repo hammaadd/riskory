@@ -21,7 +21,7 @@
             </div>
             <div class="col-12 col-md-7 col-lg-6 col-xl-5 text-center pb-2 pb-sm-3">
 
-                <div class="bg-lgray br-7 mt-3 pt-5 px-3 px-md-5 box-shadow">
+                <div class="bg-lgray br-7 mt-3 py-5 px-3 px-md-5 box-shadow">
                     <p class="p-style font-18 font-b color-n">Signup With</p>
                     <div class="signup-icon">
                       <a class="tw--icon" href="{{route('twitterLogin')}}">

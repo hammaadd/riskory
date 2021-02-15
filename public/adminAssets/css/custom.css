@@ -1,0 +1,38 @@
+.image-contain-150{
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.image-contain-avatar{
+    object-fit: contain;
+}
+
+
+.riskory-input{
+    border-radius: 6px;
+    padding: 5px;
+    color: gray;
+}
+
+.admin-logo{
+    width:60%;
+}
+
+.card-scrollable{
+    height: 20vh;
+    max-height: 20vh;
+    overflow-y: scroll;
+}
+
+.avatar-img{
+    object-fit: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+

@@ -15,20 +15,6 @@
                 <div class="col-12 pt-3 pt-md-5 px-0">
                     <div class="container">
 
-                        @if ($errors->any())
-                        <div class="row px-0 px-md-2 px-lg-5 mx-0 mx-md-2 mx-lg-5 pt-4">
-                            <div class="col-12">
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div><br />
-                            </div>
-                        </div>
-                        @endif
-
                         <div class="row">
                             <div class="col-12 col-md-8">
                                 <div class="bg-lgray br-7 mt-3 box-shadow">
@@ -41,6 +27,21 @@
                                     </div>
                                     <div class="col-12 mx-auto my-3">
                                         <div class="p-style mb-4">{!!$con->content!!}</div>
+
+                                        @if ($errors->any())
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="alert alert-danger">
+                                                    <ul class="mb-0 pl-3 pl-md-4">
+                                                        @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div><br />
+                                            </div>
+                                        </div>
+                                        @endif
+
                                         <form method="post" action="{{route('submission')}}">
                                             @csrf
 

@@ -12,7 +12,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 pt-5 px-0">
+                <div class="col-12 pt-3 pt-md-5 px-0">
                     <div class="container">
 
                         @if ($errors->any())

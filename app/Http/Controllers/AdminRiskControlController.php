@@ -42,4 +42,8 @@ class AdminRiskControlController extends Controller
         
         return view('riskcontrol.rcView',compact('rc'));
     }
+
+    public function deleteRc(Request $request, RiskControl $rc){
+        return back();
+    }
 }

@@ -2,7 +2,7 @@
 <div class="col-12">
     <div class="row pl-3 pl-md-5 pt-3">
         @foreach($data as $dat)
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4 px-4 mb-3">
+            <div class="col-12 col-sm-6 col-lg-4 px-4 mb-3">
                 <div class="div-hover">
                     <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$dat,'type'=>$dat->type])}}">{{$dat->name}}</a> ({{$dat->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 

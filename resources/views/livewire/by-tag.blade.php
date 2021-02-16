@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="row">
         @foreach($childs as $tg)
-        <div class="col-12 col-sm-6 col-md-4 px-3 mb-3">
+        <div class="col-12 col-sm-6 col-lg-4 mb-3">
             {{-- <div class="row align-items-center bg-lgray box-shadow py-2"> --}}
                 <div class="div-hover">
                     <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byTag',['tag'=>$tg])}}">{{$tg->name}}</a> ({{$tg->followers->count()}})</p>

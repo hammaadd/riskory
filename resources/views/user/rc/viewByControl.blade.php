@@ -8,10 +8,10 @@
             <div class="col-sm-auto col-12 px-0 pr-lg-3 sect--title__col">
                 <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 ml-sm-0 ml-md-3 py-2 pl-3 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;
                 @if(isset($control))
-                    <span>{{$control->name}}</span>
+                    {{$control->name}}
                 @endif
                 @if(isset($tag))
-                    <span>{{$tag->name}}</span>
+                    {{$tag->name}}
                 @endif
                     Risk Controls</p>
             </div>
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="row px-xl-5 mx-0 mx-md-5">
+    <div class="row px-xl-5 mx-0 mx-md-5 mb-4">
         @if(isset($control))
             @livewire('by-control',['control'=>$control,'page'=>1,'perPage'=>6])  
         @endif 

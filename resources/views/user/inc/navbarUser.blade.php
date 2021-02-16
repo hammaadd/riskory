@@ -58,10 +58,10 @@
                   " class="rounded-circle shadow" title="{{Auth::user()->name}}"></a>
                       <div class="dropdown-menu" aria-labelledby="dropdownProfile">
                       <a class="dropdown-item" href="{{route('userProfile')}}"><i class="fas fa-user-alt"></i> My Profile</a>
+                      {{-- <div class="dropdown-divider"></div>  
+                      <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a> --}}
                       <div class="dropdown-divider"></div>  
-                      <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
-                      <div class="dropdown-divider"></div>  
-                      <a class="dropdown-item" href="{{route('feedback')}}"><i class="fas fa-comments"></i> Feedback</a>
+                      <a class="dropdown-item" href="{{route('contactUs')}}"><i class="fas fa-comments"></i> Contact Us</a>
                       <div class="dropdown-divider"></div>  
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt"></i> Logout</a>
                       </div>

@@ -109,12 +109,12 @@
               </form>
               <hr>
               <button class="btn btn-sm btn-block btn-primary mt-1" onclick="return parent.location='{{route('admin.view.rc',$rc)}}'">View <i class="fas fa-eye"></i></button>
-              <form action="{{route('admin.delete.rc')}}" method="POST">
+              {{-- <form action="{{route('admin.delete.rc')}}" method="POST">
                 @csrf
                 @method('DELETE')
 
                 <button class="btn btn-sm btn-block btn-danger mt-1" type="submit" title="Delete"><i class="fas fa-trash"></i></button>
-              </form>
+              </form> --}}
               
             </td>
             </tr>

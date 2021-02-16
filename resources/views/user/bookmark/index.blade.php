@@ -1,12 +1,12 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','Bookmarks || Riskory')
 @section('content')
-<div class="px-0 col-12 col-md-9 py-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
 
     <div class="sect--title pl-3 pl-md-5">
-        <div class="row align-items-lg-center">
+        <div class="row mb-4 mb-xl-5 align-items-lg-center">
             <div class="col-lg-auto col-12 px-0 pr-lg-3 sect--title__col">
-                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Bookmarked Risk Controls</p>
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-md-3 py-2 pl-3 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Bookmarked Risk Controls</p>
             </div>
             {{-- <div class="col-lg-auto col-12 text-muted">
                 <div class="input-group search-bar py-1 ml-0 ml-md-0">
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="row px-2 px-xl-5 mx-0 mx-md-5 pt-3">
+    <div class="row px-xl-5 mx-0 mx-md-5 pt-3">
         {{-- Risk control starts here --}}
         @if($rcs)
             @foreach($rcs as $b)

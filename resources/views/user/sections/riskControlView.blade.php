@@ -1,4 +1,4 @@
-<div class="col-12 bg-lgray br-7 border-0 box-shadow mt-4 mb-4 rcreveal">
+<div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 rcreveal">
     <div class="row">
         <span class="br-tr-7 bg-red text-white font-14 font-e px-3 py-1 ml-auto no-hover">
             @if($rc->status == 'U')
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-4 pl-0 order-sm-1">
+                <div class="col-12 col-lg-4 pl-0 order-lg-1">
                     <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at->toDateString()}}</div>
                 </div>
             </div>

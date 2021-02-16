@@ -7,11 +7,10 @@ use Livewire\Component;
 
 class LoadMoreCategoriesPublic extends Component
 {
-
     public $page;
     public $perPage;
     public $loadMore;
-    public $control;
+    public $req;
 
     public function mount($page = 1, $perPage = 1)
     {
@@ -28,15 +27,18 @@ class LoadMoreCategoriesPublic extends Component
     public function render()
     {
         if ($this->loadMore) {
-            $rows = Control::where('parent_id',$this->control->id)->paginate($this->perPage, ['*'], null, $this->page);
-
-            return view('livewire.by-control-public', [
-                'childs' => $rows
-            ]);
+            if($this->req == 'industries'){
+                $controls = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
+                
+            }elseif($this->req == 'bframeworks'){
+                $controls = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
+               
+            }elseif($this->req == 'bprocesses'){
+                $controls = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
+            }
+            return view('livewire.public-categories',['data'=>$controls]);
         } else {
             return view('livewire.load-more-categories-public');
         }
     }
-   
 }
-

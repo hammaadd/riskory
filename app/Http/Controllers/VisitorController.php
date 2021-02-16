@@ -196,6 +196,31 @@ class VisitorController extends Controller
            return view('visitor.sections.allRcs',compact('rcs'));
      }
 
+
+     public function seeMore($req = null){
+        if($req == 'industries'){
+            $data = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->paginate(15);
+            $name = 'Industry';
+            $icon = 'assets/images/Mask-Group-55.svg';
+            return view('visitor.categories.viewMore',compact('data','name','icon','req'));
+        }elseif($req == 'bframeworks'){
+            $data = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->paginate(15);
+            $name = 'Business Framework';
+            $icon = 'assets/images/Mask Group 57.svg';
+            return view('visitor.categories.viewMore',compact('data','name','icon','req'));
+        }elseif($req == 'bprocesses'){
+            $data = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->paginate(15);
+            $name = 'Business process';
+            $icon = 'assets/images/Mask Group 56.svg';
+            return view('visitor.categories.viewMore',compact('data','name','icon','req'));
+        }else{
+            
+            return redirect()->route('publicCategories');
+        }
+
+
+    }
+
     
 
 }

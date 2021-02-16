@@ -42,6 +42,7 @@
             <div class="ml-4 ml-md-5 my-2">
                 <a href="{{route('seeMore','industries')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Industries</a>
             </div>
+            
             <!-- Browse By Business Process Section -->
             <div class="sect--title pl-md-5">
                 <div class="row my-4 my-xl-5 align-items-lg-center">

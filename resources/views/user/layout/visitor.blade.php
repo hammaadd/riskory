@@ -23,5 +23,6 @@
 		toastr.error("{{session()->get('error')}}");
 		@endif
 	</script>
+	 @livewireScripts
 </body>
 </html>

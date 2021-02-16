@@ -39,7 +39,7 @@
             </div>
 
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('seeMore','industries')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Industries</a>
+                <a href="{{route('publicSeeMore','industries')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Industries</a>
             </div>
 
             <div class="sect--title pl-3 pl-md-5">
@@ -63,7 +63,7 @@
                 @endforeach
             </div>
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('seeMore','bprocesses')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Processes</a>
+                <a href="{{route('publicSeeMore','bprocesses')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Processes</a>
             </div>
             <!-- Browse By Framework Section -->
             <div class="sect--title pl-3 pl-md-5">
@@ -87,7 +87,7 @@
                 @endforeach
             </div>
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('seeMore','bframeworks')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Frameworks</a>
+                <a href="{{route('publicSeeMore','bframeworks')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Frameworks</a>
             </div>
 
         </div>

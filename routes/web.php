@@ -27,6 +27,7 @@ Auth::routes(['verify'=>true]);
 Route::get('/categories','VisitorController@categories')->name('publicCategories');
 Route::get('/categories/{control}','VisitorController@byControl')->name('byControlPublic');
 Route::get('/visitor/riskcontrols','VisitorController@allRiskcontrols')->name('rc.all.public');
+Route::get('/categories/{req}/see-more','VisitorController@seeMore')->name('publicSeeMore');
 
 // Route::get('/admin/login',)
 

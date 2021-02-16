@@ -1377,12 +1377,12 @@ button.select-image {
     .modal-icon button {
         margin: 3px;
     }
-    #firstfieldset div>div>div>input {
+    /*#firstfieldset div>div>div>input {
 	    padding: 5px !important;
 	}
 	#firstfieldset div>input {
 	    padding: 30px 12px !important;
-	}
+	}*/
 	span.select2-selection.select2-selection--multiple {
 		padding: 1rem;
 	}
@@ -1403,9 +1403,9 @@ button.select-image {
         font-size: 14px;
         padding: 8px 10px;
     }
-    .mb-4 input.form-control {
+    /*.mb-4 input.form-control {
         padding: 30px 12px !important;
-    }
+    }*/
     .comment-section button.btn {
         padding: 5px 20px !important;
     }
@@ -1841,6 +1841,11 @@ button.select-image {
         margin-left: -3rem;
     }
 }
+.avatar-img {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
 
 /*Responsive CSS*/
 @media (max-width: 1199px) {
@@ -1904,4 +1909,25 @@ button.select-image {
 }
 @media (max-width: 767px) {
 }
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+    .tab--rc .tab-rc {
+        font-size: 14px !important;
+        padding: 6px 20px !important;
+    }
+    .tab--rc .tab-rc-sp {
+        font-size: 14px !important;
+    }
+    .btn-follower label.btn.btn-secondary,
+    .btn-follower label.btn.btn-secondary.active {
+        font-size: 12px;
+        line-height: 1.6;
+        padding: .375rem .75rem;
+    }
+    .noti-btn {
+        font-size: 14px !important;
+        line-height: 22px;
+        padding: 5px 15px !important;
+    }
+
+
+}

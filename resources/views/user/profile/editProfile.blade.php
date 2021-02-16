@@ -1,16 +1,18 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','Edit profile || Riskory')
 @section('content')
-<div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
 
-    <div class="row pt-4 mx-0 mb-3">
-        <div class="pl-0 col-12 col-sm-auto">
-            <p class="bg-lblue font-eb font-18 py-2 px-5 mb-0 rounded-right-xl shadow-sm"><i><img src="https://s.svgbox.net/hero-outline.svg?ic=pencil-alt&fill=E90000" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Edit User Profile</p>
+    <div class="sect--title pl-sm-3 px-md-5">
+        <div class="row mb-4 mb-xl-5 align-items-sm-center">
+            <div class="col-sm-auto col-12 px-0 pr-lg-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 ml-sm-0 ml-md-3 py-2 pl-3 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="https://s.svgbox.net/hero-outline.svg?ic=pencil-alt&fill=E90000" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Edit User Profile</p>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row px-0 px-md-2 px-lg-5 mx-0 mx-md-2 mx-lg-5 pt-4">
+    <!-- <div class="container"> -->
+        <div class="row px-xl-5 mx-0 mx-md-5 mb-4">
             <div class="col-12 bg-lgray br-7 mt-3 px-0 box-shadow">
                 <div class="col-12 pt-5 pb-2">
                     <form id="msform" role="form" method="POST" action="{{route('updateProfile')}}" class="create-risk-form risk-form px-3">
@@ -121,6 +123,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </div>
 @endsection

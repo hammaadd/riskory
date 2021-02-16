@@ -1928,6 +1928,20 @@ button.select-image {
         line-height: 22px;
         padding: 5px 15px !important;
     }
+    .not-not {
+        margin: 0 !important;
+    }
+    .notBtn {
+        float: none !important;
+    }
+    .noti-left > img {
+        float: left;
+    }
+    .noti-left > .d-inline-block {
+        overflow: hidden;
+        display: block !important;
+        padding-left: 10px !important;
+    }
 
 
 }

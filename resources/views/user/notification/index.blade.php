@@ -23,22 +23,7 @@
                     $follower = App\Models\User::find($not->data['follower_id']);
                 @endphp
                 <div class="py-2 py-md-0 text-left clearfix">
-                    <div class="float-left">
-                        <img src="@if($follower->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$follower->name) }} @else {{asset('userAvat/'.$follower->avatar)}} @endif" class="rounded-circle shadow avatar-img-lg">
-                        <div class="d-inline-block pt-1 pl-0 pl-md-2">
-                            <p class="font-eb mt-2 font-16 color-b"><a href="{{route('visit.profile',$follower)}}" class="color-r">{{$follower->name}}</a> Followed You </p>
-                        </div>
-                    </div>
-                    <span class="float-right">
-                        @if($follower->followedBy(Auth::user()))
-                            <form class="d-inline-block" action="{{route('user.unfollow',$follower)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2" type="submit">Unfollow</button>
-                            </form> 
-                        @else
-                            <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2" onclick="parent.location='{{route('follow.user',$follower)}}'">Follow Back</button>
-                        @endif
+                    <span class="float-right noti-right">
                         {{-- <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2">Follow Back</button> --}}
                         <div class="d-inline-block float-md-right mt-3">
                           <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,6 +36,23 @@
                           </div>
                         </div>
                     </span>
+                    <div class="overflow-hidden noti-left">
+                        <img src="@if($follower->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$follower->name) }} @else {{asset('userAvat/'.$follower->avatar)}} @endif" class="rounded-circle shadow avatar-img-lg">
+                        <div class="d-inline-block pt-1 pl-0 pl-md-2">
+                            <p class="d-inline-block font-eb mt-2 font-16 color-b not-not"><a href="{{route('visit.profile',$follower)}}" class="color-r">{{$follower->name}}</a> Followed You </p>
+
+
+                            @if($follower->followedBy(Auth::user()))
+                                <form class="d-inline-sm-block notBtn" action="{{route('user.unfollow',$follower)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold ml-sm-3 btn-hover mt-1" type="submit">Unfollow</button>
+                                </form> 
+                            @else
+                                <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold ml-sm-3 btn-hover d-inline-sm-block mt-1 notBtn" onclick="parent.location='{{route('follow.user',$follower)}}'">Follow Back</button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 @endif
@@ -61,13 +63,7 @@
 
                 @endphp
                 <div class="py-2 py-md-0 text-left clearfix">
-                    <div class="float-left">
-                        <img src="@if($likedBy->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$likedBy->name) }} @else {{asset('userAvat/'.$likedBy->avatar)}} @endif" class="rounded-circle shadow avatar-img-lg">
-                        <div class="d-inline-block pt-1 pl-0 pl-md-2">
-                            <p class="font-eb mt-2 font-16 color-b"><a href="{{route('visit.profile',$likedBy)}}" class="color-r">{{$likedBy->name}}</a> Liked your <a href="{{route('rc.view',$rc->slug)}}" class="color-r">risk control</a>  </p>
-                        </div>
-                    </div>
-                    <span class="float-right">
+                    <span class="float-right noti-right">
                         {{-- <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2">Follow Back</button> --}}
                         <div class="d-inline-block float-md-right mt-3">
                           <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,6 +76,12 @@
                           </div>
                         </div>
                     </span>
+                    <div class="overflow-hidden noti-left">
+                        <img src="@if($likedBy->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$likedBy->name) }} @else {{asset('userAvat/'.$likedBy->avatar)}} @endif" class="rounded-circle shadow avatar-img-lg">
+                        <div class="d-inline-block pt-1 pl-0 pl-md-2">
+                            <p class="d-inline-block font-eb mt-2 font-16 color-b not-not"><a href="{{route('visit.profile',$likedBy)}}" class="color-r">{{$likedBy->name}}</a> Liked your <a href="{{route('rc.view',$rc->slug)}}" class="color-r">risk control</a>  </p>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 @endif
@@ -89,17 +91,17 @@
                 <p class="col-10 font-eb color-b font-16 d-inline-block">New risk management in <a href="#" class="color-r">Business Process</a>
                 </p>
                 <span class="col-2 float-right d-inline-block">
-                        <div class="d-inline-block float-md-right mt-3">
-                          <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
-                          </a>
+                    <div class="d-inline-block float-md-right mt-3">
+                      <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                      </a>
 
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
-                            <a class="dropdown-item" href="#">Action 3</a>
-                          </div>
-                        </div>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                        <a class="dropdown-item" href="#">Action 3</a>
+                      </div>
+                    </div>
                 </span>
             </div> --}}
             

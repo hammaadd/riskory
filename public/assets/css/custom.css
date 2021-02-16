@@ -1850,6 +1850,24 @@ button.select-image {
         padding: 6px;
         width: 45px;
     }
+    .rc--share-menu li i {
+        line-height: 33px;
+    }
+    .rc-date {
+        font-size: 12px !important;
+    }
+    .rc--share:hover .rc--share-menu li:nth-child(1) {
+        top: 47px;
+    }
+    .rc--share:hover .rc--share-menu li:nth-child(2) {
+        top: 94px;
+    }
+    .rc--share:hover .rc--share-menu li:nth-child(3) {
+        top: 141px;
+    }
+    .rc--share:hover .rc--share-menu li:nth-child(4) {
+        top: 188px;
+    }
 }
 @media (max-width: 991px) {
     .signup-icon a {

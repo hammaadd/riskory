@@ -30,18 +30,18 @@
             </div>
         </div>
         <div class="col-12 col-sm-6 text-sm-right">
-            <div class="rc-rating d-inline-block pr-3" onclick="doRating({{$rc->id}})" id="showRating{{$rc->id}}">
+            <div class="rc-rating d-inline-block my-2" onclick="doRating({{$rc->id}})" id="showRating{{$rc->id}}">
                 @include('user.sections.showRating')
             </div>
-            <button class="btn bg-white color-r box-shadow br-7 font-12 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
+            <button class="btn bg-white color-r box-shadow br-7 font-12 ml-3 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
         </div>
         <div class="col-12 my-2">
             <p class="p-style mb-0 font-16 text-black-50">{{Str::words($rc->objective,30)}} <a class="btn--readMore" href="{{route('rc.view',$rc->id)}}">Read more.</a></p>
         </div>
         <div class="col-12">
-            <div class="row align-items-sm-end">
-                <div class="col-12 col-sm-8 order-sm-2">
-                    <div class="modal-icon text-center text-sm-right">
+            <div class="row align-items-lg-end">
+                <div class="col-12 col-lg-8 order-lg-2">
+                    <div class="modal-icon mb-3 mb-lg-0 text-lg-right">
                         <div class="d-inline-block align-bottom">
                             <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" onclick="callModal(this.id)">
                                 <i class="fas fa-list-ul"></i>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-4 pl-0 order-sm-1">
+                <div class="col-12 col-lg-4 pl-0 order-lg-1">
                     <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at}}</div>
                 </div>
             </div>

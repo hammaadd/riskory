@@ -897,7 +897,7 @@ li.select2-selection__choice {
     color: #E90000;
     font-size: 16px;
     padding: 6px 12px;
-    margin: 0px 8px;
+    margin: 0px 3px;
     width: 54px;
     display: inline-block;
     border-radius: 7px;
@@ -1373,8 +1373,9 @@ button.select-image {
     .modal-header .btn-list {
         margin-right: 10px;
     }
-    .modal-icon a {
-        margin: 0 5px !important;
+    .modal-icon a,
+    .modal-icon button {
+        margin: 3px;
     }
     #firstfieldset div>div>div>input {
 	    padding: 5px !important;
@@ -1829,23 +1830,27 @@ button.select-image {
     cursor: pointer;
     border-radius: 7px;
 }
+/*.sect--title {
+    margin-left: 15px;
+}*/
 .sect--title__col {
-    margin-left: -1rem;
-}
-@media (min-width: 1200px) {
-}
-@media (min-width: 992px) {
+    margin-left: -15px;
 }
 @media (min-width: 768px) {
     .sect--title__col {
         margin-left: -3rem;
     }
 }
-@media (min-width: 576px) {
-}
 
 /*Responsive CSS*/
-@media (max-width: 1199px) {}
+@media (max-width: 1199px) {
+    .modal-icon a,
+    .modal-icon button {
+        font-size: 10px;
+        padding: 6px;
+        width: 45px;
+    }
+}
 @media (max-width: 991px) {
     .signup-icon a {
         height: 50px;
@@ -1879,5 +1884,6 @@ button.select-image {
         background: #e82e1e;
     }
 }
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+}
 @media (max-width: 575px) {}

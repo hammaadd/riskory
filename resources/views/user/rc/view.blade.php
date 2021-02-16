@@ -7,13 +7,14 @@
 @section('content')
 <div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
     <!-- Browse By Industry Secion -->
-    <div class="row pt-4">
-        <div class="pl-0 col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="">
-            <p class="bg-lblue font-eb font-18 py-2 px-5"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control Detail</p>
+    <div class="sect--title pl-3 pl-md-5 pt-4">
+        <div class="row">
+            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control Detail</p>
             </div>
         </div>
     </div>
+
     <div class="row pl-1 pl-md-5 mx-0 mx-md-5 pt-5">
         <div class="col-12 bg-lgray br-20 border-0 box-shadow mb-4">
             <div class="row">

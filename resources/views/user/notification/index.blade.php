@@ -1,12 +1,15 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','Notifications || Riskory')
 @section('content')
-<div class="col-12 col-md-9 py-2 px-0">
-    <div class="row pt-4 mb-4 mx-0">
-        <div class="px-0 col-12 col-sm-auto">
-            <p class="bg-lblue font-eb font-18 py-2 px-5 rounded-right-xl shadow-sm"><i class="fas fa-bell color-r"></i>&nbsp;&nbsp;New Notifications</p>
+<div class="col-12 col-md-9 py-5 px-0">
+    <div class="sect--title pl-3 pl-md-5">
+        <div class="row mb-4">
+            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i class="fas fa-bell color-r"></i>&nbsp;&nbsp;New Notifications</p>
+            </div>
         </div>
     </div>
+
     <div class="row px-2 px-md-5 mx-0 mx-md-5 pt-3">
         <div class="col-12 px-0 mb-4">
             <a href="{{route('mark.all.read')}}" class="float-left font-eb font-16 color-r px-4 py-1 border-1 br-7">Mark all as read</a>

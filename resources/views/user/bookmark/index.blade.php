@@ -1,28 +1,32 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','Bookmarks || Riskory')
 @section('content')
-<div class="px-0 col-12 col-md-9 py-2">
-    <div class="row pt-4 mx-0">
-        <div class="pl-0 col-12 col-sm-auto">
-            <p class="bg-lblue font-eb font-18 py-2 px-5 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Bookmarked Risk Controls</p>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-12 col-12 text-right px-4">
-            {{-- <div class="input-group search-bar py-1 ml-0 ml-md-0">
-              <input type="text" class="form-control" placeholder="Search through the category" aria-label="Search Risks Here" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn-search bgb-lgray color-dg" type="button"><i class="fas fa-search"></i></button>
-              </div>
+<div class="px-0 col-12 col-md-9 py-5">
+
+    <div class="sect--title pl-3 pl-md-5">
+        <div class="row align-items-lg-center">
+            <div class="col-lg-auto col-12 px-0 pr-lg-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Bookmarked Risk Controls</p>
+            </div>
+            {{-- <div class="col-lg-auto col-12 text-muted">
+                <div class="input-group search-bar py-1 ml-0 ml-md-0">
+                    <input type="text" class="form-control" placeholder="Search through the category" aria-label="Search Risks Here" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn-search bgb-lgray color-dg" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
             </div> --}}
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
-            {{-- <div class="topbar-icon text-center text-md-right mt-3 mt-md-0">
-              <a href="#" class="text-center mx-2 my-1 bg-lblue color-r"><i class="fas fa-sort-amount-up-alt"></i></a>
-              <a href="#" class="text-center mx-2 my-1"><i class="fas fa-sort-amount-down"></i></a>
-              <a href="#" class="text-center mx-2 my-1"><i class="fas fa-filter"></i></a>
+            {{-- <div class="col-xl-auto col-12 mb-3 mb-xl-0 ml-xl-auto text-right">
+                <div class="topbar-icon text-center text-md-right mt-3 mt-md-0">
+                    <a href="#" class="text-center mx-2 my-1 bg-lblue color-r"><i class="fas fa-sort-amount-up-alt"></i></a>
+                    <a href="#" class="text-center mx-2 my-1"><i class="fas fa-sort-amount-down"></i></a>
+                    <a href="#" class="text-center mx-2 my-1"><i class="fas fa-filter"></i></a>
+                </div>
             </div> --}}
         </div>
     </div>
-    <div class="row px-2 px-md-5 mx-0 mx-md-5 pt-3">
+
+    <div class="row px-2 px-xl-5 mx-0 mx-md-5 pt-3">
         {{-- Risk control starts here --}}
         @if($rcs)
             @foreach($rcs as $b)

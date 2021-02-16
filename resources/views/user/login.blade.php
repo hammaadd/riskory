@@ -16,17 +16,26 @@
 <main role="main" class="inner cover pb-5 pb-sm-5 my-auto">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-sm-7 col-md-7 text-center">
+            <div class="col-12 col-md-5 col-lg-6 col-xl-7 text-center">
                 <img class="img-80" src="assets/images/Mask-Group-1.svg" width="100%">
             </div>
-            <div class="col-12 col-sm-5 col-md-5 text-center pb-2 pb-sm-3">
+            <div class="col-12 col-md-7 col-lg-6 col-xl-5 text-center pb-2 pb-sm-3">
 
-                <div class="bg-lgray br-7 mt-3 p-5 box-shadow">
+                <div class="bg-lgray br-7 mt-3 py-5 px-3 px-md-5 box-shadow">
                   <p class="p-style font-18 font-b color-n">Login With</p>
                   <div class="signup-icon">
-                    <a class="tw--icon" href="#"><i class="fab fa-twitter"></i> Twitter</a>
-                    <a class="fb--icon" href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-                    <a class="gl--icon" href="{{route('googleLogin')}}"><i class="fab fa-google"></i> Google</a>
+                    <a class="tw--icon" href="#">
+                      <i class="fab fa-twitter"></i>
+                      <span class="ic---text">Twitter</span>
+                    </a>
+                    <a class="fb--icon" href="#">
+                      <i class="fab fa-facebook-f"></i>
+                      <span class="ic---text">Facebook</span>
+                    </a>
+                    <a class="gl--icon" href="{{route('googleLogin')}}">
+                      <i class="fab fa-google"></i>
+                      <span class="ic---text">Google</span>
+                    </a>
                   </div>
                   <p class="p-style font-18 font-b color-n" style="margin-top: 15px;">Or With</p>
                   <form class="form-style" action="{{url('/login')}}" method="POST">

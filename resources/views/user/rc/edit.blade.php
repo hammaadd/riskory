@@ -6,9 +6,14 @@
 @endsection
 @section('content')
 <div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
-    <div class="pl-0 col-12 col-sm-10 col-md-7 col-lg-5">
-    <p class="bg-lblue font-eb font-18 py-2 px-2 px-md-5"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Editing Risk Control</p>
+    <div class="sect--title pl-3 pl-md-5">
+        <div class="row">
+            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Editing Risk Control</p>
+            </div>
+        </div>
     </div>
+
     <div class="container">
         <div class="row px-0 px-md-2 px-lg-5 mx-0 mx-md-2 mx-lg-5 pt-4 d-flex justify-content-center">
             <div class="row text-center">

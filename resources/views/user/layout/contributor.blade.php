@@ -12,9 +12,11 @@
         @include('user.inc.navbarUser')
         
         <main role="main" class="inner">
-            <div class="container-fluid row pr-0">
-                @yield('content')
-                @include('user.inc.contributorSidebar')
+            <div class="container-fluid">
+                <div class="row">
+                    @yield('content')
+                    @include('user.inc.contributorSidebar')
+                </div>
             </div>
         </main>
 		@include('user.inc.contentfooter')

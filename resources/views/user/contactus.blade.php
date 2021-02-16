@@ -48,11 +48,11 @@
                                             <fieldset id="firstfieldset">
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Name <strong class="text-danger">*</strong></label>
-                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="name" value="{{ old('name') }}">
+                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="name" value="@if($errors->any()) {{ old('name') }} @elseif(Auth::user()) {{Auth::user()->name}} @endif">
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Email <strong class="text-danger">*</strong></label>
-                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="email" value="{{ old('email') }}">
+                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="email" value="@if($errors->any()) {{ old('email') }} @elseif(Auth::user()) {{Auth::user()->email}} @endif">
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Type <strong class="text-danger">*</strong></label>

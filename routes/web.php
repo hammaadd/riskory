@@ -88,6 +88,9 @@ Route::get('admin/riskcontrols/pending','AdminRiskControlController@pending')->n
 Route::put('admin/riskcontrol/update/status/{rc}','AdminRiskControlController@updateStatus')->name('update.rc.status');
 Route::get('admin/riskcontrol/filter/results','AdminRiskControlController@filterRc')->name('filter.riskcontrols');
 Route::get('admin/riskcontrol/view/{rc}/specific','AdminRiskControlController@viewSpecific')->name('admin.view.rc');
+Route::delete('admin/riskcontrol/delete','AdminRiskControlController@deleteRc')->name('admin.delete.rc');
+
+
 
 Route::post('admin/fetch/user/settings/modal','AdminController@fetchContributorSettings')->name('fetch.contributor.settings');
 Route::get('admin/udpate/user/rc/status','AdminController@updateUserRcStatus')->name('user.status.update');

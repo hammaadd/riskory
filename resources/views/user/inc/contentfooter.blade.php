@@ -16,14 +16,16 @@
         <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0 text-center text-sm-left">
             <h2 class="font-20 color-r font-eb">Get To Know Us</h2>
             <ul class="pl-0 pl-sm-0">
-            <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('aboutUs')}}" class="color-b">About Us</a></li>
+                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('aboutUs')}}" class="color-b">About Us</a></li>
+                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('contactUs')}}" class="color-b">Contact Us</a></li>
             </ul>
         </div>
         <div class="col-12 col-sm-6 col-lg-3 pt-sm-4 pt-lg-0 text-center text-sm-left">
-            <h2 class="font-20 color-r font-eb">Get Help</h2>
+            <h2 class="font-20 color-r font-eb">Other Links</h2>
             <ul class="pl-0 pl-sm-0">
-            <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('contactUs')}}" class="color-b">Contact Us</a></li>
-                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('feedback')}}" class="color-b">Send Feedback</a></li>
+                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('feedback')}}" class="color-b">Feedback</a></li>
+                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('tac')}}" class="color-b">Terms & Conditions</a></li>
+                <li class="p-style font-18 nav-link pl-0 pl-sm-0"><a href="{{route('privacy.policy')}}" class="color-b">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="col-12 col-sm-6 col-lg-3 text-center">

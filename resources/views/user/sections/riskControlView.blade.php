@@ -50,8 +50,14 @@
                         </div>
                         @include('user.inc.rcactions')
                         <div class="d-inline-block align-bottom">
+                            <a class="box-shadow" href="javascript:void(0);" title="Views">
+                                <i class="fas fa-eye"></i>
+                                <span class="font-eb">{{views($rc)->count()}}</span>
+                            </a>
+                        </div>
+                        <div class="d-inline-block align-bottom">
                             <div class="rc--share">
-                                <a class="box-shadow" href="javascript:void(0);">
+                                <a class="box-shadow" href="javascript:void(0);" title="Share">
                                     <i class="fas fa-share-alt"></i>
                                     <span class="font-eb">Share</span>
                                 </a>
@@ -63,16 +69,12 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="d-inline-block align-bottom">
-                            <a class="box-shadow" href="javascript:void(0);">
-                                <i class="fas fa-eye"></i>
-                                <span class="font-eb">{{views($rc)->count()}}</span>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="col-12 col-lg-4 pl-0 order-lg-1">
-                    <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at}}</div>
+
+                <div class="col-12 col-sm-4 pl-0 order-sm-1">
+                    <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at->toDateString()}}</div>
                 </div>
             </div>
         </div>

@@ -14,20 +14,8 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary d-inline-block">Data table of all riskcontrols.</h6>
-    {{-- <div class="float-right">
-      <form action="{{route('filter.riskcontrols')}}" method="GET">
-        
-        <label>Filter results by status: </label>
-        <select name="filter" id="filter" class="riskory-input">
-          <option value="All">All</option>
-          <option value="A">All approved</option>
-          <option value="R">All rejected</option>
-          <option value="U">All under discussion</option>
-          <option value="O">All our next big thing</option>
-        </select>
-        <button class="btn btn-dark" type="submit">Filter</button>
-      </form>
-    </div> --}}
+    
+
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -109,10 +97,9 @@
                 <label for="status">Update Status</label>
                
                     <select name="status" id="" class="form-control">
-                      <option value="U" @if($rc->status=='U') selected @endif class="text-success">Under discussion</option>
+                     
                       <option value="A" @if($rc->status=='A') selected @endif class="text-success">Approved</option>
                       <option value="R" @if($rc->status=='R') selected @endif class="text-danger">Rejected</option>
-                      <option value="O" @if($rc->status=='O') selected @endif class="text-dark">Our next big thing</option>
                       <option value="P" @if($rc->status=='P') selected @endif class="text-warning">Pending</option>
                     </select>
                 
@@ -122,6 +109,13 @@
               </form>
               <hr>
               <button class="btn btn-sm btn-block btn-primary mt-1" onclick="return parent.location='{{route('admin.view.rc',$rc)}}'">View <i class="fas fa-eye"></i></button>
+              {{-- <form action="{{route('admin.delete.rc')}}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button class="btn btn-sm btn-block btn-danger mt-1" type="submit" title="Delete"><i class="fas fa-trash"></i></button>
+              </form> --}}
+              
             </td>
             </tr>
 

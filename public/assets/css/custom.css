@@ -1276,7 +1276,7 @@ button.select-image {
 }
 
 
-@media (min-width: 991px) and (max-width: 1108px) {
+/*@media (min-width: 991px) and (max-width: 1108px) {
     .topbar-icon a {
         margin: 0 3px !important;
     }
@@ -1285,7 +1285,7 @@ button.select-image {
     .topbar-icon a {
         margin: 0 3px !important;
     }
-}
+}*/
 @media (max-width: 767px) {
     img.logo-body {
         width: 50%;

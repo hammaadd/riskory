@@ -8,29 +8,32 @@
 
 @endsection
 @section('content')
-<div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
     <div class="sect--title pl-3 pl-md-5">
-        <div class="row">
-            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
-                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Creating Risk Control</p>
+        <div class="row mb-4 mb-xl-5 align-items-lg-center">
+            <div class="col-lg-auto col-12 px-0 pr-lg-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-md-3 py-2 pl-3 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Creating Risk Control</p>
             </div>
         </div>
     </div>
-    {{-- <div class="container"> --}}
-        <div class="row px-2 px-md-5 mx-0 mx-md-5 pt-3 mt-4">
-            <div class="col-12 text-center">
-                <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
-                <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
-                <p id="riskControlProcedure" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Procedure</p>
-                {{-- <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
-                <p id="riskControlRelations" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Relations</p> --}}
-            </div>
-            <div class="col-12 bg-lgray br-7 mt-3 px-0 box-shadow">
+
+    <div class="row px-xl-5 mx-0 mx-md-5">
+        <div class="col-12 px-0 text-center tab--rc">
+            <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
+
+            <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r tab-rc-sp"><i class="fas fa-angle-double-right"></i></span>
+
+            <p id="riskControlProcedure" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Procedure</p>
+
+            {{-- <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
+            <p id="riskControlRelations" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Relations</p> --}}
+        </div>
+        <div class="col-12 bg-lgray br-7 mt-3 px-0 box-shadow">
             <img src="{{asset('assets/images/Mask Group 16@2x.png')}}" class="bg-white br-tl-7 p-3 box-shadow">
             <div class="col-12 mx-auto my-3">
                 <div class="px-3">
-                <form id="msform" role="form" autocomplete="off" method="POST" action="{{route('rc.store')}}" class="create-risk-form risk-form">
-                    @csrf
+                    <form id="msform" role="form" autocomplete="off" method="POST" action="{{route('rc.store')}}" class="create-risk-form risk-form">
+                        @csrf
                         <fieldset id="firstfieldset" class="form-group">
                             
                             <div class="mb-4">
@@ -176,9 +179,9 @@
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Impact</label>
                                 <textarea cols="30" rows="3" name="business_impact" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact">{{old('business_impact')}}</textarea>
-                            {{-- <input type="text" name="business_impact" value="{{old('business_impact')}}" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact"> --}}
-                            <small id="business_impact" class="form-text text-muted mt-3">The potential negative consequences that may occur as a result of the Risk</small>
-                        </div>
+                                {{-- <input type="text" name="business_impact" value="{{old('business_impact')}}" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact"> --}}
+                                <small id="business_impact" class="form-text text-muted mt-3">The potential negative consequences that may occur as a result of the Risk</small>
+                            </div>
                             {{-- <div class="mb-4">
                                 <label class="font-eb font-14 px-3 mb-0">Recommendations</label>
                                 <textarea cols="30" rows="3" name="recommendation" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Risk Control Corrective Action Recommendations">{{old('recommendation')}}</textarea>

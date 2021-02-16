@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 
-<div class="col-12 col-md-9 py-2 py-md-5 px-0">
+<div class="col-12 col-md-9 py-5 px-0">
     <div class="row px-md-5 mx-0">
         <div class="col-12">
             <div class="profile-cover border-1 shadow">
@@ -73,14 +73,14 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active px-md-5" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
                 {{-- Risk control Starts Here --}}
-                <div class="row mx-0" id="posts_data">
+                <div class="row mx-0 pt-4" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
                 
                 {{-- Risk control ends here --}}
             </div>
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
-                <div class="pl-0 col-12 py-5">
+                <div class="pl-0 col-12 pt-4">
                     @include('user.sections.profileCategories')
                 </div>
             </div>
@@ -96,17 +96,17 @@
                       </label>
                     </div>
                 </div>
-                <div class="row mx-0" id="likes_data">
+                <div class="row mx-0 pt-4" id="likes_data">
                     @include('user.profile.likes')
                 </div>
                 
             </div>
             
             <div class="tab-pane fade" id="nav-lists" role="tabpanel" aria-labelledby="nav-lists-tab">
-                <div class="text-center text-md-right pt-3 px-0 px-md-5">
+                <div class="text-center text-md-right pt-4 px-0 px-md-5">
                     <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold" onclick="return parent.location='{{route('all.lists')}}'"><i class="fas fa-plus-circle"></i> New List</button>
                 </div>
-                <div class="row mx-0 mx-md-5 pt-3">
+                <div class="row mx-0 mx-md-5 pt-4">
                     <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-4 p-md-5">
                         @include('user.sections.profileList')
                     </div>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 @csrf
-                <div class="row mx-0" id="bookmarks_data">
+                <div class="row mx-0 pt-4" id="bookmarks_data">
                     @include('user.profile.bookmarks')
                 </div>
             </div>

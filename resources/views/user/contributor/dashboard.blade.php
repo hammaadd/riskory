@@ -57,7 +57,7 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($bprocesses as $bp)
-                    <div class="col-12 col-sm-6 col-lg-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bp,'type'=>$bp->type])}}">{{$bp->name}}</a> ({{$bp->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
@@ -91,7 +91,7 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($bframeworks as $bf)
-                    <div class="col-12 col-sm-6 col-lg-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bf,'type'=>$bf->type])}}">{{$bf->name}}</a> ({{$bf->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
@@ -125,7 +125,7 @@
             
             <div class="row pl-3 pl-md-5">
                 @foreach($tags as $tg)
-                    <div class="col-12 col-sm-6 col-lg-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byTag',['tag'=>$tg])}}">{{$tg->name}}</a> ({{$tg->rctags->whereNotIn('rc.status',['P','R'])->count()}})</p>
 

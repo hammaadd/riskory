@@ -1829,6 +1829,20 @@ button.select-image {
     cursor: pointer;
     border-radius: 7px;
 }
+.sect--title__col {
+    margin-left: -1rem;
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 768px) {
+    .sect--title__col {
+        margin-left: -3rem;
+    }
+}
+@media (min-width: 576px) {
+}
 
 /*Responsive CSS*/
 @media (max-width: 1199px) {}

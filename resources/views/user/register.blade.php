@@ -68,22 +68,23 @@
                         <div class="form-group">
                             <input type="password" id="confirmPassword" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
                         </div>
-                        <div class="form-group mt-4 mb-4">
-                            <div class="captcha">
-                                <span>{!! captcha_img() !!}</span>
-                                <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                    &#x21bb;
-                                </button>
+                        <div class="form-group captcha-group">
+                            <div class="row">
+                                <div class="col-auto order-2">
+                                    <div class="captcha">
+                                        <span class="captcha-code">{!! captcha_img() !!}</span>
+                                        <button type="button" class="btn btn-danger captcha-refresh reload" id="reload">&#x21bb;</button>
+                                    </div>
+                                </div>
+                                <div class="col-auto order-1">
+                                    <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror captcha-field" placeholder="Enter Captcha" name="captcha" required>
+                                    @error('captcha')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-            
-                        <div class="form-group mb-4">
-                            <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" placeholder="Enter Captcha" name="captcha" required>
-                            @error('captcha')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
 
                         <p class="p-style font-16 mb-3 text-left"><input type="checkbox" class="form-check-inline" name="agree">By SIGN UP have to agree to our <a class="color-g text-underl" href="#">Service Terms</a> & <a class="color-g text-underl" href="#">Privacy Policy</a></p>

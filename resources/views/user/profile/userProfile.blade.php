@@ -25,14 +25,14 @@
     <div class="px-md-5">
         <div class="row col-12 user-profile px-0 mx-0">
             <div class="col-12 col-lg-3 pl-lg-4 text-center pt-4 pt-lg-0">
-                <div id="profile-container text-center">
-                <img id="profileImage" class="rounded-circle w-100 shadow img-thumbnail profileImage"  src="
-                @if(Auth::user()->avatar == 'images/avatars/default.png')
-                {{asset('userAvat/size/300x300.png')}}
-                    @else
-                    {{asset('userAvat/'.Auth::user()->avatar)}}
-                    @endif
-                " />    
+                <div id="profile-container">
+                    <img id="profileImage" class="rounded-circle w-100 shadow img-thumbnail profileImage"  src="
+                    @if(Auth::user()->avatar == 'images/avatars/default.png')
+                    {{asset('userAvat/size/300x300.png')}}
+                        @else
+                        {{asset('userAvat/'.Auth::user()->avatar)}}
+                        @endif
+                    " />    
                 </div>
                 <form method="POST" action="{{URL::route('uploadAvatar')}}" enctype="multipart/form-data">
                     @csrf
@@ -42,7 +42,10 @@
             <p class="font-eb font-18">{{Auth::user()->name}}</p>
             </div>
             <div class="col-12 col-lg-3 my-lg-auto text-center text-lg-left">
-                <p class="font-eb font-18 pt-lg-4 color-r font-14">{{Auth::user()->userFollowing->count()}} Following {{Auth::user()->userFollowers->count()}} Followers</p>
+                <p class="font-eb font-18 pt-lg-4 color-r font-14">
+                    <span class="d-inline-block">{{Auth::user()->userFollowing->count()}} Following</span>
+                    <span class="d-inline-block">{{Auth::user()->userFollowers->count()}} Followers</span>
+                </p>
             </div>
             <!-- <div class="col-12 col-lg-2  my-lg-auto text-center text-lg-right pr-md-1">
             </div> -->

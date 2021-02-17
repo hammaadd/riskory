@@ -19,18 +19,17 @@
     <div class="px-md-5">
         <div class="row px-0 mx-0">
             <div class="col-12 col-lg-3 pl-lg-4 user-profile text-center pt-4 pt-lg-0">
-                <div id="profile-container text-center">
-                <img id="profileImage" class="rounded-circle w-100 shadow img-thumbnail profileImage"  src="
-                @if($user->avatar == 'images/avatars/default.png')
+                <div id="profile-container">
+                    <img id="profileImage" class="rounded-circle w-100 shadow img-thumbnail profileImage" src="
+                    @if($user->avatar == 'images/avatars/default.png')
                     https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$user->name) }}
                     @else
                     {{asset('userAvat/'.$user->avatar)}}
                     @endif
-                " />
-                
+                    " />
                 </div>
                
-            <p class="font-eb font-18">{{$user->name}}</p>
+                <p class="font-eb font-18">{{$user->name}}</p>
             </div>
             <div class="col-12 col-lg-9 text-center text-lg-left pt-3">
                 <div class="row">
@@ -38,7 +37,10 @@
                         <p class="p-style font-24 font-b mb-lg-0">{{$user->fname}} {{$user->lname}}</p>
                     </div>
                     <div class="col-12 col-lg-4 pt-lg-1">
-                        <p class="font-eb font-16 color-r mb-lg-0">{{$user->userFollowing->count()}} Following {{$user->userFollowers->count()}} Followers</p>
+                        <p class="font-eb font-16 color-r mb-lg-0">
+                            <span class="d-inline-block">{{$user->userFollowing->count()}} Following</span> 
+                            <span class="d-inline-block">{{$user->userFollowers->count()}} Followers</span>
+                        </p>
                     </div>
                     <div class="col-12 col-lg-4">
                         @if($user->id != Auth::id())
@@ -95,14 +97,14 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active px-md-5" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
                 {{-- Risk control Starts Here --}}
-                <div class="row mx-0" id="posts_data">
+                <div class="row mx-0 py-4" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
                 
                 {{-- Risk control ends here --}}
             </div>
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
-                <div class="pl-0 col-12 py-5">
+                <div class="pl-0 col-12 py-4">
                     @include('user.sections.profileCategories')
                 </div>
             </div>
@@ -117,17 +119,17 @@
                       </label>
                     </div>
                 </div>
-                <div class="row mx-0" id="likes_data">
+                <div class="row mx-0 pt-4" id="likes_data">
                     @include('user.profile.likes')
                 </div>
                 
             </div>
             <div class="tab-pane fade" id="nav-lists" role="tabpanel" aria-labelledby="nav-lists-tab">
-                <div class="text-center text-md-right pt-3 px-0 px-md-5">
+                <div class="text-center text-md-right pt-4 px-0 px-md-5">
                     
                     {{-- <button class="btn-list bg-red border-0 br-30 font-eb color-w px-5 py-3 btn-hover" onclick="return parent.location='{{route('all.lists')}}'"><i class="fas fa-plus-circle"></i> New List</button> --}}
                 </div>
-                <div class="row mx-0 mx-md-5 pt-3">
+                <div class="row mx-0 mx-md-5 pt-4">
                     <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-4 p-md-5">
                         @include('user.sections.profileList')
                     </div>
@@ -137,7 +139,7 @@
             {{-- Bookmarks Tab panel --}}
 
             <div class="tab-pane fade px-md-5" id="nav-bookmarks" role="tabpanel" aria-labelledby="nav-bookmarks-tab">
-                <div class="row col-12 pt-4 px-0 mx-0">
+                <div class="row col-12 pt-4 px-0 mx-0 pt-4">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-5 col-12 text-right">
                         {{-- <div class="input-group search-bar py-1 ml-md-0">
@@ -156,7 +158,7 @@
                     </div>
                 </div>
                 @csrf
-                <div class="row mx-0" id="bookmarks_data">
+                <div class="row mx-0 pt-4" id="bookmarks_data">
                     @include('user.profile.bookmarks')
                 </div>
             </div>

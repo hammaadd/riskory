@@ -221,6 +221,22 @@ class VisitorController extends Controller
 
     }
 
+    public function viewSpecific($slug=null,Request $request){
+        $rc = RiskControl::where('id',$slug)->with('controls.control.parent')->with('benchmarks.user')->with('comments.user')->with('tags.tag')->get()->first();
+        // $expiresAt = now()->addHours(10);
+
+        
+        if($rc){
+            // views($rc)
+            // ->cooldown($expiresAt)
+            // ->record();
+            return view('visitor.sections.rcSpecificView',compact('rc'));
+        }else{
+            $request->session()->flash('error','Unable to load requested url');
+            return back();
+        }
+    }
+
     
 
 }

@@ -63,32 +63,34 @@
 
                     <div class="modal-icon modal-icon-2 d-inline-block align-bottom">
                         <div class="d-inline-block align-bottom">
-                            <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" onclick="callModal(this.id)">
+                            <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" title="Lists" onclick="callModal(this.id)">
                                 <i class="fas fa-list-ul"></i>
                                 <span class="font-eb">{{Auth::user()->rlists->count()}}</span>
                             </a>
                         </div>
                         @include('user.inc.rcactions')
                         <div class="d-inline-block align-bottom">
-                            <div class="rc--share">
-                                <a class="box-shadow" href="javascript:void(0);">
-                                    <i class="fas fa-share-alt"></i>
-                                    <span class="font-eb">0</span>
-                                </a>
-
-                                <ul class="rc--share-menu">
-                                    <li><a href="#" class="box-shadow"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" class="box-shadow"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" class="box-shadow"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-inline-block align-bottom">
-                            <a class="box-shadow" href="javascript:void(0);">
+                            <a class="box-shadow" href="javascript:void(0);" title="Views">
                                 <i class="fas fa-eye"></i>
                                 <span class="font-eb">{{views($rc)->count()}}</span>
                             </a>
                         </div>
+
+                        <div class="d-inline-block align-bottom">
+                            <div class="rc--share">
+                                <a class="box-shadow" href="javascript:void(0);" title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                    <span class="font-eb">Share</span>
+                                </a>
+
+                                <ul class="rc--share-menu">
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://wa.me/?text={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-whatsapp"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
-<a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') @else color-r @endif" onclick="toggleButtons(this.id)" id="ASC" title="Ascending"><i class="fas fa-sort-amount-up-alt"></i></a>
-<a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') color-r @endif" onclick="toggleButtons(this.id)" id="DESC" title="Descending"><i class="fas fa-sort-amount-down" ></i></a>
+<form action="{{route('filter.user.riskcontrols')}}" method="GET" id="sortFilters">
 <div class="dropdown d-inline sortByDropdown">
-  <a href="#" class="text-center mx-2 my-1" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent" title="Sort results"><i class="fas fa-filter"></i></a>
+ 
+  <a href="#" class="text-center mx-2 my-1" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent" title="Sort results"><i class="fas fa-sort"></i></a>
   <div class="dropdown-menu px-1 py-1" aria-labelledby="dropdownMenuLink">
     <span class="triangle"><span class="triangle--empty"></span></span>
       <h6 class="dropdown-header">Sort by</h6>
-      <form action="{{route('filter.user.riskcontrols')}}" method="GET">
+      
           <input type="hidden" name="order" value=@if(isset($_GET['order'])&&$_GET['order']=='DESC') "DESC" @else "ASC" @endif>
       <div class="form-check mx-1 my-1">
           <input class="form-check-input" type="radio" value="date" name="stype" id="defaultCheck1" @if(isset($_GET['stype'])&&$_GET['stype']=='date') checked @endif>
@@ -35,6 +35,19 @@
           </label>
       </div>
 
+      <div class="form-group">
+        <a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') @else color-r @endif" onclick="toggleButtons(this.id)" id="ASC" title="Ascending"><i class="fas fa-sort-amount-up-alt"></i></a>
+<a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') color-r @endif" onclick="toggleButtons(this.id)" id="DESC" title="Descending"><i class="fas fa-sort-amount-down" ></i></a>
+
+      </div>
+
+      <button class="btn btn-secondary btn-block" type="submit">Sort</button>
+  </div>
+</div>
+<div class="dropdown d-inline sortByDropdown">
+  <a href="#" class="text-center mx-2 my-1" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent" title="Sort results"><i class="fas fa-filter"></i></a>
+  <div class="dropdown-menu px-1 py-1" aria-labelledby="dropdownMenuLink2">
+    <span class="triangle"><span class="triangle--empty"></span></span>
       <h6 class="dropdown-header">Filter by date</h6>
       <div class="form-check mx-1 my-1">
         <input class="form-check-input" type="checkbox" value="doFilter" id="dateFilterRadio" name="date" onclick="dateshow(this.id)" @if(isset($_GET['date'])) checked @endif>
@@ -72,12 +85,12 @@
 
 
 
-      
-
-      <button class="btn btn-secondary btn-block" type="submit">Apply filters</button>
-  </form>
+      <button class="btn btn-secondary btn-block" onclick="$('#sortFilters').submit()">Apply filters</button>
+    
   </div>
+
 </div>
+</form>
 
 
 <script>
@@ -88,4 +101,8 @@
       $('#dateFilterSet').hide();
     }
   }
+
+  $(document).on('click', '.sortByDropdown .dropdown-menu', function (e) {
+  e.stopPropagation();
+});
 </script>

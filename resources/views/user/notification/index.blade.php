@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <span class="float-right noti-right">
-                        {{-- <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2 notBtn">Follow Back</button> --}}
+                        
                         <div class="d-inline-block float-md-right mt-3">
                           <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-h"></i>
@@ -91,23 +91,7 @@
                 @endif
             @endforeach
             
-            {{-- <div class="row">
-                <p class="col-10 font-eb color-b font-16 d-inline-block">New risk management in <a href="#" class="color-r">Business Process</a>
-                </p>
-                <span class="col-2 float-right d-inline-block">
-                        <div class="d-inline-block float-md-right mt-3">
-                          <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
-                          </a>
-
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
-                            <a class="dropdown-item" href="#">Action 3</a>
-                          </div>
-                        </div>
-                </span>
-            </div> --}}
+            
             
         </div>
     </div>

@@ -2,7 +2,7 @@
 @section('SiteTitle','Dashboard || Riskory')
 @section('content')
 
-<div class="col-12 col-md-9 py-2 py-md-5 px-0">
+<div class="col-12 col-md-9 px-md-0 py-5">
     <div class="row px-md-5">
         <div class="col-12">
             <div class="profile-cover border-1 shadow">
@@ -84,7 +84,7 @@
             {{-- </div> --}}
         </div>
         <div class="pt-4 px-md-5">
-            <nav>
+            <nav class="profile--tab_nav">
                 <div class="nav nav-tabs d-flex text-center border-0" id="nav-tab" role="tablist">
                   <a class="nav-item nav-link active flex-fill br-tl-7 br-bl-7" onclick="postsData()" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">Posts</a>
                   <a class="nav-item nav-link flex-fill"  id="nav-categories-tab" data-toggle="tab" href="#nav-categories" role="tab" aria-controls="nav-categories" aria-selected="false">Categories</a>

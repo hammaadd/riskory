@@ -24,7 +24,13 @@
                 @endphp
                 <div class="py-2 py-md-0 text-left clearfix">
                     <div class="float-left noti-left">
-                        <img src="@if($follower->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$follower->name) }} @else {{asset('userAvat/'.$follower->avatar)}} @endif" class="rounded-circle shadow avatar-img-lg not-avt">
+                        <img src="
+                        @if($follower->avatar == 'images/avatars/default.png') 
+                        https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$follower->name) }} 
+                        @else 
+                        {{asset('userAvat/'.$follower->avatar)}} 
+                        @endif
+                        " class="rounded-circle shadow avatar-img-lg not-avt">
                         <div class="d-inline-block pt-1 pl-0 pl-md-2">
                             <p class="font-eb mt-2 font-16 color-b noti-text"><a href="{{route('visit.profile',$follower)}}" class="color-r">{{$follower->name}}</a> Followed You </p>
                         </div>

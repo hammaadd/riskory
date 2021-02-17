@@ -1847,6 +1847,41 @@ button.select-image {
     padding: 0;
 }
 
+.captcha-code,
+.captcha-refresh {
+    display: inline-block;
+    vertical-align: top;
+}
+.captcha-code img {
+    display: block;
+    max-height: 40px;
+    border-radius: 7px;
+    box-shadow: #00000029 0px 2px 3px;
+}
+.captcha-refresh {
+    line-height: 26px;
+    border-radius: 7px;
+    box-shadow: #00000029 0px 2px 3px;
+}
+.captcha-field {
+    max-width: 141px;
+}
+.contact-captcha-field {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-right: 1rem;
+}
+.contact-captcha .captcha {
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+}
+
 /*Responsive CSS*/
 @media (max-width: 1199px) {
     .modal-icon a,
@@ -1906,8 +1941,14 @@ button.select-image {
     .signup-icon a.gl--icon:hover {
         background: #e82e1e;
     }
+    .captcha-field {
+        max-width: 86px;
+    }
 }
 @media (max-width: 767px) {
+    .captcha-field {
+        max-width: inherit;
+    }
 }
 @media (max-width: 575px) {
     .tab--rc .tab-rc {
@@ -1976,6 +2017,10 @@ button.select-image {
         margin-top: 0;
         right: 0;
     }
+    .captcha-group {}
+    .captcha-field {
+        max-width: 87px;
+    }
 }
 @media (max-width: 359px) {
     .quick--link {
@@ -1983,5 +2028,32 @@ button.select-image {
         margin-left: 0 !important;
         margin-right: 0 !important;
         width: 100%
+    }
+    .captcha-group .col-auto {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        width: auto;
+        max-width: 100%;
+        order: inherit !important;
+    }
+    .captcha-group .order-2 {
+        margin-bottom: 1rem;
+    }
+    .captcha-field {
+        max-width: 100%;
+        width: 100%;
+    }
+    .contact-captcha .d-flex {
+        display: block !important;
+    }
+    .contact-captcha .captcha,
+    .contact-captcha-field {
+        order: inherit;
+    }
+    .contact-captcha .captcha {
+        margin-bottom: 1rem;
+    }
+    .contact-captcha-field {
+        padding-right: 0;
     }
 }

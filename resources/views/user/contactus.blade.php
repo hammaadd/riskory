@@ -45,18 +45,18 @@
                                         <form method="post" action="{{route('submission')}}">
                                             @csrf
 
-                                            <fieldset id="firstfieldset">
+                                            <fieldset id="firstfieldset" class="form-group">
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Name <strong class="text-danger">*</strong></label>
-                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="name" value="@if($errors->any()) {{ old('name') }} @elseif(Auth::user()) {{Auth::user()->name}} @endif">
+                                                    <input type="text" class="form-control px-3 br-7 box-shadow border-0 font-14 font-e color-dg" name="name" value="@if($errors->any()) {{ old('name') }} @elseif(Auth::user()) {{Auth::user()->name}} @endif">
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Email <strong class="text-danger">*</strong></label>
-                                                    <input type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" name="email" value="@if($errors->any()) {{ old('email') }} @elseif(Auth::user()) {{Auth::user()->email}} @endif">
+                                                    <input type="text" class="form-control px-3 br-7 box-shadow border-0 font-14 font-e color-dg" name="email" value="@if($errors->any()) {{ old('email') }} @elseif(Auth::user()) {{Auth::user()->email}} @endif">
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1">Type <strong class="text-danger">*</strong></label>
-                                                    <div class="bg-white px-2 py-1 br-10 box-shadow">
+                                                    <div class="bg-white px-2 py-1 br-7 box-shadow">
                                                         <select name="type" id="type" class="custom-select border-0 font-14 font-e color-dg" required>
                                                             <option value="Inquiry" @if(old('type') == 'Inquiry') selected @endif>Inquiry</option>
                                                             <option value="Feature Recommendation" @if(old('type') == 'Feature Recommendation') selected @endif>Feature Recommendation</option>
@@ -68,18 +68,20 @@
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="font-eb font-14 mb-1" for="message">Message <strong class="text-danger">*</strong></label>
-                                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg">{{ old('message') }}</textarea>
+                                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control px-3 py-3 br-7 box-shadow border-0 font-14 font-e color-dg">{{ old('message') }}</textarea>
                                                 </div>
                                                 <div class="mb-4">
-                                                    <div class="captcha">
-                                                        <span>{!! captcha_img() !!}</span>
-                                                        <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                                            &#x21bb;
-                                                        </button>
+                                                    <div class="contact-captcha">
+                                                        <div class="d-flex">
+                                                            <div class="captcha order-2">
+                                                                <span class="captcha-code">{!! captcha_img() !!}</span>
+                                                                <button type="button" class="btn btn-danger captcha-refresh reload" id="reload">&#x21bb;</button>
+                                                            </div>
+                                                            <div class="contact-captcha-field order-1">
+                                                                <input id="captcha" type="text" class="form-control px-3 br-7 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter Captcha" name="captcha">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="mb-4">
-                                                    <input id="captcha" type="text" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter Captcha" name="captcha">
                                                 </div>
                                                 <div class="mb-4 text-right">
                                                     <button type="submit" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-4">Submit</button>

@@ -5,9 +5,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 @endsection
 @section('content')
-<div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
     <!-- Browse By Industry Secion -->
-    <div class="sect--title pl-3 pl-md-5 pt-4">
+    <div class="sect--title pl-sm-3 px-md-5">
         <div class="row">
             <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
                 <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control Detail</p>

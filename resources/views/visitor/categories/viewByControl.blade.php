@@ -30,7 +30,6 @@
                             @endif  --}}
                         </div>
 
-
                         <div class="row">
                              {{-- Risk control starts here --}}
                         @if(isset($control))

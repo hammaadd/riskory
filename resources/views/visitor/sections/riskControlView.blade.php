@@ -41,7 +41,7 @@
         <div class="col-12">
             <div class="row align-items-sm-end">
                 <div class="col-12 col-sm-8 order-sm-2">
-                    <div class="modal-icon text-center text-sm-right">
+                    <div class="modal-icon mb-3 mb-sm-0 text-sm-right">
                         {{-- <div class="d-inline-block align-bottom">
                             <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" onclick="callModal(this.id)">
                                 <i class="fas fa-list-ul"></i>

@@ -1977,3 +1977,11 @@ button.select-image {
         right: 0;
     }
 }
+@media (max-width: 359px) {
+    .quick--link {
+        display: block;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100%
+    }
+}

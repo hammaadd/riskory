@@ -1928,20 +1928,52 @@ button.select-image {
         line-height: 22px;
         padding: 5px 15px !important;
     }
-    .not-not {
+    .noti-text {
         margin: 0 !important;
+        font-size: 12px !important;
     }
     .notBtn {
-        float: none !important;
+        margin-top: 0 !important;
+        margin-right: 8px !important;
+        padding: 3px 8px;
     }
+    .noti-left {
+        width: 60%;
+    }
+    .noti-right {
+        width: 40%;
+        text-align: right;
+    }
+    .noti-right .mt-3 {
+        margin-top: 0 !important
+    }
+    .not-avt {
+        width: 25px;
+        height: 25px;
+        padding: 2px;
+    }
+}
+@media (max-width: 479px) {
     .noti-left > img {
         float: left;
     }
     .noti-left > .d-inline-block {
         overflow: hidden;
         display: block !important;
-        padding-left: 10px !important;
+        padding: 0 10px !important;
     }
-
-
+    .noti-right {
+        position: relative;
+    }
+    .noti-right form.d-inline-block {}
+    .notBtn {
+        margin-right: 0 !important;
+        margin-top: 10px !important;
+    }
+    .noti-right .mt-3 {
+        position: absolute;
+        top: -20px;
+        margin-top: 0;
+        right: 0;
+    }
 }

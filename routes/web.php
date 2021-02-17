@@ -28,6 +28,7 @@ Route::get('/categories','VisitorController@categories')->name('publicCategories
 Route::get('/categories/{control}','VisitorController@byControl')->name('byControlPublic');
 Route::get('/visitor/riskcontrols','VisitorController@allRiskcontrols')->name('rc.all.public');
 Route::get('/categories/{req}/see-more','VisitorController@seeMore')->name('publicSeeMore');
+Route::get('/risk-control/{slug}','VisitorController@viewSpecific')->name('rc.view.public');
 
 // Route::get('/admin/login',)
 

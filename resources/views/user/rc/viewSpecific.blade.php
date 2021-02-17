@@ -1,25 +1,27 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','View Risk Control || Riskory')
 @section('content')
-<div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
     <!-- Browse By Industry Secion -->
-
-    <div class="row pt-4 mx-0 align-items-center">
-        <div class="pl-0 col-12 col-sm-auto">
-            <p class="bg-lblue font-eb font-18 py-2 px-5 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control # <span class="color-r">{{$rc->id}}</span> Detail @if($rc->user_id==Auth::id())
+    <div class="sect--title pl-sm-3 px-md-5">
+        <div class="row">
+            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control # <span class="color-r">{{$rc->id}}</span> Detail @if($rc->user_id==Auth::id())
                 <button class="btn-risk-edit" onclick="parent.location='{{route('rc.edit',$rc)}}'">Edit</button>
-            @endif</p>
+                @endif</p>
+            </div>
         </div>
     </div>
 
+
     <div class="row pl-1 pl-md-5 mx-0 mx-md-5 pt-5">
         <div class="col-12 pb-3">
-            <div class="d-flex justify-content-center">
-                {{-- <a id="riskDefinition" href="#collapseDefinition" class="btn bg-white color-r border-1 mx-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Definition</a> --}}
-                <a id="riskProcedure" href="#collapseProcedure" class="btn bg-white color-r border-1 mx-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Procedure</a>
-                {{-- <a id="riskRelations" href="#collapseRelations" class="btn bg-white color-r border-1 mx-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Relations</a> --}}
-                <a id="riskBenchmarks" href="#collapseBenchmarks" class="btn bg-white color-r border-1 mx-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Benchmarks</a>
-                <a id="riskComments" href="#collapseComments" class="btn bg-white color-r border-1 mx-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Comments</a>
+            <div class="d-block d-sm-flex justify-content-sm-center text-center">
+                {{-- <a id="riskDefinition" href="#collapseDefinition" class="btn bg-white color-r border-1 m-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Definition</a> --}}
+                <a id="riskProcedure" href="#collapseProcedure" class="btn bg-white color-r border-1 m-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Procedure</a>
+                {{-- <a id="riskRelations" href="#collapseRelations" class="btn bg-white color-r border-1 m-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Relations</a> --}}
+                <a id="riskBenchmarks" href="#collapseBenchmarks" class="btn bg-white color-r border-1 m-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Benchmarks</a>
+                <a id="riskComments" href="#collapseComments" class="btn bg-white color-r border-1 m-2 box-shadow br-7 font-16 px-4 text-capitalize btn-benchmark quick--link">Comments</a>
             </div>
         </div>
 
@@ -42,8 +44,8 @@
             </div>
             
             <div class="row mx-0 mb-4">
-                <div class="col-12 col-sm-4">
-                    <div class="rc---user bg-white br-7 p-3 box-shadow border-1">
+                <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+                    <div class="rc---user d-inline-block align-top bg-white br-7 p-3 box-shadow border-1">
                         <a href="{{route('visit.profile',$rc->user)}}" class="d-inline-block align-middle text-decoration-none">
                             <img src="@if($rc->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$rc->user->name) }} @else {{asset('userAvat/'.$rc->user->avatar)}} @endif" class="rounded-circle shadow avatar-img-xl">
                         </a>
@@ -56,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-8 align-self-end text-right">
-                    <button class="bg-red color-w font-14 border-0 br-7 p-2 font-eb btn-benchmark mr-3 d-inline-block mb-1" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
+                <div class="col-12 col-xl-8 align-self-xl-end text-xl-right">
+                    <button class="bg-red color-w font-14 border-0 br-7 p-2 font-eb btn-benchmark mr-3 d-inline-block mb-2 mb-xl-1" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
 
                     <div class="modal-icon modal-icon-2 d-inline-block align-bottom">
                         <div class="d-inline-block align-bottom">

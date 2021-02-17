@@ -13,7 +13,7 @@
     <div class="row">
         @if($childs->hasMorePages())
         <livewire:load-more-categories-public :page="$page" :perPage="$perPage" :control="$control" />
-    @endif    
+        @endif    
     </div>
 </div>
     

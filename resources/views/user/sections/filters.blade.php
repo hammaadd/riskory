@@ -1,3 +1,9 @@
+<style>
+  .sortByDropdown .dropdown-menu {
+    max-width: 10rem;
+    width: 100%;
+  }
+  </style>
 <form action="{{route('filter.user.riskcontrols')}}" method="GET" id="sortFilters">
 <div class="dropdown d-inline sortByDropdown">
  
@@ -35,10 +41,9 @@
           </label>
       </div>
 
-      <div class="form-group">
-        <a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') @else color-r @endif" onclick="toggleButtons(this.id)" id="ASC" title="Ascending"><i class="fas fa-sort-amount-up-alt"></i></a>
-<a href="#" class="text-center mx-2 my-1 @if(isset($_GET['order'])&&$_GET['order']=='DESC') color-r @endif" onclick="toggleButtons(this.id)" id="DESC" title="Descending"><i class="fas fa-sort-amount-down" ></i></a>
-
+      <div class="form-group mt-3 d-flex justify-content-around">
+        <a href="#"  class="text-center mx-2 my-1 d-inline-block @if(isset($_GET['order'])&&$_GET['order']=='DESC') @else color-r @endif" onclick="toggleButtons(this.id)" id="ASC" title="Ascending"><i class="fas fa-sort-amount-up-alt font-20"></i></a>
+        <a href="#" class="text-center mx-2 my-1 d-inline-block @if(isset($_GET['order'])&&$_GET['order']=='DESC') color-r @endif" onclick="toggleButtons(this.id)" id="DESC" title="Descending"><i class="fas fa-sort-amount-down font-20" ></i></a>
       </div>
 
       <button class="btn btn-secondary btn-block" type="submit">Sort</button>

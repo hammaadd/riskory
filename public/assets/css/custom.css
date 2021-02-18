@@ -1944,6 +1944,13 @@ button.select-image {
     .captcha-field {
         max-width: 86px;
     }
+    #profile-container {
+        margin: -85px auto 0;
+    }
+    .profile--tab_nav .nav-item.nav-link.flex-fill {
+        font-size: 16px;
+        padding: .5rem;
+    }
 }
 @media (max-width: 767px) {
     .captcha-field {
@@ -1993,6 +2000,14 @@ button.select-image {
         height: 25px;
         padding: 2px;
     }
+    .uploadAvatarBtn,
+    .profiles--btn {
+        font-size: 14px !important;
+    }
+    button.select-image {
+        font-size: 30px;
+        padding-bottom: 40px;
+    }
 }
 @media (max-width: 479px) {
     .noti-left > img {
@@ -2020,6 +2035,14 @@ button.select-image {
     .captcha-group {}
     .captcha-field {
         max-width: 87px;
+    }
+    .profile--tab_nav .nav-item.nav-link.flex-fill {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 7px;
+        margin: 4px 0;
     }
 }
 @media (max-width: 359px) {

@@ -16,7 +16,7 @@
                 @else
                 {{asset('userCover/'.Auth::user()->cover)}}
                 @endif
-            " class="user-cover" alt="cover-image" width="100%"/>
+                " class="user-cover" alt="cover-image" width="100%"/>
             
                 <button class="select-image" id="coverBtn"><i class="fas fa-camera"></i> 800 x 200</button>
             </div>
@@ -37,12 +37,12 @@
                 <form method="POST" action="{{URL::route('uploadAvatar')}}" enctype="multipart/form-data">
                     @csrf
                     <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required capture>
-                    <button class="my-3 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7" style="display: none;" id="uploadAvatarBtn"><i class="fas fa-camera" ></i> Upload Avatar</button>
+                    <button class="my-3 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 uploadAvatarBtn" style="display: none;" id="uploadAvatarBtn"><i class="fas fa-camera" ></i> Upload Avatar</button>
                 </form>
             <p class="font-eb font-18">{{Auth::user()->name}}</p>
             </div>
             <div class="col-12 col-lg-3 my-lg-auto text-center text-lg-left">
-                <p class="font-eb font-18 pt-lg-4 color-r font-14">
+                <p class="font-eb font-18 pt-lg-4 color-r font-14 userFollows">
                     <span class="d-inline-block">{{Auth::user()->userFollowing->count()}} Following</span>
                     <span class="d-inline-block">{{Auth::user()->userFollowers->count()}} Followers</span>
                 </p>
@@ -53,17 +53,17 @@
                 <form class="d-inline-block" method="POST" action="{{URL::route('uploadCover')}}" enctype="multipart/form-data">
                     @csrf
                     <input id="coverUpload" type="file" name="cover" placeholder="Photo" required capture style="display: none;">
-                    <button class="mt-1 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7"  id="uploadCoverBtn" style="display: none;"><i class="fas fa-camera" ></i> Save</button>
+                    <button class="mt-1 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn"  id="uploadCoverBtn" style="display: none;"><i class="fas fa-camera" ></i> Save</button>
                 </form>
-                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7" title="View public profile" onclick="return parent.location='{{route('visit.profile',Auth::user())}}'"><i class="fas fa-eye"></i></button>
-                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7" onclick="parent.location='{{route('editProfile')}}'">Edit Info</button>
+                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn" title="View public profile" onclick="return parent.location='{{route('visit.profile',Auth::user())}}'"><i class="fas fa-eye"></i></button>
+                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn" onclick="parent.location='{{route('editProfile')}}'">Edit Info</button>
             </div>
             
         </div>
     </div>
     <div class="container-fluid">
         <div class="pt-4 px-md-5">
-            <nav>
+            <nav class="profile--tab_nav">
               <div class="nav nav-tabs d-flex text-center border-0" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active flex-fill br-tl-7 br-bl-7" onclick="postsData()" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">Posts</a>
                 <a class="nav-item nav-link flex-fill"  id="nav-categories-tab" data-toggle="tab" href="#nav-categories" role="tab" aria-controls="nav-categories" aria-selected="false">Categories</a>

@@ -66,7 +66,7 @@
                           </small>
                       </div>
 
-                      <p class="p-style font-16 mb-3 text-left"><input type="checkbox" class="form-check-inline" name="agree" required>By Sign In You Agree To Our <a class="color-g text-underl" href="#">Service Terms</a> And <a class="color-g text-underl" href="#">Privacy Policy</a></p>
+                      <p class="p-style font-16 mb-3 text-left"><input type="checkbox" class="form-check-inline" name="agree" required>By Sign In You Agree To Our <a class="color-g text-underl" href="{{route('tac')}}">Service Terms</a> And <a class="color-g text-underl" href="{{route('privacy.policy')}}">Privacy Policy</a></p>
                       <input type="submit" id="submit" name="signup" value="Login" class="btn-submit">
                       <p class="p-style font-16 mt-3 mb-0">Don't Have Account ? <a href="{{route('userRegister')}}" class="color-b font-weight-bold">Sign Up</a></p>
                   </form>

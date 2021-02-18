@@ -36,7 +36,7 @@
             <button class="btn bg-white color-r box-shadow br-7 font-12 ml-3 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
         </div>
         <div class="col-12 my-2">
-            <p class="p-style mb-0 font-16 text-black-50">{{Str::words($rc->objective,30)}} <a class="btn--readMore" href="{{route('rc.view',$rc->id)}}">Read more.</a></p>
+            <p class="p-style mb-0 font-16 text-black-50">{{strip_tags(Str::words($rc->objective,30))}} <a class="btn--readMore" href="{{route('rc.view',$rc->id)}}">Read more.</a></p>
         </div>
         <div class="col-12">
             <div class="row align-items-lg-end">

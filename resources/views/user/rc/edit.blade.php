@@ -5,34 +5,36 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 @endsection
 @section('content')
-<div class="pl-0 col-12 col-md-9 py-5 pr-0 pr-md-5">
+<div class="col-12 col-md-9 px-md-0 py-5">
     <div class="sect--title pl-3 pl-md-5">
-        <div class="row">
-            <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
-                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Editing Risk Control</p>
+         <div class="row mb-4 mb-xl-5 align-items-lg-center">
+            <div class="col-lg-auto col-12 px-0 pr-lg-3 sect--title__col">
+                <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-md-3 py-2 pl-3 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Editing Risk Control</p>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row px-0 px-md-2 px-lg-5 mx-0 mx-md-2 mx-lg-5 pt-4 d-flex justify-content-center">
-            <div class="row text-center">
-                <p id="riskControlDefinition" class="font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-10 box-shadow">Definition</p>
-                <span class="my-auto pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
-                <p id="riskControlProcedure" class="font-eb font-18 bg-lgray color-dg px-4 py-2 br-10 mx-2 box-shadow">Procedure</p>
-                {{-- <span class="my-auto pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
-                <p id="riskControlRelations" class="font-eb font-18 bg-lgray color-dg px-4 py-2 br-10 mx-2 box-shadow">Relations</p> --}}
+        <div class="row px-xl-5 mx-0 mx-md-5">
+            <div class="col-12 px-0 text-center tab--rc">
+                <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
+    
+                <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r tab-rc-sp"><i class="fas fa-angle-double-right"></i></span>
+    
+                <p id="riskControlProcedure" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Procedure</p>
+    
+                {{-- <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
+                <p id="riskControlRelations" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Relations</p> --}}
             </div>
-            <div class="col-12 bg-lgray br-20 mt-3 px-0">
-            <img src="{{asset('assets/images/Mask Group 16@2x.png')}}" class="bg-white br-tl-20 p-3 box-shadow">
+            <div class="col-12 bg-lgray br-7 mt-3 px-0 box-shadow">
+                <img src="{{asset('assets/images/Mask Group 16@2x.png')}}" class="bg-white br-tl-7 p-3 box-shadow">
                 <div class="col-12 mx-auto my-3">
-                <form id="msform" role="form" method="POST" action="{{route('rc.update',$rc)}}" class="create-risk-form risk-form px-lg-5">
+                <form id="msform" role="form" method="POST" action="{{route('rc.update',$rc)}}" class="create-risk-form risk-form">
                     @csrf
                     @method('PUT')
-                        <fieldset id="firstfieldset">
+                        <fieldset id="firstfieldset" class="form-group">
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Title</label>
-                                <input type="text" name="title" value="{{$rc->title}}" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
+                                <label class="font-eb font-14 mb-1">Title</label>
+                                <input type="text" name="title" value="{{$rc->title}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
                                
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -42,8 +44,8 @@
                             </div>
                            
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Objective</label>
-                                <textarea name="obj" id="obj" cols="30" rows="3" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{$rc->objective}}</textarea>
+                                <label class="font-eb font-14 mb-1">Objective</label>
+                                <textarea name="obj" id="obj" cols="30" rows="3" class="form-control  br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{$rc->objective}}</textarea>
 
                                 
                                 
@@ -57,8 +59,8 @@
                                 @enderror
                             </div>
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Description</label>
-                                <textarea name="desc" id="desc" cols="30" rows="3" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg @error('desc') is-invalid @enderror" placeholder="Enter The Risk Control Description" required>{{$rc->description}}</textarea>
+                                <label class="font-eb font-14 mb-1">Description</label>
+                                <textarea name="desc" id="desc" cols="30" rows="3" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg py-3 @error('desc') is-invalid @enderror" placeholder="Enter The Risk Control Description" required>{{$rc->description}}</textarea>
                                 {{-- <input type="text" name="" class="form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" placeholder="Enter The Risk Control Description"> --}}
                                 @error('desc')
                                 <span class="invalid-feedback" role="alert">
@@ -67,9 +69,9 @@
                                 @enderror
                             </div>
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Frequency</label>
-                                <input type="text" name="frequency" value="{{$rc->frequency}}" id="frequency" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg @error('frequency') is-invalid @enderror" min="0" placeholder="Enter The Risk Control Frequency">
-                                <small id="frequency" class="form-text text-muted ml-3">
+                                <label class="font-eb font-14 mb-1">Frequency</label>
+                                <input type="text" name="frequency" value="{{$rc->frequency}}" id="frequency" class="form-control px-3 py-4 br-7 box-shadow border-0 font-14 font-e color-dg @error('frequency') is-invalid @enderror" min="0" placeholder="Enter The Risk Control Frequency">
+                                <small id="frequency" class="form-text text-muted mt-3">
                                     How frequently the risk control should be assessed?
                                 </small>
                                 @error('frequency')
@@ -79,9 +81,9 @@
                             @enderror
                             </div>
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Implementation type</label>
-                                <div class="bg-white px-2 py-1 br-10 box-shadow">
-                                    <select class="custom-select border-0 font-14 font-e color-dg" name="imp_type" id="imp_type" aria-label="Select implementation type" required>
+                                <label class="font-eb font-14 mb-1">Implementation type</label>
+                                <div class="bg-white br-7">
+                                    <select class="form-control custom-select border-0 font-14 font-e color-dg" name="imp_type" id="imp_type" aria-label="Select implementation type" required>
                                         <option value="Automated" @if($rc->imp_type=='Automated') Selected @endif">Automated</option>
                                         <option value="Semi-automated" @if($rc->imp_type=='Semi-Automated') Selected @endif>Semi-automated</option>
                                         <option value="Manual" @if($rc->imp_type)=='Manual') Selected @endif>Manual</option>
@@ -98,8 +100,8 @@
 
                           
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Industry</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" required>
+                                <label class="font-eb font-14 mb-1">Industry</label>
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" required>
                                 @foreach($controls as $con)
                                 @if($con->type=='industry')
                                 <option value="{{$con->id}}" @if($arrayControls) @if(in_array($con->id,$arrayControls)) Selected @endif @endif>{{$con->name}} <small>({{$con->followers->count()}})</small></option>
@@ -110,8 +112,8 @@
                                 
                             </div>
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Business Process</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="process[]" multiple="multiple">
+                                <label class="font-eb font-14 mb-1">Business Process</label>
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="process[]" multiple="multiple">
                                     @foreach($controls as $con)
                                     @if($con->type=='bprocess')
                                     <option value="{{$con->id}}"@if($arrayControls) @if(in_array($con->id,$arrayControls)) Selected @endif @endif>{{$con->name}} <small>({{$con->followers->count()}})</small></option>
@@ -120,8 +122,8 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Framework</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="framework[]" multiple="multiple">
+                                <label class="font-eb font-14 mb-1">Framework</label>
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="framework[]" multiple="multiple">
                                     @foreach($controls as $con)
                                     @if($con->type=='bframework')
                                     <option value="{{$con->id}}" @if($arrayControls) @if(in_array($con->id,$arrayControls)) Selected @endif @endif>{{$con->name}} <small>({{$con->followers->count()}})</small></option>
@@ -139,8 +141,8 @@
                            
 
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Tags</label>
-                                <select id="tags" class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="tags[]" multiple="multiple">
+                                <label class="font-eb font-14 mb-1">Tags</label>
+                                <select id="tags" class="form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="tags[]" multiple="multiple">
                                 @foreach($tags as $tg)
                                 
                                 <option value="{{$tg->id}}" @if($arrayTags) @if(in_array($tg->id,$arrayTags)) Selected @endif @endif>{{$tg->name}}</option>
@@ -151,17 +153,17 @@
                             </div>
                             
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Business Impact</label>
-                                <textarea cols="30" rows="3" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg" name="business_impact" placeholder="Enter The Business Impact">{{$rc->business_impact}}</textarea>
+                                <label class="font-eb font-14 mb-1">Business Impact</label>
+                                <textarea cols="30" rows="3" class="form-control br-7 box-shadow py-3 border-0 font-14 font-e color-dg" name="business_impact" placeholder="Enter The Business Impact">{{$rc->business_impact}}</textarea>
 
                             
-                                <small id="business_impact" class="form-text text-muted ml-3">
+                                <small id="business_impact" class="form-text text-muted mt-3">
                                     The potential negative consequences that may occur as a result of the Risk
                                     </small>
                             </div>
                             {{-- <div class="mb-4">
                                 <label class="font-eb font-14 px-3 mb-0">Recommendations</label>
-                                <textarea cols="30" rows="3" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg" name="recommendation" placeholder="Enter The Risk Control Corrective Action Recommendations">{{$rc->recommendation}}</textarea>
+                                <textarea cols="30" rows="3" class="form-control px-3 py-3 br-7 box-shadow border-0 font-14 font-e color-dg" name="recommendation" placeholder="Enter The Risk Control Corrective Action Recommendations">{{$rc->recommendation}}</textarea>
                                 <small id="recommendations" class="form-text text-muted ml-3">
                                     Recommendations for corrective actions to be taken by Client Management
                                 </small>
@@ -170,19 +172,19 @@
                                 <button onclick="addProcedure()" type="button" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-3">Continue To Risk Procedure</button>
                             </div>
                         </fieldset>
-                        <fieldset hidden id="secondfieldset">
+                        <fieldset hidden id="secondfieldset" class="form-group">
                             <div class="mb-4">
-                                <label class="font-eb font-14 px-3 mb-0">Risk Procedures</label>
-                                <div class="px-5 pb-2 pt-4 br-20 box-shadow border-0 font-16 font-e bg-white" id="testingSteps">
-                                    <p class="p-style color-dg">Enter The Risk Procedures <a role="button" class="color-r float-right" onclick="addNewStep()"><i class="fas fa-plus-circle"></i></a></p>
+                                <label class="font-eb font-14 mb-1">Steps</label>
+                                <div class="px-3 py-2 br-10 box-shadow border-0 font-14 font-e bg-white color-dg" id="testingSteps">
+                                    <p class="p-style color-dg">Enter the steps <a role="button" class="color-r float-right" onclick="addNewStep()"><i class="fas fa-plus-circle"></i></a></p>
                                     @php
                                         $tscount = 0;
                                     @endphp
                                     @if($rc->testingsteps)
                                         @foreach($rc->testingsteps as $ts)
                                             <?php $tscount = $loop->iteration;?>
-                                        <div class="steps row border-gray-1 my-2 mx-0 br-10" id="step{{$tscount}}">
-                                            <textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-10" placeholder="Some Testing Steps" required>{{$ts->step}}</textarea>
+                                        <div class="steps row border-gray-1 my-2 mx-0 br-7" id="step{{$tscount}}">
+                                            <textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-7" placeholder="Some Testing Steps" required>{{$ts->step}}</textarea>
                                                 <a role="button" onclick="removestep({{$loop->iteration}})" class="color-dg col-2 col-sm-1 text-right pt-2"><i class="fas fa-times-circle"></i></a>
                                             </div>
                                         @endforeach
@@ -201,7 +203,7 @@
                         {{-- <fieldset hidden id="thirdfieldset">
                             <div class="mb-4">
                                 <label class="font-eb font-14 px-1 px-sm-3 mb-0">Risk Control Relationships</label>
-                                <div class="row px-3 px-md-3 pb-0 pt-2 br-10 box-shadow border-0 font-14 color-dg font-e bg-white mx-0" id="relationsHere">
+                                <div class="row px-3 px-md-3 pb-0 pt-2 br-7 box-shadow border-0 font-14 color-dg font-e bg-white mx-0" id="relationsHere">
                                     <div class="col-10">
                                         <p class="px-0 p-style color-dg">Click to add other risk controls related to this one</p>
                                         
@@ -251,7 +253,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 @endsection
 
@@ -293,8 +294,8 @@ function addProcedure() {
 
     function addNewStep(){
         step = step+1;
-        $("#testingSteps").append(`<div class="steps row border-gray-1 my-2 mx-0 br-10" id="step${step}">
-														<textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-10" placeholder="Some Testing Steps" rows="3" style="resize: none;"></textarea>
+        $("#testingSteps").append(`<div class="steps row border-gray-1 my-2 mx-0 br-7" id="step${step}">
+														<textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-7" placeholder="Some Testing Steps" rows="3" style="resize: none;"></textarea>
 														<a role="button" onclick="removestep(${step})" class="color-dg col-2 col-sm-1 text-right pt-2" style=""><i class="fas fa-times-circle" style=""></i></a>
 									</div>`);
                                     

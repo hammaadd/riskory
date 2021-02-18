@@ -21,7 +21,7 @@
                 <div class="topbar-icon text-right">
                 <a href="{{route('rc.create')}}" class="mx-2 my-1" title="Create risk control">
                   <i class="fas fa-plus-circle"></i>
-                  <span class="nv-txt">Create risk control</span>
+                  <span class="nv-txt">Create Risk Control</span>
                 </a>
                 {{-- <a href="{{route('rc.all')}}" class="mx-2 my-1" title="Risk controls feed">
                   <i class="fas fa-columns"></i> 
@@ -29,11 +29,11 @@
                 </a> --}}
                 <a href="{{route('all.lists')}}" class="mx-2 my-1" title="All lists">
                   <i class="fas fa-list-ul"></i> 
-                  <span class="nv-txt">All lists</span>
+                  <span class="nv-txt">All Lists</span>
                 </a>
                   <a href="{{route('user')}}" class="mx-2 my-1" title="All categories">
                     <i class="fas fa-th-large"></i> 
-                    <span class="nv-txt">All categories</span>
+                    <span class="nv-txt">All Categories</span>
                   </a>
                   <a href="{{route('user.network')}}" class="mx-2 my-1" title="Network">
                     <i class="fas fa-users"></i> 

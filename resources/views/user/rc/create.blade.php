@@ -38,7 +38,7 @@
                             
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Title</label>
-                                <input type="text" name="title" value="{{old('title')}}" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
+                                <input type="text" name="title" value="{{old('title')}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
                                 {{-- <small id="title" class="form-text text-muted ml-3">
                                    Short descriptive of the Risk Control
                                 </small> --}}
@@ -51,7 +51,7 @@
                        
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Objective</label>
-                                <textarea name="obj" id="obj" cols="30" rows="3" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{old('obj')}}</textarea>
+                                <textarea name="obj" id="obj" cols="30" rows="3" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{old('obj')}}</textarea>
                                 <small id="recommendations" class="form-text text-muted mt-3">Summary phrase of the Objective Statement</small>
                                  @error('obj')
                                  <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Description</label>
-                                <textarea name="desc" id="desc" cols="30" rows="3" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg @error('desc') is-invalid @enderror" placeholder="Enter The Description" required spellcheck="false">{{old('desc')}}</textarea>
+                                <textarea name="desc" id="desc" cols="30" rows="3" class="form-control br-7 box-shadow border-0 py-3 font-14 font-e color-dg @error('desc') is-invalid @enderror" placeholder="Enter The Description" required spellcheck="false">{{old('desc')}}</textarea>
                                 {{-- <input type="text" name="" class="form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" placeholder="Enter The Risk Control Description"> --}}
                                 @error('desc')
                                 <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                             
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Industry</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" >
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" >
                                 @foreach($controls as $con)
                                 @if($con->type=='industry')
                                 <option value="{{$con->id}}" @if(old('industry')) @if(in_array($con->id,old('industry'))) Selected @endif @endif><strong>{{$con->name}}</strong> </option>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Process</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="process[]" multiple="multiple">
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="process[]" multiple="multiple">
                                     @foreach($controls as $con)
                                     @if($con->type=='bprocess')
                                     <option value="{{$con->id}}" @if(old('process')) @if(in_array($con->id,old('process'))) Selected @endif @endif><strong>{{$con->name}}</strong> </option>
@@ -144,7 +144,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Framework</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="framework[]" multiple="multiple">
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="framework[]" multiple="multiple">
                                     @foreach($controls as $con)
                                     @if($con->type=='bframework')
                                     <option value="{{$con->id}}" @if(old('framework')) @if(in_array($con->id,old('framework'))) Selected @endif @endif><strong>{{$con->name}}</strong> </option>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Tags</label>
-                                <select id="tags" class="form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" name="tags[]" multiple="multiple">
+                                <select id="tags" class="form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="tags[]" multiple="multiple">
                                 @foreach($tags as $tg)
                                 <option value="{{$tg->id}}">{{$tg->name}}</option>
                                 @endforeach
@@ -178,7 +178,7 @@
                             
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Impact</label>
-                                <textarea cols="30" rows="3" name="business_impact" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact">{{old('business_impact')}}</textarea>
+                                <textarea cols="30" rows="3" name="business_impact" class="form-control py-3 br-7 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact">{{old('business_impact')}}</textarea>
                                 {{-- <input type="text" name="business_impact" value="{{old('business_impact')}}" class="form-control px-3 py-4 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact"> --}}
                                 <small id="business_impact" class="form-text text-muted mt-3">The potential negative consequences that may occur as a result of the Risk</small>
                             </div>

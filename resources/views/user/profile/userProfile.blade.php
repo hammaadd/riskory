@@ -1,9 +1,5 @@
 @extends('user.layout.contributor')
-@section('SiteTitle','Dashboard || Riskory')
-@section('select2')
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script> --}}
-@endsection
+@section('SiteTitle','Profile || Riskory')
 @section('content')
 
 <div class="col-12 col-md-9 py-5 px-0">
@@ -67,7 +63,7 @@
               <div class="nav nav-tabs d-flex text-center border-0" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active flex-fill br-tl-7 br-bl-7" onclick="postsData()" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">Posts</a>
                 <a class="nav-item nav-link flex-fill"  id="nav-categories-tab" data-toggle="tab" href="#nav-categories" role="tab" aria-controls="nav-categories" aria-selected="false">Categories</a>
-                <a class="nav-item nav-link  flex-fill" onclick="likesData()" id="nav-likes-tab" data-toggle="tab" href="#nav-likes" role="tab" aria-controls="nav-likes" aria-selected="false">Likes/Dislikes</a>
+                <a class="nav-item nav-link flex-fill" onclick="likesData()" id="nav-likes-tab" data-toggle="tab" href="#nav-likes" role="tab" aria-controls="nav-likes" aria-selected="false">Likes/Dislikes</a>
                 <a class="nav-item nav-link flex-fill" id="nav-lists-tab" data-toggle="tab" href="#nav-lists" role="tab" aria-controls="nav-lists" aria-selected="false">Lists</a>
                 <a class="nav-item nav-link flex-fill br-tr-7 br-br-7" onclick="bookmarksData()" id="nav-bookmarks-tab" data-toggle="tab" href="#nav-bookmarks" role="tab" aria-controls="nav-bookmarks" aria-selected="false">Bookmarks</a>
               </div>
@@ -76,6 +72,31 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active px-md-5" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
                 {{-- Risk control Starts Here --}}
+                <div class="row mx-0 pt-4">
+                    <div class="col-12 px-0">
+                        <div class="">
+                            @php
+                                $ok=0;
+                            @endphp
+                            <form action="{{route('userProfile')}}" method="GET" id="rcs_entries">
+                                <label>Show <select name="rcs" id="entries" class="custom-select" style="width:auto !important;">
+                                    <option value="1" @if(isset($_GET['rcs'])) @if($_GET['rcs']==1) @php $ok = 1; @endphp selected @endif @endif>1</option>
+                                    <option value="5" @if(isset($_GET['rcs'])) @if($_GET['rcs']==5) @php $ok = 1; @endphp selected @endif @endif>5</option>
+                                    <option value="10" @if(isset($_GET['rcs'])) @if($_GET['rcs']==10) @php $ok = 1; @endphp selected @endif @endif>10</option>
+                                    <option value="20" @if(isset($_GET['rcs'])) @if($_GET['rcs']==20) @php $ok = 1; @endphp selected @endif @endif>20</option>
+                                    <option value="50" @if(isset($_GET['rcs'])) @if($_GET['rcs']==50) @php $ok = 1; @endphp selected @endif @endif>50</option>
+                                    @if($ok==0)
+                                        @if(!isset($_GET['rcs']))
+                                            <option value="10" selected>10</option>
+                                        @elseif(filter_var($_GET['rcs'], FILTER_VALIDATE_INT) !== FALSE))
+                                            <option value="<?=$_GET['rcs']?>" selected><?=$_GET['rcs']?></option>
+                                        @endif
+                                    @endif
+                                </select> Entries</label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="row mx-0 pt-4" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
@@ -153,6 +174,9 @@
 @section('script')
 
 <script type="text/javascript">
+$('#entries').on('change', function (){
+        $('#rcs_entries').submit();
+    });
     $idOfData = '#posts_data';
     $url = "{{ route('riskcontrols.fetch',Auth::user()) }}";
     function postsData(){

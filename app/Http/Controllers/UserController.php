@@ -66,9 +66,16 @@ class UserController extends Controller
 
     }
 
-    public function userProfile(){
+    public function userProfile(Request $request){
         $bookmarks = Bookmark::where('user_id',Auth::id())->with('rcs')->paginate(10);
-        $rcs = RiskControl::where('user_id',Auth::id())->with('likes')->with('dislikes')->with('bookmarks')->paginate(10);
+        if(!isset($request->rcs)){
+            $rcs = RiskControl::where('user_id',Auth::id())->orderBy('created_at','desc')->with('likes')->with('dislikes')->with('bookmarks')->paginate(10);
+        }elseif(isset($request->rcs) && filter_var($request->rcs, FILTER_VALIDATE_INT) !== FALSE){
+            $rcs = RiskControl::where('user_id',Auth::id())->orderBy('created_at','desc')->with('likes')->with('dislikes')->with('bookmarks')->paginate($request->rcs);
+        }else{
+            $rcs = RiskControl::where('user_id',Auth::id())->orderBy('created_at','desc')->with('likes')->with('dislikes')->with('bookmarks')->paginate(10);
+        }
+        // $rcs = RiskControl::where('user_id',Auth::id())->with('likes')->with('dislikes')->with('bookmarks')->paginate(10);
         $likes = Like::where('user_id',Auth::id())->with('rcs')->paginate(10);
         $controls = Follow::where('user_id','=',Auth::id())->with('control')->get();
         $tags = FollowTags::where('user_id','=',Auth::id())->with('tag')->get();

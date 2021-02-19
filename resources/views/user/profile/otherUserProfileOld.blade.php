@@ -1,5 +1,5 @@
 @extends('user.layout.contributor')
-@section('SiteTitle','Dashboard || Riskory')
+@section('SiteTitle','Profile || Riskory')
 @section('content')
 
 <div class="col-12 col-md-9 py-2 py-md-5 px-0">

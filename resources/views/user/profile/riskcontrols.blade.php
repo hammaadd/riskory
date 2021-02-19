@@ -62,6 +62,6 @@
                 </div> --}}
         @endforeach
        
-        {!! $rcs->links() !!}
+        {!! $rcs->withQueryString()->links() !!}
         
     @endif

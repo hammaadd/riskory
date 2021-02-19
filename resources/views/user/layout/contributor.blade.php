@@ -31,6 +31,7 @@
     toastr.error("{{session()->get('error')}}");
     @endif
 </script>
+<script src="{{asset('js/rc.js')}}"></script>
 @yield('script')
 	<!-- jQuery, Popper.js, and Bootstrap JS -->
     <script>

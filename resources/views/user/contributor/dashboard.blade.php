@@ -21,9 +21,9 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($industries as $ind)
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$ind,'type'=>$ind->type])}}">{{Str::limit($ind->name,25)}}</a> ({{$ind->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$ind,'type'=>$ind->type])}}" title="{{$ind->name}}">{{Str::limit($ind->name,30)}}</a> ({{$ind->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
                             @if (!($ind->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$ind->id)}}'">Follow</button>
@@ -57,9 +57,9 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($bprocesses as $bp)
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bp,'type'=>$bp->type])}}">{{Str::limit($bp->name,25)}}</a> ({{$bp->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bp,'type'=>$bp->type])}}" title="{{$bp->name}}">{{Str::limit($bp->name,30)}}</a> ({{$bp->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
                             @if (!($bp->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$bp->id)}}'">Follow</button>
@@ -91,9 +91,9 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($bframeworks as $bf)
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bf,'type'=>$bf->type])}}">{{Str::limit($bf->name,25)}}</a> ({{$bf->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bf,'type'=>$bf->type])}}" title="{{$bf->name}}">{{Str::limit($bf->name,30)}}</a> ({{$bf->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
                             @if (!($bf->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$bf->id)}}'">Follow</button>
@@ -125,7 +125,7 @@
             
             <div class="row pl-3 pl-md-5">
                 @foreach($tags as $tg)
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byTag',['tag'=>$tg])}}">{{Str::limit($tg->name,25)}}</a> ({{$tg->rctags->whereNotIn('rc.status',['P','R'])->count()}})</p>
 

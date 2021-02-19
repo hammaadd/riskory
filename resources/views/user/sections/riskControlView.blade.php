@@ -78,10 +78,16 @@
 
                     {{-- Delete option for riskcontrol --}}
                     @if($rc->user_id == Auth::id())
-                    <span><a href="#" class="font-r color-r" title="Delete risk control">Delete <i class="fas fa-trash"></i></a></span>
+                    <div class="d-inline-block">
+                       
+                        <span><button class="btn font-r color-r p-0 delete-button" title="Delete risk control" type="Submit" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button></span>
+
+                    </div>
+                   
                     @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+

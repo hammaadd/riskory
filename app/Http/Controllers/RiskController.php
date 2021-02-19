@@ -354,6 +354,10 @@ class RiskController extends Controller
         return redirect()->route('rc.edit',$riskcontrol);
     }
 
+    public function delete(RiskControl $riskcontrol,Request $request){
+        
+    }
+
     public function viewAll(Request $request){
     if(!isset($request->rcs)){
         $rcs = RiskControl::orderBy('created_at','desc')->whereNotIn('status',['P','R'])->paginate(10);

@@ -143,7 +143,7 @@ Route::get('/login/twitter/callback','Auth\LoginController@twitterProviderCallba
 
 Route::get('/more/{req}','UserController@seeMore')->name('seeMore');
 
-Route::get('/user/profile','UserController@userProfile')->name('userProfile');
+Route::get('/user/profile/','UserController@userProfile')->name('userProfile');
 Route::get('/user/edit/profile','UserController@editProfile')->name('editProfile');
 Route::post('/user/edit/profile','UserController@updateProfile')->name('updateProfile');
 Route::post('/user/upload/avatar','UserController@uploadAvatar')->name('uploadAvatar');
@@ -177,6 +177,7 @@ Route::post('/rc/create','RiskController@store')->name('rc.store');
 Route::get('/rc/show/{slug}','RiskController@show')->name('rc.show');
 Route::get('rc/{riskcontrol}/edit','RiskController@edit')->name('rc.edit');
 Route::put('rc/{riskcontrol}/edit','RiskController@update')->name('rc.update');
+Route::delete('rc/delete','RiskController@delete')->name('rc.delete');
 
 //All risk controls feed
 Route::get('/riskcontrols','RiskController@viewAll')->name('rc.all');
@@ -229,7 +230,7 @@ Route::delete('comment/{comment}/delete/{rc}','RiskController@deleteComment')->n
 Route::get('all/lists','ListController@index')->name('all.lists');
 
 
-Route::get('user/profile/{user}','UserController@visitProfile')->name('visit.profile');
+Route::get('user/profile/{user}/','UserController@visitProfile')->name('visit.profile');
 Route::get('user/network','UserController@userNetwork')->name('user.network');
 //Follow user
 Route::get('follow/{user}/user','FollowController@followUser')->name('follow.user');

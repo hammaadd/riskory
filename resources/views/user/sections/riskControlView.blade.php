@@ -75,6 +75,11 @@
 
                 <div class="col-12 col-lg-4 pl-0 order-lg-1">
                     <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at->toDateString()}}</div>
+
+                    {{-- Delete option for riskcontrol --}}
+                    @if($rc->user_id == Auth::id())
+                    <span><a href="#" class="font-r color-r" title="Delete risk control">Delete <i class="fas fa-trash"></i></a></span>
+                    @endif
                 </div>
             </div>
         </div>

@@ -87,7 +87,7 @@
             </div> --}}
         @endforeach
         @include('user.sections.listModal')
-      
+        @include('user.sections.rcDeleteModal')
     @endif
         {{-- Riskcontrol ends here --}}
     </div>

@@ -10,7 +10,7 @@
                 <input name="rc-delete-id" value="" type="hidden">
                 <input name="base-url" value="{{url('/')}}" type="hidden">
 
-                <p class="lead">Do you really want to delete <a id="riskcontrol-slug" href="#">this</a> risk control?</p>
+                <p class="lead">Do you really want to delete <a id="riskcontrol-slug" href="#" target="_blank" data-toggle="tooltip" title="View Risk Control Before Deleting">this</a> risk control?</p>
                   <div class="my-2">
                     <button class="font-14 font-b color-r bg-transparent border-2 br-7 px-3 py-2 mx-1" type="button" data-dismiss="modal">Cancel</button>
                     <input type="submit" name="" value="Delete" class="font-14 font-b color-w bg-red border-2 br-7 px-3 py-2 mx-1">

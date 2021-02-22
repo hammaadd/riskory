@@ -28,7 +28,7 @@
     </div>
 </div>
 @include('user.sections.ratingModal')
-
+@include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
 <script>

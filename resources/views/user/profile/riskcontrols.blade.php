@@ -4,6 +4,7 @@
 </div>
 
 @endif
+
 @if($rcs)
     @foreach($rcs as $rc)
     @include('user.sections.riskControlView')

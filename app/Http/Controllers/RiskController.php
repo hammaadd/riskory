@@ -12,7 +12,9 @@ use App\Models\RiskControl;
 use App\Models\Tag;
 use App\Models\Testingstep;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RiskController extends Controller
 {
@@ -355,14 +357,33 @@ class RiskController extends Controller
     }
 
     public function delete(Request $request){
-      dd($request);
       if($request->input('rc-delete-id')){
           $id = $request->input('rc-delete-id') ;
           $rc = RiskControl::find($id);
           if($rc):
-
+            $notifications = DB::table('notifications')->where('type','App\Notifications\LikedRc')
+                            ->where('data','LIKE','%"rc_id":'.$rc->id.'%')
+                            ->delete();
+            //dd($notifications);
+            // $notifications->delete();
+            $res = $rc->delete();
+            //$res = false;
+            if($res):
+                $request->session()->flash('success','Risk control deleted successfully');
+            else:
+                $request->session()->flash('error','Unable to delete risk control. Try again later.');
+            endif;
+            
+          else:
+            $request->session()->flash('error','Unable to delete risk control. Try again later.');
           endif;
-      }   
+      }else{
+        $request->session()->flash('error','Unable to delete risk control. Try again later.');
+      }  
+
+      return back();
+
+
     }
 
     public function viewAll(Request $request){

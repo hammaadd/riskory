@@ -75,7 +75,7 @@
                         @endif
                         " class="rounded-circle shadow avatar-img-lg not-avt">
                         <div class="d-inline-block pt-1 pl-0 pl-md-2">
-                            <p class="font-eb mt-2 font-16 color-b noti-text"><a href="{{route('visit.profile',$likedBy)}}" class="color-r">{{$likedBy->name}}</a> Liked your <a href="{{route('rc.view',$rc->slug)}}" class="color-r">risk control</a>  </p>
+                            <p class="font-eb mt-2 font-16 color-b noti-text"><a href="{{route('visit.profile',$likedBy)}}" class="color-r">{{$likedBy->name}}</a> Liked your <a href="{{route('rc.view',$rc->id)}}" class="color-r">risk control</a>  </p>
                         </div>
                     </div>
                     <span class="float-right noti-right">

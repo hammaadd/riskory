@@ -170,6 +170,7 @@
 </div>
 @include('user.sections.listModal')
 @include('user.sections.ratingModal')
+@include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
 

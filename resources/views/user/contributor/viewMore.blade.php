@@ -11,6 +11,6 @@
         </div>
     </div>
 
-    @livewire('categories',['data'=>$data,'req'=>$req,'page'=>1,'perPage'=>15])
+    @livewire('categories',['data'=>$data,'req'=>$req,'page'=>1,'perPage'=>16])
 </div>
 @endsection

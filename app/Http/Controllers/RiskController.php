@@ -354,8 +354,15 @@ class RiskController extends Controller
         return redirect()->route('rc.edit',$riskcontrol);
     }
 
-    public function delete(RiskControl $riskcontrol,Request $request){
-        
+    public function delete(Request $request){
+      dd($request);
+      if($request->input('rc-delete-id')){
+          $id = $request->input('rc-delete-id') ;
+          $rc = RiskControl::find($id);
+          if($rc):
+
+          endif;
+      }   
     }
 
     public function viewAll(Request $request){

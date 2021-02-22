@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-12">
-        <div class="row pl-3 pl-md-5 pt-3">
+        <div class="row pl-3 pl-md-5">
             @foreach($data as $dat)
-                <div class="col-12 col-sm-6 col-lg-4 px-3 mb-3">
+                <div class="col-12 col-sm-6 col-lg-6 px-3 mb-2">
                     <div class="div-hover">
-                        <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$dat,'type'=>$dat->type])}}">{{$dat->name}}</a> ({{$dat->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                        <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$dat,'type'=>$dat->type])}}" data-toggle="tooltip" title="{{$dat->name}}">{{Str::limit($dat->name,30)}}</a> ({{$dat->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
 
                         @if (!($dat->followedBy(auth()->user())))
                             <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$dat->id)}}'">Follow</button>
@@ -18,11 +18,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-        <div  wire:loading>
-           <img class="img-fluid" src="{{asset('assets/images/loader/loader1.gif')}}" alt="">
         </div>
     </div>
     <div class="col-12">

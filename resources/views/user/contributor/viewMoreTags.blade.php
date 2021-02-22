@@ -14,7 +14,7 @@
 
         <div class="row pl-3 pl-md-5 pt-3">
             @foreach($data as $tg)
-            <div class="col-12 col-sm-6 col-lg-4 px-4 mb-3">
+            <div class="col-12 col-sm-6 col-lg-6 px-4 mb-2">
                 <div class="div-hover">
                     <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byTag',['tag'=>$tg])}}">{{$tg->name}}</a> ({{$tg->followers->count()}})</p>
 
@@ -32,5 +32,6 @@
             @endforeach
         </div>
     </div>
+
 
 @endsection

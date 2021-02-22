@@ -44,6 +44,11 @@
             });
            
       </script>
+      <script>
+          $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+      </script>
   
  @yield('reveal')
  @livewireScripts

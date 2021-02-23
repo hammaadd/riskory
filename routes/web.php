@@ -143,7 +143,7 @@ Route::get('/login/twitter/callback','Auth\LoginController@twitterProviderCallba
 
 Route::get('/more/{req}','UserController@seeMore')->name('seeMore');
 
-Route::get('/user/profile/','UserController@userProfile')->name('userProfile');
+Route::get('/user/profile/view/','UserController@userProfile')->name('userProfile');
 Route::get('/user/edit/profile','UserController@editProfile')->name('editProfile');
 Route::post('/user/edit/profile','UserController@updateProfile')->name('updateProfile');
 Route::post('/user/upload/avatar','UserController@uploadAvatar')->name('uploadAvatar');
@@ -230,8 +230,8 @@ Route::delete('comment/{comment}/delete/{rc}','RiskController@deleteComment')->n
 Route::get('all/lists','ListController@index')->name('all.lists');
 
 
-Route::get('user/profile/{user}/','UserController@visitProfile')->name('visit.profile');
-Route::get('user/network','UserController@userNetwork')->name('user.network');
+Route::get('user/{user}/','UserController@visitProfile')->name('visit.profile');
+Route::get('users/network','UserController@userNetwork')->name('user.network');
 //Follow user
 Route::get('follow/{user}/user','FollowController@followUser')->name('follow.user');
 Route::delete('unfollow/{user}/user','FollowController@unfollowUser')->name('user.unfollow');

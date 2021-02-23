@@ -10,7 +10,7 @@
 <div class="row pl-3 pl-md-5 pb-4">
     @if($controls->where('control.type','=','industry')->count()<1)
         <div class="col-12">
-            <h3 class="lead font-24 font-weight-bold">Not following industries.</h3>
+            <h3 class="lead font-24">Not following industries.</h3>
         </div>
     @endif
     @foreach($controls as $con)
@@ -47,7 +47,7 @@
 <div class="row pl-3 pl-md-5 pb-4">
     @if($controls->where('control.type','=','bprocess')->count()<1)
         <div class="col-12">
-            <h3 class="lead font-24 font-weight-bold">Not following any business processes.</h3>
+            <h3 class="lead font-24">Not following any business processes.</h3>
         </div>
     @endif
     @foreach($controls as $con)
@@ -91,7 +91,7 @@
 <div class="row pl-3 pl-md-5 pb-4">
     @if($controls->where('control.type','=','bframework')->count()<1)
     <div class="col-12">
-        <h3 class="lead font-24 font-weight-bold">Not following any business framework.</h3>
+        <h3 class="lead font-24">Not following any business framework.</h3>
     </div>
     @endif
     @foreach($controls as $con)
@@ -135,7 +135,7 @@
 <div class="row pl-3 pl-md-5 pb-4">
     @if($tags->count()<1)
     <div class="col-12">
-        <h3 class="lead font-24 font-weight-bold">Not following any tag.</h3>
+        <h3 class="lead font-24">Not following any tag.</h3>
     </div>
     @endif
     @foreach($tags as $tag)

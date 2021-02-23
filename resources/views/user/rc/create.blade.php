@@ -36,7 +36,7 @@
                         @csrf
                         <fieldset id="firstfieldset" class="form-group">
                             
-                            <div class="mb-4">
+                            <div class="mb-4 title-div">
                                 <label class="font-eb font-14 mb-1">Title</label>
                                 <input type="text" name="title" value="{{old('title')}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
                                 {{-- <small id="title" class="form-text text-muted ml-3">
@@ -49,7 +49,7 @@
                                 @enderror
                             </div>
                        
-                            <div class="mb-4">
+                            <div class="mb-4 objective-div">
                                 <label class="font-eb font-14 mb-1">Objective</label>
                                 <textarea name="obj" id="obj" cols="30" rows="3" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{old('obj')}}</textarea>
                                 <small id="recommendations" class="form-text text-muted mt-3">Summary phrase of the Objective Statement</small>
@@ -59,7 +59,7 @@
                                  </span>
                                 @enderror
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 description-div">
                                 <label class="font-eb font-14 mb-1">Description</label>
                                 <textarea name="desc" id="desc" cols="30" rows="3" class="form-control br-7 box-shadow border-0 py-3 font-14 font-e color-dg @error('desc') is-invalid @enderror" placeholder="Enter The Description" required spellcheck="false">{{old('desc')}}</textarea>
                                 {{-- <input type="text" name="" class="form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" placeholder="Enter The Risk Control Description"> --}}
@@ -257,10 +257,71 @@
 @endsection
 
 @section('script')
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+    $('input[name="title"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+
+    $('textarea[name="obj"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+
+
+    $('textarea[name="desc"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+});
 var step = 1;
     function addProcedure() {
-			var first_fieldset = document.getElementById("firstfieldset");
+        validated = 1;
+        if(!$('input[name="title"]').val()){
+            validated = 0;
+            $('input[name="title"]').removeClass('is-invalid');
+            $('input[name="title"]').addClass('is-invalid');
+            $('#title-error').remove();
+            $('.title-div').append(`<span class="invalid-feedback" id="title-error" role="alert">
+                                        <strong>Title is required</strong>
+                                    </span>`);
+        }
+        if(!$('textarea[name="obj"]').val()){
+            validated = 0;
+            $('textarea[name="obj"]').removeClass('is-invalid');
+            $('textarea[name="obj"]').addClass('is-invalid');
+            $('#objective-error').remove();
+            $('.objective-div').append(`<span class="invalid-feedback" id="objective-error" role="alert">
+                                        <strong>Objective is required</strong>
+                                    </span>`);
+        }
+
+        if(!$('textarea[name="desc"]').val()){
+            validated = 0;
+            $('textarea[name="desc"]').removeClass('is-invalid');
+            $('textarea[name="desc"]').addClass('is-invalid');
+            $('#description-error').remove();
+            $('.description-div').append(`<span class="invalid-feedback" id="description-error" role="alert">
+                                        <strong>Description is required</strong>
+                                    </span>`);
+        }
+        if(validated == 0){
+            $.scrollTo('#msform',500);
+        }
+
+        if(validated == 1){
+            var first_fieldset = document.getElementById("firstfieldset");
 			first_fieldset.setAttribute("hidden","true");
 			var second_fieldset = document.getElementById("secondfieldset");
 			second_fieldset.removeAttribute("hidden");
@@ -268,6 +329,9 @@ var step = 1;
 			risk_definition.setAttribute("style", "background-color: #EFEFEF !important; color: #707070 !important");
 			risk_relation = document.getElementById("riskControlProcedure");
 			risk_relation.setAttribute("style", "background-color: #BAE8E8 !important; color: #E90000 !important");
+        }
+
+			
 		}
         function cancelProcedure() {
 			document.getElementById("firstfieldset").removeAttribute("hidden");

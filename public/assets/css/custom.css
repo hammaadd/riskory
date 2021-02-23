@@ -1465,6 +1465,8 @@ button.select-image {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #profile-container image {

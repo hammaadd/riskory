@@ -35,7 +35,9 @@
                     <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required capture>
                     <button class="my-3 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 uploadAvatarBtn" style="display: none;" id="uploadAvatarBtn"><i class="fas fa-camera" ></i> Upload Avatar</button>
                 </form>
-            <p class="font-eb font-18">{{Auth::user()->name}}</p>
+            <div class="text-center">
+                <p class="font-eb font-18">{{Auth::user()->name}}</p>
+            </div>
             </div>
             <div class="col-12 col-lg-3 my-lg-auto text-center text-lg-left">
                 <p class="font-eb font-18 pt-lg-4 color-r font-14 userFollows">

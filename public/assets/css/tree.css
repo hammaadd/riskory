@@ -24,6 +24,15 @@ ul, #category-ul {
     margin-right: 6px;
   }
 
+  .category-star:before{
+    content: "\f621";
+    font-family: 'Font Awesome 5 Free';
+    font-weight:600;
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
   .caret-down::before {
     -ms-transform: rotate(90deg); /* IE 9 */
     -webkit-transform: rotate(90deg); /* Safari */

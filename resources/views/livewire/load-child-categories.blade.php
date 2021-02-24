@@ -1,8 +1,8 @@
 {{-- Success is as dangerous as failure. --}}
-    <li><span class="@if($dat->children->count() > 0) category-caret @endif div-hover @if($parent == $dat->id) caret-down @endif" wire:click="loadMore({{$dat->id}})">
+    <li><span class="@if($dat->children->count() > 0) category-caret @else category-star @endif div-hover @if($parent == $dat->id) caret-down @endif" wire:click="loadMore({{$dat->id}})">
 
-        <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$dat,'type'=>$dat->type])}}"> {{ $dat->name}}</a> </p>
-
+        <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$dat,'type'=>$dat->type])}}"> {{ $dat->name}} <small>({{$dat->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</a> </p>
+        </small>
         @if (!($dat->followedBy(auth()->user())))
             <button class="btn-follow btn-follow-2 d-inline" onclick="parent.location='{{route('control.follow',$dat->id)}}'">Follow</button>
         @else
@@ -26,9 +26,11 @@
  </ul>
  @endif
 @endif
-<div >
-    <img src="{{asset('loaders/svg-loaders/oval.svg')}}" width="100" height="100">
-</div>
+@if($parent != $dat->id)
+    <div wire:loading.inline>
+        <img src="{{asset('loaders/svg-loaders/oval.svg')}}" width="20" height="20">
+    </div>
+@endif
 </li>
 
 

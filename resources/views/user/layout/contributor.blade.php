@@ -7,10 +7,11 @@
 @yield('confirmJs')
 @yield('star-rating')
 @yield('select2')
+@yield('tree')
 <body class="bg-white">
 	<div class="d-flex w-100 flex-column">
         @include('user.inc.navbarUser')
-        
+
         <main role="main" class="inner">
             <div class="container-fluid">
                 <div class="row">
@@ -21,9 +22,9 @@
         </main>
 		@include('user.inc.contentfooter')
 	</div>
-    
+
  @include('user.inc.logoutModal')
-    
+
  <script>
     @if(session()->get('success'))
     toastr.success("{{session()->get('success')}}");
@@ -39,17 +40,17 @@
             $(function () {
     $('[data-toggle="popover"]').popover()
   });
-          
+
                 $("#loader").fadeOut("slow");
             });
-           
+
       </script>
       <script>
           $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
       </script>
-  
+
  @yield('reveal')
  @livewireScripts
 </body>

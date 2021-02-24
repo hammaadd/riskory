@@ -1,0 +1,39 @@
+ul, #category-ul {
+    list-style-type: none;
+  }
+
+  #category-ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+
+  .category-caret::before {
+    content: "\f0da";
+    font-family: 'Font Awesome 5 Free';
+    font-weight:900;
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);
+  }
+
+  .nested-tree {
+    display: block;
+  }
+
+  .active-tree {
+    display: block;
+  }

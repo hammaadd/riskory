@@ -27,9 +27,9 @@
                     {{asset('userAvat/'.$user->avatar)}}
                     @endif
                 " />
-                
+
                 </div>
-               
+
             <p class="font-eb font-18">{{$user->name}}</p>
             </div>
             <div class="col-12 col-lg-9 text-center text-lg-left pt-3">
@@ -47,8 +47,8 @@
                             @csrf
                             @method('DELETE')
                             <button class="font-eb font-16 text-light bg-red px-4 py-1 border-0 br-7 float-right" type="submit">Unfollow</button>
-                        </form> 
-                        
+                        </form>
+
                         @else
                         <button class="font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 float-right" onclick="parent.location='{{route('follow.user',$user)}}'">Follow</button>
                         @endif
@@ -59,8 +59,8 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
     <div class="container-fluid">
@@ -106,7 +106,7 @@
                 <div class="row mx-0" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
-                
+
                 {{-- Risk control ends here --}}
             </div>
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
@@ -128,11 +128,11 @@
                 <div class="row mx-0" id="likes_data">
                     @include('user.profile.likes')
                 </div>
-                
+
             </div>
             <div class="tab-pane fade" id="nav-lists" role="tabpanel" aria-labelledby="nav-lists-tab">
                 <div class="text-center text-md-right pt-3 px-0 px-md-5">
-                    
+
                     {{-- <button class="btn-list bg-red border-0 br-30 font-eb color-w px-5 py-3 btn-hover" onclick="return parent.location='{{route('all.lists')}}'"><i class="fas fa-plus-circle"></i> New List</button> --}}
                 </div>
                 <div class="row mx-0 mx-md-5 pt-3">
@@ -197,15 +197,15 @@
         $url = "{{ route('bookmarks.other.fetch',$user) }}";
     }
     $(document).ready(function(){
-    
+
      $(document).on('click', '.page-link', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
         fetch_data(page);
      });
-    
-     
-    
+
+
+
     });
 
     function fetch_data(page)
@@ -223,7 +223,7 @@
         });
      }
 
-    
+
 
 
     </script>

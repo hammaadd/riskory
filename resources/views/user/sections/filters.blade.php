@@ -6,12 +6,12 @@
   </style>
 <form action="{{route('filter.user.riskcontrols')}}" method="GET" id="sortFilters">
 <div class="dropdown d-inline sortByDropdown">
- 
+
   <a href="#" class="text-center mx-2 my-1" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent" title="Sort results"><i class="fas fa-sort"></i></a>
   <div class="dropdown-menu px-1 py-1" aria-labelledby="dropdownMenuLink">
     <span class="triangle"><span class="triangle--empty"></span></span>
       <h6 class="dropdown-header">Sort by</h6>
-      
+
           <input type="hidden" name="order" value=@if(isset($_GET['order'])&&$_GET['order']=='DESC') "DESC" @else "ASC" @endif>
       <div class="form-check mx-1 my-1">
           <input class="form-check-input" type="radio" value="date" name="stype" id="defaultCheck1" @if(isset($_GET['stype'])&&$_GET['stype']=='date') checked @endif>
@@ -76,6 +76,7 @@
         <select name="status" id="status" class="filter-button">
           <option value="A" @if(isset($_GET['status'])) @if($_GET['status']=='A') selected @endif @endif>Approved</option>
           <option value="P" @if(isset($_GET['status'])) @if($_GET['status']=='P') selected @endif @endif>Pending</option>
+          <option value="All" @if(isset($_GET['status'])) @if($_GET['status']=='All') selected @endif @endif>All</option>
         </select>
       </div>
 
@@ -91,7 +92,7 @@
 
 
       <button class="btn btn-secondary btn-block" onclick="$('#sortFilters').submit()">Apply filters</button>
-    
+
   </div>
 
 </div>

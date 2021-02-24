@@ -33,7 +33,7 @@ class RiskController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $validated = $request->validate([
             'title'=>'required',
             // 'obj_summary'=>'required',
@@ -106,7 +106,7 @@ class RiskController extends Controller
                 $rccontrol->rc()->associate($rc);
                 $rccontrol->control()->associate($process);
                 $rccontrol->save();
-               
+
             }
         }
 
@@ -165,9 +165,9 @@ class RiskController extends Controller
         }
 
         return redirect()->route('rc.create');
-        
+
         //dd($validator);
-        
+
 
 
     }
@@ -192,7 +192,7 @@ class RiskController extends Controller
         }else{
             abort(404);
         }
-        
+
     }
 
     public function update(Riskcontrol $riskcontrol,Request $request){
@@ -207,7 +207,7 @@ class RiskController extends Controller
             'obj.required'=>'Objective is required for risk control',
             'desc.required'=>'Description is required',
         ]);
-        
+
         //dd($request);
         //$slug = SlugService::createSlug(Post::class, 'slug', 'My First Post');
 
@@ -246,7 +246,7 @@ class RiskController extends Controller
                     $o++;
                 }
             }
-        
+
             //Updating industry here
             $rcIds = Rccontrol::select('id')->where('rc_id',$riskcontrol->id)->where('type','industry')->whereNotIn('control_id',[$request->input('industry')])->get()->toArray();
             Rccontrol::destroy($rcIds);
@@ -265,7 +265,7 @@ class RiskController extends Controller
             }else{
                 $rcIds = Rccontrol::select('id')->where('rc_id',$riskcontrol->id)->where('type','bprocess')->get()->toArray();
             }
-            
+
             Rccontrol::destroy($rcIds);
             if($request->input('process')){
                 foreach($request->input('process') as $pro){
@@ -293,20 +293,20 @@ class RiskController extends Controller
                     ['rc_id'=>$riskcontrol->id,'control_id'=>$framework->id]
                 );
             }
-            }                                                                              
+            }
 
-            
+
             // if($request->input('relations')){
             // $relationIds = Relation::select('id')->where('rc_id',$riskcontrol->id)->whereNotIn('relation_id',$request->input('relations'))->get()->toArray();
             // Relation::destroy($relationIds);
-            
+
             //     foreach($request->input('relations') as $rel){
             //         $relationControl = RiskControl::find($rel);
             //     Relation::updateOrCreate(
             //         ['rc_id'=>$riskcontrol->id,'relation_id'=>$relationControl->id],
             //         ['rc_id'=>$riskcontrol->id,'relation_id'=>$relationControl->id]
             //     );
-                    
+
             //     }
             // }
 
@@ -327,7 +327,7 @@ class RiskController extends Controller
                         ['rc_id'=>$riskcontrol->id,'tag_id'=>$ta->id],
                         ['rc_id'=>$riskcontrol->id,'tag_id'=>$ta->id]
                     );
-                    
+
                 }else{
                     $ntg= array(
                         'name'=>$tg,
@@ -373,13 +373,13 @@ class RiskController extends Controller
             else:
                 $request->session()->flash('error','Unable to delete risk control. Try again later.');
             endif;
-            
+
           else:
             $request->session()->flash('error','Unable to delete risk control. Try again later.');
           endif;
       }else{
         $request->session()->flash('error','Unable to delete risk control. Try again later.');
-      }  
+      }
 
       return back();
 
@@ -394,7 +394,7 @@ class RiskController extends Controller
     }else{
         $rcs = RiskControl::orderBy('created_at','desc')->whereNotIn('status',['P','R'])->paginate(10);
     }
-      
+
        return view('user.rc.allRcs',compact('rcs'));
     }
 
@@ -407,7 +407,7 @@ class RiskController extends Controller
         $rc = RiskControl::where('id',$slug)->with('controls.control.parent')->with('benchmarks.user')->with('comments.user')->with('tags.tag')->get()->first();
         $expiresAt = now()->addHours(10);
 
-        
+
         if($rc){
             views($rc)
             ->cooldown($expiresAt)
@@ -478,14 +478,14 @@ class RiskController extends Controller
             $request->session()->flash('error','No results to show');
             return back();
          }
-       
+
        }else{
         $request->session()->flash('error','Nothing to show.');
        }
        return back();
 
 
-    
+
     }
 
     public function filterResults(Request $request){
@@ -500,8 +500,8 @@ class RiskController extends Controller
             }
         }
 
-       
-           
+
+
 
         if($request->input('stype')=='date'){
            $riskcontrols->whereNotIn('status',['R'])->orderBy('created_at',$request->input('order'));
@@ -514,7 +514,7 @@ class RiskController extends Controller
         }
 
 
-        
+
         if($request->get('startDate') && $request->get('endDate') && ($request->get('startDate') <= $request->get('endDate'))){
             if($request->get('startDate') == $request->get('endDate')){
                 $riskcontrols->whereDate('created_at','=',$request->get('startDate'));
@@ -523,7 +523,12 @@ class RiskController extends Controller
             }
         }
         if($request->get('status')){
-            $riskcontrols->where('status','=',$request->get('status'));
+            if($request->get('status') ==  'All'){
+                $riskcontrols;
+            }else{
+                $riskcontrols->where('status','=',$request->get('status'));
+            }
+
         }
 
 
@@ -536,12 +541,12 @@ class RiskController extends Controller
                 $request->session()->flash('error','No results to show');
                 return back();
              }
-           
+
 
 
     }
 
-   
 
-    
+
+
 }

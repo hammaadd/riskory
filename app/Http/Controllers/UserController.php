@@ -38,17 +38,17 @@ class UserController extends Controller
 
     public function seeMore($req = null){
         if($req == 'industries'){
-            $data = Control::where('status','=','1')->where('type','industry')->where('parent_id','=',null)->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','industry')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Industry';
             $icon = 'assets/images/Mask-Group-55.svg';
             return view('user.contributor.viewMore',compact('data','name','icon','req'));
         }elseif($req == 'bframeworks'){
-            $data = Control::where('status','=','1')->where('type','bframework')->where('parent_id','=',null)->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','bframework')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Business Framework';
             $icon = 'assets/images/Mask Group 57.svg';
             return view('user.contributor.viewMore',compact('data','name','icon','req'));
         }elseif($req == 'bprocesses'){
-            $data = Control::where('status','=','1')->where('type','bprocess')->where('parent_id','=',null)->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','bprocess')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Business process';
             $icon = 'assets/images/Mask Group 56.svg';
             return view('user.contributor.viewMore',compact('data','name','icon','req'));

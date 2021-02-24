@@ -26,13 +26,13 @@ class UserController extends Controller
     }
 
     public function index(){
-        
+
         //$categories = Control::where('status','=','1')->where('type','category')->with('parent')->skip(0)->take(8)->get();
-        $industries = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->skip(0)->take(8)->get();
-        $bprocesses = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->skip(0)->take(8)->get();
-        $bframeworks = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->skip(0)->take(8)->get();
-        $tags = Tag::where('status','=','1')->skip(0)->with('followers')->take(8)->get();
-        //dd($industries->toArray());
+        $industries = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->skip(0)->take(8)->get();
+        $bprocesses = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->skip(0)->take(8)->get();
+        $bframeworks = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->skip(0)->take(8)->get();
+        $tags = Tag::where('status','=','1')->skip(0)->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->take(8)->get();
+        //dd($industries);
         return view('user.contributor.dashboard',compact('industries','bprocesses','bframeworks','tags'));
     }
 
@@ -56,10 +56,10 @@ class UserController extends Controller
             $data = Tag::where('status','=','1')->with('followers')->get();
             $name = 'Tags';
             $icon = 'assets/images/Icon awesome-tags.png';
-            
+
             return view('user.contributor.viewMoreTags',compact('data','name','icon','req'));
         }else{
-            
+
             return redirect()->route('user');
         }
 
@@ -137,7 +137,7 @@ class UserController extends Controller
     public function editProfile(Request $request){
         $user = User::find(Auth::id());
         $countries = Country::all();
-        
+
         return view('user.profile.editProfile',compact('user','countries'));
     }
 
@@ -162,21 +162,21 @@ class UserController extends Controller
         return redirect()->route('userProfile');
     }
 
-   
+
         public function uploadAvatar(Request $request){
             $request->validate([
                 'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:3024',
             ]);
-        
+
             $imageName = time().Auth::user()->name.'.'.$request->profile_photo->extension();
-         
+
             $request->profile_photo->move(public_path('userAvat'), $imageName);
             $user = User::find(Auth::user()->id)->update(['avatar'=>$imageName]);
-    
+
             if($user){
             $request->session()->flash('success', 'Avatar updated successfully');
             }else{
-    
+
             }
             return redirect()->route('userProfile');
         }
@@ -185,16 +185,16 @@ class UserController extends Controller
             $request->validate([
                 'cover' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
             ]);
-        
+
             $imageName = time().Auth::user()->name.'.'.$request->cover->extension();
-         
+
             $request->cover->move(public_path('userCover'), $imageName);
             $user = User::find(Auth::user()->id)->update(['cover'=>$imageName]);
-    
+
             if($user){
             $request->session()->flash('success', 'Cover updated successfully');
             }else{
-    
+
             }
             return redirect()->route('userProfile');
         }
@@ -218,7 +218,7 @@ class UserController extends Controller
                 return view('user.profile.bookmarks', compact('bookmarks'))->render();
             }
         }
-    
+
         public function fetchOtherRiskcontrols(Request $request, User $user){
             if($request->ajax())
             {
@@ -226,7 +226,7 @@ class UserController extends Controller
                 return view('user.profile.riskcontrols', compact('rcs'))->render();
             }
         }
-    
+
         public function fetchOtherLikes(Request $request,User $user){
             if($request->ajax())
             {
@@ -234,7 +234,7 @@ class UserController extends Controller
                 return view('user.profile.likes', compact('likes'))->render();
             }
         }
-    
+
         public function fetchOtherDislikes(Request $request,User $user){
             if($request->ajax())
             {
@@ -245,7 +245,7 @@ class UserController extends Controller
 
         public function userNetwork(Request $request){
             $user = User::find(Auth::id());
-            
+
             return view('user.profile.network',compact('user'));
         }
 
@@ -257,5 +257,5 @@ class UserController extends Controller
         public function searchQuery(Request $request){
 
         }
-           
+
 }

@@ -3,7 +3,7 @@
 @section('content')
 
         <div class="col-12 col-md-9 py-5 pr-md-3 pr-lg-5">
-          
+
             <!-- Browse By Industry Secion -->
             <div class="sect--title pl-md-5">
                 <div class="row mb-4 mb-xl-5 align-items-lg-center">
@@ -23,7 +23,7 @@
                 @foreach($industries as $ind)
                     <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$ind,'type'=>$ind->type])}}" data-toggle="tooltip" title="{{$ind->name}}">{{Str::limit($ind->name,30)}}</a> ({{$ind->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$ind,'type'=>$ind->type])}}" data-toggle="tooltip" title="{{$ind->name}}">{{Str::limit($ind->name,30)}}</a> ({{$ind->rccontrols_count}})</p>
 
                             @if (!($ind->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$ind->id)}}'">Follow</button>
@@ -32,7 +32,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn-follow bg-dgray btn-follow-2" type="submit">Unfollow</button>
-                                </form> 
+                                </form>
                             @endif
                         </div>
                     </div>
@@ -42,7 +42,7 @@
             <div class="ml-4 ml-md-5 my-2">
                 <a href="{{route('seeMore','industries')}}" class="btn bg-red text-white br-7 font-12 text-capitalize font-weight-bold" data-toggle="tooltip" title="Browse More Industries">More Industries</a>
             </div>
-            
+
             <!-- Browse By Business Process Section -->
             <div class="sect--title pl-md-5">
                 <div class="row my-4 my-xl-5 align-items-lg-center">
@@ -59,7 +59,7 @@
                 @foreach($bprocesses as $bp)
                     <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bp,'type'=>$bp->type])}}" data-toggle="tooltip" title="{{$bp->name}}">{{Str::limit($bp->name,30)}}</a> ({{$bp->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bp,'type'=>$bp->type])}}" data-toggle="tooltip" title="{{$bp->name}}">{{Str::limit($bp->name,30)}}</a> ({{$bp->rccontrols_count}})</p>
 
                             @if (!($bp->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$bp->id)}}'">Follow</button>
@@ -68,7 +68,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn-follow bg-dgray btn-follow-2" type="submit">Unfollow</button>
-                                </form> 
+                                </form>
                             @endif
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                 @foreach($bframeworks as $bf)
                     <div class="col-12 col-sm-6 col-lg-6 mb-2">
                         <div class="div-hover">
-                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bf,'type'=>$bf->type])}}" data-toggle="tooltip" title="{{$bf->name}}">{{Str::limit($bf->name,30)}}</a> ({{$bf->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
+                            <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControl',['control'=>$bf,'type'=>$bf->type])}}" data-toggle="tooltip" title="{{$bf->name}}">{{Str::limit($bf->name,30)}}</a> ({{$bf->rccontrols_count}})</p>
 
                             @if (!($bf->followedBy(auth()->user())))
                                 <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('control.follow',$bf->id)}}'">Follow</button>
@@ -102,7 +102,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn-follow bg-dgray btn-follow-2" type="submit">Unfollow</button>
-                                </form> 
+                                </form>
                             @endif
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                     </div> --}}
                 </div>
             </div>
-            
+
             <div class="row pl-3 pl-md-5">
                 @foreach($tags as $tg)
                     <div class="col-12 col-sm-6 col-lg-6 mb-2">
@@ -146,6 +146,6 @@
                 <a href="{{route('seeMore','tags')}}" class="btn bg-red text-white br-7 font-12 text-capitalize font-weight-bold" data-toggle="tooltip" title="Browse More Tags">More Tags</a>
             </div>
         </div>
-        
+
 
 @endsection

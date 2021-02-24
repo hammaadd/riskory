@@ -81,7 +81,7 @@ class VisitorController extends Controller
             $request->session()->flash('error', 'Unable to complete your request. Try Again later');
         }
         event(new Registered($user));
-        
+        Auth::login($user);
         return redirect()->route('userLogin');
         
     }

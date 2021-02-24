@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -25,4 +25,40 @@
         </div>
     </div>
 </div>
+@endsection --}}
+@extends('user.layout.visitor')
+@section('SiteTitle','Verify Email || Riskory')
+@section('content')
+<main role="main" class="inner cover pb-5 pb-sm-5">
+    <div class="container">
+      
+        <div class="row align-items-center">
+           
+            <div class="col-12 col-sm-6 col-md-6 text-center">
+                <img class="img-80" src="{{asset('assets/images/Mask-Group-1.svg')}}" width="100%">
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 text-center pb-2 pb-sm-3">
+                    <div class="card">
+                        <div class="card-header p-style font-18 font-b color-n">{{ __('Verify Your Email Address') }}</div>
+        
+                        <div class="card-body">
+                            @if (session('resent'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ __('A fresh verification link has been sent to your email address.') }}
+                                </div>
+                            @endif
+        
+                            {{ __('Before proceeding, please check your email for a verification link.') }}
+                            {{ __('If you did not receive the email') }},
+                            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                            </form>
+                        </div>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</main>
 @endsection

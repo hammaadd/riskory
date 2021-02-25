@@ -15,7 +15,7 @@
     </div>
 
         <div class="row px-xl-5 mx-0 mx-md-5">
-            <div class="col-12 px-0 text-center tab--rc">
+            <div class="col-12 px-0 text-center tab--rc" id="top-tabs">
                 <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
 
                 <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r tab-rc-sp"><i class="fas fa-angle-double-right"></i></span>
@@ -32,7 +32,7 @@
                     @csrf
                     @method('PUT')
                         <fieldset id="firstfieldset" class="form-group">
-                            <div class="mb-4">
+                            <div class="mb-4 title-div">
                                 <label class="font-eb font-14 mb-1">Title</label>
                                 <input type="text" name="title" value="{{$rc->title}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
 
@@ -43,7 +43,7 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-4 objective-div">
                                 <label class="font-eb font-14 mb-1">Objective</label>
                                 <textarea name="obj" id="obj" cols="30" rows="3" class="form-control  br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{$rc->objective}}</textarea>
 
@@ -58,7 +58,7 @@
                                  </span>
                                 @enderror
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 description-div">
                                 <label class="font-eb font-14 mb-1">Description</label>
                                 <textarea name="desc" id="desc" cols="30" rows="3" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg py-3 @error('desc') is-invalid @enderror" placeholder="Enter The Risk Control Description" required>{{$rc->description}}</textarea>
                                 {{-- <input type="text" name="" class="form-control p-5 br-20 box-shadow border-0 font-16 font-e color-dg" placeholder="Enter The Risk Control Description"> --}}
@@ -83,7 +83,7 @@
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Implementation type</label>
                                 <div class="bg-white br-7">
-                                    <select class="form-control custom-select border-0 font-14 font-e color-dg" name="imp_type" id="imp_type" aria-label="Select implementation type" required>
+                                    <select class="form-control custom-select border-0 font-14 font-e color-dg" name="imp_type" id="imp_type" aria-label="Select implementation type"
                                         <option value="Automated" @if($rc->implementation_type=='Automated') Selected @endif">Automated</option>
                                         <option value="Semi-automated" @if($rc->implementation_type=='Semi-automated') Selected @endif>Semi-automated</option>
                                         <option value="Manual" @if($rc->implementation_type == 'Manual') Selected @endif>Manual</option>
@@ -101,7 +101,7 @@
 
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Industry</label>
-                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" required>
+                                <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" >
                                 @foreach($controls as $con)
                                 @if($con->type=='industry')
                                 <option value="{{$con->id}}" @if($arrayControls) @if(in_array($con->id,$arrayControls)) Selected @endif @endif>{{$con->name}} <small>({{$con->followers->count()}})</small></option>
@@ -172,7 +172,7 @@
                                 <button onclick="addProcedure()" type="button" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-3">Continue To Risk Procedure</button>
                             </div>
                         </fieldset>
-                        <fieldset hidden id="secondfieldset" class="form-group">
+                        <fieldset hidden id="secondfieldset" id="second-set" class="form-group">
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Steps</label>
                                 <div class="px-3 py-2 br-10 box-shadow border-0 font-14 font-e bg-white color-dg" id="testingSteps">
@@ -184,7 +184,7 @@
                                         @foreach($rc->testingsteps as $ts)
                                             <?php $tscount = $loop->iteration;?>
                                         <div class="steps row border-gray-1 my-2 mx-0 br-7" id="step{{$tscount}}">
-                                            <textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-7" placeholder="Some Testing Steps" required>{{$ts->step}}</textarea>
+                                            <textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-7" placeholder="Some Testing Steps" >{{$ts->step}}</textarea>
                                                 <a role="button" onclick="removestep({{$loop->iteration}})" class="color-dg col-2 col-sm-1 text-right pt-2"><i class="fas fa-times-circle"></i></a>
                                             </div>
                                         @endforeach
@@ -257,10 +257,72 @@
 @endsection
 
 @section('script')
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+    $('input[name="title"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+
+    $('textarea[name="obj"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+
+
+    $('textarea[name="desc"]').blur(function(){
+        if(!$(this).val()){
+            $(this).addClass("is-invalid");
+        } else{
+            $(this).removeClass("is-invalid");
+        }
+    });
+});
+
 var step = {{$tscount}};
 function addProcedure() {
-			var first_fieldset = document.getElementById("firstfieldset");
+    validated = 1;
+        if(!$('input[name="title"]').val()){
+            validated = 0;
+            $('input[name="title"]').removeClass('is-invalid');
+            $('input[name="title"]').addClass('is-invalid');
+            $('#title-error').remove();
+            $('.title-div').append(`<span class="invalid-feedback" id="title-error" role="alert">
+                                        <strong>Title is required</strong>
+                                    </span>`);
+        }
+        if(!$('textarea[name="obj"]').val()){
+            validated = 0;
+            $('textarea[name="obj"]').removeClass('is-invalid');
+            $('textarea[name="obj"]').addClass('is-invalid');
+            $('#objective-error').remove();
+            $('.objective-div').append(`<span class="invalid-feedback" id="objective-error" role="alert">
+                                        <strong>Objective is required</strong>
+                                    </span>`);
+        }
+
+        if(!$('textarea[name="desc"]').val()){
+            validated = 0;
+            $('textarea[name="desc"]').removeClass('is-invalid');
+            $('textarea[name="desc"]').addClass('is-invalid');
+            $('#description-error').remove();
+            $('.description-div').append(`<span class="invalid-feedback" id="description-error" role="alert">
+                                        <strong>Description is required</strong>
+                                    </span>`);
+        }
+        if(validated == 0){
+            $.scrollTo('#msform',500);
+        }
+
+        if(validated == 1){
+            var first_fieldset = document.getElementById("firstfieldset");
 			first_fieldset.setAttribute("hidden","true");
 			var second_fieldset = document.getElementById("secondfieldset");
 			second_fieldset.removeAttribute("hidden");
@@ -268,12 +330,15 @@ function addProcedure() {
 			risk_definition.setAttribute("style", "background-color: #EFEFEF !important; color: #707070 !important");
 			risk_relation = document.getElementById("riskControlProcedure");
 			risk_relation.setAttribute("style", "background-color: #BAE8E8 !important; color: #E90000 !important");
+            $.scrollTo('#top-tabs',500);
+        }
 		}
         function cancelProcedure() {
 			document.getElementById("firstfieldset").removeAttribute("hidden");
 			document.getElementById("secondfieldset").setAttribute("hidden","true");
 			document.getElementById("riskControlDefinition").removeAttribute("style");
 			document.getElementById("riskControlProcedure").removeAttribute("style");
+            $.scrollTo('#top-tabs',500);
 		}
 		// function addRelation() {
 		// 	var second_fieldset = document.getElementById("secondfieldset");

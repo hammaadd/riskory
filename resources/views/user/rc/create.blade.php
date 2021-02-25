@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('css/autocomplete.css')}}">
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="{{asset('js/autocomplete.js')}}"></script> 
+<script src="{{asset('js/autocomplete.js')}}"></script>
 
 @endsection
 @section('content')
@@ -18,7 +18,7 @@
     </div>
 
     <div class="row px-xl-5 mx-0 mx-md-5">
-        <div class="col-12 px-0 text-center tab--rc">
+        <div class="col-12 px-0 text-center tab--rc" id="top-tabs">
             <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
 
             <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r tab-rc-sp"><i class="fas fa-angle-double-right"></i></span>
@@ -35,7 +35,7 @@
                     <form id="msform" role="form" autocomplete="off" method="POST" action="{{route('rc.store')}}" class="create-risk-form risk-form">
                         @csrf
                         <fieldset id="firstfieldset" class="form-group">
-                            
+
                             <div class="mb-4 title-div">
                                 <label class="font-eb font-14 mb-1">Title</label>
                                 <input type="text" name="title" value="{{old('title')}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
@@ -48,7 +48,7 @@
                                     </span>
                                 @enderror
                             </div>
-                       
+
                             <div class="mb-4 objective-div">
                                 <label class="font-eb font-14 mb-1">Objective</label>
                                 <textarea name="obj" id="obj" cols="30" rows="3" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{old('obj')}}</textarea>
@@ -89,7 +89,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Industry</label>
                                 <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" >
@@ -106,16 +106,16 @@
                                             @foreach($lvl2->children as $lvl3)
                                                 <option value="{{$lvl3->id}}" @if(old('industry')) @if(in_array($lvl3->id,old('industry'))) Selected @endif @endif>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;{{$lvl3->name}} </option>
                                             @endforeach
-                                            @endif    
+                                            @endif
                                         @endforeach
                                         @endif
                                     @endforeach
                                     @endif
                                 @endif
                                 @endforeach
-                                
+
                                 </select>
-                                
+
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Process</label>
@@ -133,7 +133,7 @@
                                                 @foreach($lvl2->children as $lvl3)
                                                     <option value="{{$lvl3->id}}" @if(old('process')) @if(in_array($lvl3->id,old('process'))) Selected @endif @endif>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;{{$lvl3->name}} </option>
                                                 @endforeach
-                                                @endif    
+                                                @endif
                                             @endforeach
                                             @endif
                                         @endforeach
@@ -158,7 +158,7 @@
                                                 @foreach($lvl2->children as $lvl3)
                                                     <option value="{{$lvl3->id}}" @if(old('framework')) @if(in_array($lvl3->id,old('framework'))) Selected @endif @endif>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;{{$lvl3->name}} </option>
                                                 @endforeach
-                                                @endif    
+                                                @endif
                                             @endforeach
                                             @endif
                                         @endforeach
@@ -175,7 +175,7 @@
                                 @endforeach
                                 </select>
                             </div>
-                            
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Impact</label>
                                 <textarea cols="30" rows="3" name="business_impact" class="form-control py-3 br-7 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Business Impact">{{old('business_impact')}}</textarea>
@@ -185,15 +185,15 @@
                             {{-- <div class="mb-4">
                                 <label class="font-eb font-14 px-3 mb-0">Recommendations</label>
                                 <textarea cols="30" rows="3" name="recommendation" class="form-control px-3 py-3 br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Risk Control Corrective Action Recommendations">{{old('recommendation')}}</textarea>
-                                
+
                             </div> --}}
-                            
+
                             <div class="mb-4 text-right">
                                 <button onclick="addProcedure()" type="button" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-3">Continue To Risk Procedure</button>
                             </div>
-                            
+
                         </fieldset>
-                        <fieldset hidden id="secondfieldset" class="form-group">
+                        <fieldset hidden id="secondfieldset" id="second-set" class="form-group">
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Steps</label>
                                 <div class="px-3 py-2 br-10 box-shadow border-0 font-14 font-e bg-white color-dg" id="testingSteps">
@@ -212,14 +212,14 @@
                                 <div class="row px-3 px-md-5 pb-2 pt-4 br-20 box-shadow border-0 font-16 font-e bg-white mx-0" id="relationsHere">
                                     <div class="col-10">
                                         <p class="px-0 p-style color-dg">Click to add other risk controls related to this one</p>
-                                        
+
                                     </div>
                                     <div class="col-2 text-right">
                                         <a href="#relationModal" class="col-3 color-r font-20 px-0 " data-toggle="modal"><i class="fas fa-plus-circle"></i></a>
                                     </div>
-                                    
+
                                 </div>
-                                
+
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="relationModal" tabindex="-1" role="dialog" aria-labelledby="relationModalCenterTitle" aria-hidden="true">
@@ -236,8 +236,8 @@
                                     <div id="relationBookmarks">
                                     @include('user.sections.relationRcs')
                                 </div>
-                                   
-                                  
+
+
                                     <p class="text-right p-4"><a href="#" class="color-r font-eb font-14 text-underl">Back To Top</a><i class="fas fa-arrow-up color-r"></i></p>
                                   </div>
                                 </div>
@@ -248,7 +248,7 @@
                                 <button type="submit" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-3">Finish the risk control</button>
                             </div>
                         </fieldset> --}}
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
@@ -329,15 +329,17 @@ var step = 1;
 			risk_definition.setAttribute("style", "background-color: #EFEFEF !important; color: #707070 !important");
 			risk_relation = document.getElementById("riskControlProcedure");
 			risk_relation.setAttribute("style", "background-color: #BAE8E8 !important; color: #E90000 !important");
+            $.scrollTo('#top-tabs',500);
         }
 
-			
+
 		}
         function cancelProcedure() {
 			document.getElementById("firstfieldset").removeAttribute("hidden");
 			document.getElementById("secondfieldset").setAttribute("hidden","true");
 			document.getElementById("riskControlDefinition").removeAttribute("style");
 			document.getElementById("riskControlProcedure").removeAttribute("style");
+            $.scrollTo('#top-tabs',500);
 		}
 		// function addRelation() {
 		// 	var second_fieldset = document.getElementById("secondfieldset");
@@ -379,15 +381,15 @@ var arrOfIds = [];
     });
 
     $(document).ready(function(){
-    
+
     $(document).on('click', '.page-link', function(event){
-       event.preventDefault(); 
+       event.preventDefault();
        var page = $(this).attr('href').split('page=')[1];
        fetch_data(page);
     });
-   
-    
-   
+
+
+
    });
 
    function fetch_data(page)
@@ -421,12 +423,12 @@ var arrOfIds = [];
             arrOfIds.push(id);
         }else{
             $('#1'+id).remove();
-            
+
             var result = arrOfIds.filter(
                 item => item != id
             );
             arrOfIds = result;
-            
+
         }
 
         console.log(arrOfIds);
@@ -436,7 +438,7 @@ var arrOfIds = [];
         $('#'+value).prop('checked',true);
 }
 
-  
+
  function doAutoComplete(){
 var frequency = ["Daily","Weekly","Monthly","Yearly","Fortnightly","Hourly","Not Applicable","Unknown"];
 

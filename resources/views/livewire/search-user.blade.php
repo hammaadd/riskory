@@ -3,13 +3,13 @@
     <form action="#" method="GET" autocomplete="off">
         <input autocomplete="false" name="hidden" type="text" style="display:none;">
         <div class="input-group search-bar">
-          
-           
+
+
           <input type="text" wire:model.debounce.500ms="search" name="search" class="form-control" placeholder="Search People Here" aria-label="Search People Here" aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn-search" type="button"><i class="fas fa-search"></i></button>
           </div>
-        
+
         </div>
       </form>
    </div>
@@ -22,9 +22,9 @@
         @if($users)
         @php
         $i=0;
-        @endphp         
+        @endphp
         @foreach($users as $fols)
-                <div class="row 
+                <div class="row
                         @if($i%2 == 0)
                         bg-dgray
                         @else

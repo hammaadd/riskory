@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bframework;
+use App\Models\Control;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +57,7 @@ class BframeworkController extends Controller
         }else{
             $parent_id = $request->input('parent_id');
         }
-        
+
         $data = array(
             'name'=>$request->input('name'),
             'status'=>$request->input('status'),
@@ -124,7 +125,7 @@ class BframeworkController extends Controller
 
         $request->merge(['parent_id',$parent_id]);
         $request->merge(['created_by',Auth::id()]);
-        
+
         $bf = $bframework->update($request->all());
         if($bf){
             $request->session()->flash('success', 'Business framework updated successfully');

@@ -97,12 +97,15 @@ class UserController extends Controller
     }
 
     public function byTag(Tag $tag){
-       $data =  $tag->rctags->whereNotIn('rc.status',['P','R']);
+    //    $data =  $tag->rctags->whereNotIn('rc.status',['P','R']);
+        $rcs = RiskControl::whereHas('tags',function ($query) use ($tag){
+            $query->where('tag_id','=',$tag->id);
+        })->whereNotIn('status',['R'])->paginate(10);
        $expiresAt = now()->addHours(3);
         views($tag)
             ->cooldown($expiresAt)
             ->record();
-       return view('user.rc.viewByControl',compact('data','tag'));
+       return view('user.rc.viewByControl',compact('rcs','tag'));
     }
 
 

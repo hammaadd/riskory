@@ -1,10 +1,10 @@
 <div class="col-12">
     <div class="row">
         @foreach($childs as $tg)
-        <div class="col-12 col-sm-6 col-lg-4 mb-3">
+        <div class="col-12 col-sm-6 col-lg-6 mb-3">
             {{-- <div class="row align-items-center bg-lgray box-shadow py-2"> --}}
                 <div class="div-hover">
-                    <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byTag',['tag'=>$tg])}}">{{$tg->name}}</a> ({{$tg->followers->count()}})</p>
+                    <p class="p-style mb-0 d-inline mr-2"><a href="{{route('byTag',['tag'=>$tg])}}" data-toggle="tooltip" data-placement="top" title="{{$tg->name}}">{{Str::limit($tg->name,30)}}</a> ({{$tg->followers->count()}})</p>
 
                     @if (!($tg->followedBy(auth()->user())))
                         <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('tag.follow',$tg->id)}}'">Follow</button>
@@ -31,7 +31,7 @@
                     @csrf
                     @method('DELETE')
                     <button class="btn-follow bg-dgray" type="submit">Unfollow</button>
-                </form> 
+                </form>
                     @endif
                 </div> --}}
             {{-- </div> --}}
@@ -43,8 +43,7 @@
     <div class="row">
         @if($childs->hasMorePages())
         <livewire:load-more-tags :page="$page" :perPage="$perPage" :control="$tag" />
-    @endif    
+    @endif
     </div>
 </div>
-    
-    
+

@@ -17,11 +17,11 @@
         <div class="row px-xl-5 mx-0 mx-md-5">
             <div class="col-12 px-0 text-center tab--rc">
                 <p id="riskControlDefinition" class="d-inline-block align-middle font-eb font-18 bg-lblue color-r px-4 py-2 mx-2 br-7 box-shadow tab-rc">Definition</p>
-    
+
                 <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r tab-rc-sp"><i class="fas fa-angle-double-right"></i></span>
-    
+
                 <p id="riskControlProcedure" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Procedure</p>
-    
+
                 {{-- <span class="d-inline-block align-middle pb-3 font-eb font-28 color-r"><i class="fas fa-angle-double-right"></i></span>
                 <p id="riskControlRelations" class="d-inline-block align-middle font-eb font-18 bg-lgray color-dg px-4 py-2 br-7 mx-2 box-shadow tab-rc">Relations</p> --}}
             </div>
@@ -35,20 +35,20 @@
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Title</label>
                                 <input type="text" name="title" value="{{$rc->title}}" class="form-control br-7 box-shadow border-0 font-14 font-e color-dg @error('title') is-invalid @enderror" placeholder="Enter The Title" required>
-                               
+
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                           
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Objective</label>
                                 <textarea name="obj" id="obj" cols="30" rows="3" class="form-control  br-7 box-shadow border-0 font-14 font-e color-dg @error('obj') is-invalid @enderror" placeholder="Enter The Objective" required>{{$rc->objective}}</textarea>
 
-                                
-                                
+
+
                                 <small id="objective" class="form-text text-muted ml-3">
                                     Summary phrase of the Objective Statement
                                  </small>
@@ -84,21 +84,21 @@
                                 <label class="font-eb font-14 mb-1">Implementation type</label>
                                 <div class="bg-white br-7">
                                     <select class="form-control custom-select border-0 font-14 font-e color-dg" name="imp_type" id="imp_type" aria-label="Select implementation type" required>
-                                        <option value="Automated" @if($rc->imp_type=='Automated') Selected @endif">Automated</option>
-                                        <option value="Semi-automated" @if($rc->imp_type=='Semi-Automated') Selected @endif>Semi-automated</option>
-                                        <option value="Manual" @if($rc->imp_type)=='Manual') Selected @endif>Manual</option>
+                                        <option value="Automated" @if($rc->implementation_type=='Automated') Selected @endif">Automated</option>
+                                        <option value="Semi-automated" @if($rc->implementation_type=='Semi-automated') Selected @endif>Semi-automated</option>
+                                        <option value="Manual" @if($rc->implementation_type == 'Manual') Selected @endif>Manual</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <?php 
+                            <?php
                             $arrayControls = array();?>
                             @foreach($rc->controls as $cont)
                             <?php array_push($arrayControls,$cont->control_id);
                                 ?>
                             @endforeach
 
-                          
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Industry</label>
                                 <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry[]" multiple="multiple" required>
@@ -107,9 +107,9 @@
                                 <option value="{{$con->id}}" @if($arrayControls) @if(in_array($con->id,$arrayControls)) Selected @endif @endif>{{$con->name}} <small>({{$con->followers->count()}})</small></option>
                                 @endif
                                 @endforeach
-                                
+
                                 </select>
-                                
+
                             </div>
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Process</label>
@@ -132,31 +132,31 @@
                                 </select>
                             </div>
 
-                            <?php 
+                            <?php
                             $arrayTags = array();?>
                             @foreach($rc->tags as $TAG)
                             <?php array_push($arrayTags,$TAG->tag_id);?>
                             @endforeach
 
-                           
+
 
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Tags</label>
                                 <select id="tags" class="form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="tags[]" multiple="multiple">
                                 @foreach($tags as $tg)
-                                
+
                                 <option value="{{$tg->id}}" @if($arrayTags) @if(in_array($tg->id,$arrayTags)) Selected @endif @endif>{{$tg->name}}</option>
                                 @endforeach
 
-                                
+
                                 </select>
                             </div>
-                            
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Business Impact</label>
                                 <textarea cols="30" rows="3" class="form-control br-7 box-shadow py-3 border-0 font-14 font-e color-dg" name="business_impact" placeholder="Enter The Business Impact">{{$rc->business_impact}}</textarea>
 
-                            
+
                                 <small id="business_impact" class="form-text text-muted mt-3">
                                     The potential negative consequences that may occur as a result of the Risk
                                     </small>
@@ -189,8 +189,8 @@
                                             </div>
                                         @endforeach
                                     @endif
-                                
-                                    
+
+
                                 </div>
                             </div>
                             <div class="mb-4 text-right">
@@ -206,7 +206,7 @@
                                 <div class="row px-3 px-md-3 pb-0 pt-2 br-7 box-shadow border-0 font-14 color-dg font-e bg-white mx-0" id="relationsHere">
                                     <div class="col-10">
                                         <p class="px-0 p-style color-dg">Click to add other risk controls related to this one</p>
-                                        
+
                                     </div>
                                     <div class="col-2 text-right">
                                         <a href="#relationModal" class="col-3 color-r font-20 px-0 " data-toggle="modal"><i class="fas fa-plus-circle"></i></a>
@@ -221,7 +221,7 @@
                                     </div>
                                 @endforeach
                                 @endif
-                                    
+
                                 </div>
                             </div>
                             <!-- Modal -->
@@ -238,18 +238,18 @@
                                   <div id="relationBookmarks">
                                     @include('user.sections.editRelationRcs')
                                 </div>
-                                    
+
                                     <p class="text-right p-4"><a href="#" class="color-r font-eb font-14 text-underl">Back To Top</a><i class="fas fa-arrow-up color-r"></i></p>
                                   </div>
                                 </div>
                               </div>
-                            
+
                               <div class="mb-4 text-right">
                                 <button onclick="cancelRelation()" type="button" class="btn-cancel mr-4 mt-3 mt-sm-0 py-2 px-3">Back</button>
                                 <button type="submit" class="btn-create mr-4 mr-sm-0 mt-3 mt-sm-0 py-2 px-3">Update</button>
                             </div>
                         </fieldset> --}}
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
@@ -298,7 +298,7 @@ function addProcedure() {
 														<textarea name="testing_steps[]" class="form-control border-0 font-14 font-e color-dg col-10 col-sm-11 br-7" placeholder="Some Testing Steps" rows="3" style="resize: none;"></textarea>
 														<a role="button" onclick="removestep(${step})" class="color-dg col-2 col-sm-1 text-right pt-2" style=""><i class="fas fa-times-circle" style=""></i></a>
 									</div>`);
-                                    
+
     }
 
     function removestep(id){
@@ -311,27 +311,27 @@ function addProcedure() {
 
     // var arrOfIds = ;
         $(document).ready(function() {
-            
+
             $('.js-example-basic-multiple').select2();
             $('#tags').select2({
                 tags:true,
             });
 
-            
+
         });
-    
+
         $(document).ready(function(){
             // arrOfIds.forEach(checkElements);
         $(document).on('click', '.page-link', function(event){
-           event.preventDefault(); 
+           event.preventDefault();
            var page = $(this).attr('href').split('page=')[1];
            fetch_data(page);
         });
-       
-        
-       
+
+
+
        });
-    
+
        function fetch_data(page)
         {
             //console.log(page);
@@ -347,33 +347,33 @@ function addProcedure() {
              }
            });
         }
-    
+
         function listRelation(id){
             check = document.getElementById(id);
             if(check.checked==true){
                 value = $('#'+id).val();
                 title = check.getAttribute('data-title');
-    
+
                 html = `<div class="col-12 border px-2 py-1" id="1${id}">
                                         <input type="hidden" name="relations[]" value='${value}'>
                                         <p id="relationName" class="color-dg p-style">${title}</p>
                                         </div>`;
-    
+
                 $('#relationsHere').append(html);
                 arrOfIds.push(id);
             }else{
                 $('#1'+id).remove();
-                
+
                 var result = arrOfIds.filter(
                     item => item != id
                 );
                 arrOfIds = result;
-                
+
             }
-    
+
             console.log(arrOfIds);
         }
-    
+
         function checkElements(value) {
             $('#'+value).prop('checked',true);
     }

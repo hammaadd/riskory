@@ -163,7 +163,9 @@ class RiskController extends Controller
         }else{
             $request->session()->flash('error','Unable to create risk control. Try again later.');
         }
-
+        if(isset($rc->id)){
+            return redirect()->route('rc.view',$rc->id);
+        }
         return redirect()->route('rc.create');
 
         //dd($validator);

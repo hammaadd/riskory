@@ -7,7 +7,8 @@
         <div class="row">
             <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
                 <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Risk Control # <span class="color-r">{{$rc->id}}</span> Detail @if($rc->user_id==Auth::id())
-                <button class="btn-risk-edit" onclick="parent.location='{{route('rc.edit',$rc)}}'">Edit</button>
+                <button class="btn-risk-edit" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
+                <button class="btn-risk-edit delete-button" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i>   </button>
                 @endif</p>
             </div>
         </div>
@@ -42,15 +43,15 @@
                     @endif
                 </span>
             </div>
-            
+
             <div class="row mx-0 mb-4">
                 <div class="col-12 col-xl-4 mb-3 mb-xl-0">
                     <div class="rc---user d-inline-block align-top bg-white br-7 p-3 box-shadow border-1">
-                        <a href="{{route('visit.profile',$rc->user)}}" class="d-inline-block align-middle text-decoration-none">
+                        <a href="{{route('visit.profile',$rc->user)}}" class="d-inline-block align-middle text-decoration-none" data-toggle="tooltip" data-placement="top" title="Goto user profile">
                             <img src="@if($rc->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$rc->user->name) }} @else {{asset('userAvat/'.$rc->user->avatar)}} @endif" class="rounded-circle shadow avatar-img-xl">
                         </a>
                         <div class="d-inline-block align-middle pl-2">
-                            <p class="p-style mb-0">
+                            <p class="p-style mb-0" data-toggle="tooltip" data-placement="right" title="Goto user profile">
                                 <a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a>
                             </p>
                             <p class="p-style color-r font-14 mb-0">{{$rc->user->rcs->count()}} Riskcontrols</p>
@@ -59,18 +60,18 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-8 align-self-xl-end text-xl-right">
-                    <button class="bg-red color-w font-14 border-0 br-7 p-2 font-eb btn-benchmark mr-3 d-inline-block mb-2 mb-xl-1" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
+                    <button class="bg-red color-w font-14 border-0 br-7 p-2 font-eb btn-benchmark mr-3 d-inline-block mb-2 mb-xl-1" onclick="parent.location='{{route('add.benchmark',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Do benchmark">Add Benchmark</button>
 
                     <div class="modal-icon modal-icon-2 d-inline-block align-bottom">
                         <div class="d-inline-block align-bottom">
-                            <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" title="Lists" onclick="callModal(this.id)">
-                                <i class="fas fa-list-ul"></i>
+                            <a class="box-shadow" href="#listModal" data-toggle="modal" id="listModalBtn{{$rc->id}}" data-rc="{{$rc->id}}" onclick="callModal(this.id)">
+                                <i class="fas fa-list-ul" data-toggle="tooltip" data-placement="bottom" title="Lists"></i>
                                 <span class="font-eb">{{Auth::user()->rlists->count()}}</span>
                             </a>
                         </div>
                         @include('user.inc.rcactions')
                         <div class="d-inline-block align-bottom">
-                            <a class="box-shadow" href="javascript:void(0);" title="Views">
+                            <a class="box-shadow" href="javascript:void(0);" title="Views" data-toggle="tooltip" data-placement="bottom">
                                 <i class="fas fa-eye"></i>
                                 <span class="font-eb">{{views($rc)->count()}}</span>
                             </a>
@@ -78,19 +79,19 @@
 
                         <div class="d-inline-block align-bottom">
                             <div class="rc--share">
-                                <a class="box-shadow" href="javascript:void(0);" title="Share">
+                                <a class="box-shadow" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="Share">
                                     <i class="fas fa-share-alt"></i>
                                     <span class="font-eb">Share</span>
                                 </a>
 
                                 <ul class="rc--share-menu">
-                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="https://wa.me/?text={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://wa.me/?text={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on whatsapp"><i class="fab fa-whatsapp"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -172,7 +173,7 @@
                             @if($bprocesses)
                                 @foreach($bprocesses as $bp)
                                     <button class="btn bg-white color-r box-shadow br-7 font-14 px-2 text-capitalize mb-2 btn-hover" onclick="return parent.location='{{route('byControl',['control'=>$bp->control,'type'=>$bp->control->type])}}'">{{$bp->control->name}}</button>
-                                @endforeach 
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -228,7 +229,7 @@
                 </div>
             </div>
 
-            {{-- 
+            {{--
             <div class="row mb-3">
                 <div class="col-12 px-0 mb-3">
                     <div class="d-inline-block rc-sec-title font-18 font-eb">Recommendations</div>
@@ -258,7 +259,7 @@
                             @if($rc->testingsteps)
                                 <ol class="p-style font-14">
                                     @foreach($rc->testingsteps as $tstep)
-                                        <li>{!!nl2br($tstep->step)!!}</li>    
+                                        <li>{!!nl2br($tstep->step)!!}</li>
                                     @endforeach
                                 </ol>
                             @endif
@@ -388,7 +389,7 @@
                                                 <div class="d-inline-block pt-1 pl-2">
                                                     <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user)}}" class="font-eb color-b">{{$com->user->name}}</a> </p>
                                                     <p class="p-style font-14 mb-0">{{$com->comment}}</p>
-                                                    <div><small>{{$com->created_at}}</small></div>
+                                                    <div><small data-toggle="tooltip" title="{{ $com->created_at }}">{{$com->created_at->diffForHumans()}}</small></div>
                                                 </div>
                                             </div>
                                             <div class="col-2">
@@ -419,23 +420,24 @@
 </div>
 
 @include('user.sections.ratingModal')
+@include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
 <script type="text/javascript">
     $('#riskDefinition').click(function(e) {
-        $('#collapseDefinition').collapse('show');        
+        $('#collapseDefinition').collapse('show');
     });
     $('#riskProcedure').click(function(e) {
-        $('#collapseProcedure').collapse('show');        
+        $('#collapseProcedure').collapse('show');
     });
     $('#riskRelations').click(function(e) {
-        $('#collapseRelations').collapse('show');        
+        $('#collapseRelations').collapse('show');
     });
     $('#riskBenchmarks').click(function(e) {
-        $('#collapseBenchmarks').collapse('show');        
+        $('#collapseBenchmarks').collapse('show');
     });
     $('#riskComments').click(function(e) {
-        $('#collapseComments').collapse('show');        
+        $('#collapseComments').collapse('show');
     });
 
 function toggleIcon(e) {
@@ -447,5 +449,5 @@ function toggleIcon(e) {
 $(".accordion").on("hidden.bs.collapse", toggleIcon);
 $(".accordion").on("shown.bs.collapse", toggleIcon);
 
-</script>    
+</script>
 @endsection

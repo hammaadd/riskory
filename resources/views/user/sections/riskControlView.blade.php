@@ -17,6 +17,15 @@
 
     <div class="row">
         <div class="col-12 col-sm-10 mb-2">
+            {{-- Delete option for riskcontrol --}}
+            @if($rc->user_id == Auth::id())
+            <div>
+
+                <button class="btn-risk-edit delete-button d-inline" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button>
+                <button class="btn-risk-edit d-inline" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
+            </div>
+
+            @endif
             <h5 class="rc-title mb-0">
                 <a href="{{route('rc.view',$rc->id)}}" class="color-cc">{{$rc->title}}</a>
             </h5>
@@ -69,22 +78,14 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
                 <div class="col-12 col-lg-4 pl-0 order-lg-1">
                     <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at->toDateString()}}</div>
 
-                    {{-- Delete option for riskcontrol --}}
-                    @if($rc->user_id == Auth::id())
-                    <div class="d-inline-block">
-                       
-                        <span><button class="btn font-r color-r p-0 delete-button" title="Delete risk control" type="Submit" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button></span>
 
-                    </div>
-                   
-                    @endif
                 </div>
             </div>
         </div>

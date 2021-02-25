@@ -45,8 +45,8 @@
                         @endif
                         " class="rounded-circle shadow avatar-img">
                         <div class="d-inline-block pt-1 pl-2">
-                            <p class="p-style mb-0"><a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a> 
-                                
+                            <p class="p-style mb-0"><a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a>
+
                             </p>
                             <small>Posted on: {{$rc->created_at}}</small>
                         </div>
@@ -57,8 +57,8 @@
                         <div class="col-12 col-lg-6">
                             <div class=" pb-4 pb-lg-1 px-0" onclick="doRating({{$rc->id}})" id="showRating{{$rc->id}}">
                                 @include('user.sections.showRating')
-                               
-                                    
+
+
                             </div>
                             <button class="bg-red color-w font-14 border-0 br-15 p-2 font-eb btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
                             <button class="btn-risk-edit" onclick="parent.location='{{route('rc.edit',$rc)}}'">Edit</button>
@@ -75,7 +75,7 @@
                     </div>
                 <label class="px-3 py-1 my-3 bg-white font-eb">Risk Control Number <a href="#" class="color-r">#00{{$rc->id}}</a></label><br>
                     <label class="px-3 py-1 my-3 bg-white font-eb">Risk Control Title</label>
-                    
+
                 <p class="p-style">{{$rc->title}}</p>
                 <label class="px-3 py-1 my-3 bg-white font-eb">Risk Control Objective</label>
                 <p class="p-style">{!!nl2br($rc->objective)!!}</p>
@@ -120,14 +120,14 @@
 
                     </div>
                     <label class="px-3 py-1 my-3 bg-white font-eb">Testing Steps</label>
-               
+
                 @if($rc->testingsteps)
                 <p class="p-style">
                     <ol>
                 @foreach($rc->testingsteps as $tstep)
-                   
-                        <li>{!!nl2br($tstep->step)!!}</li>    
-                        
+
+                        <li>{!!nl2br($tstep->step)!!}</li>
+
                 @endforeach
                     </ol>
                 </p>
@@ -154,7 +154,7 @@
                                     <span class="fa @if($rcrel->ratings->avg('rating')> $i-1 && $rcrel->ratings->avg('rating') < $i) fa-star-half-alt @else fa-star @endif @if($i<=$rcrel->ratings->avg('rating')) checked @endif do-rating" >
                                                                             </span>
                                     @endfor
-                                    
+
                             </div>
                             <div class="row px-md-4 px-1">
                                 <div class="col-12 col-md-5">
@@ -172,31 +172,31 @@
                                                 <a role="button" href="javascript:void(0);"><i class="far fa-thumbs-up"></i></a>
                                             @else
                                                <button class="bg-dark" role="button"><i class="fas fa-thumbs-up"></i></button>
-                                                
+
                                             @endif
                                                     <p class="p-style font-eb text-center">{{$rcrel->likes->count()}}</p>
-                                                    
+
                                                 </div>
                                                 <div class="d-inline-block">
                                             @if (!($rcrel->dislikedBy(auth()->user())))
                                                 <a role="button" href="javascript:void(0);"><i class="far fa-thumbs-down"></i></a>
                                             @else
-                                              
+
                                                     <button class="bg-dark" role="button"><i class="fas fa-thumbs-down"></i></button>
-                                                
+
                                             @endif
                                                     <p class="p-style font-eb text-center">{{$rcrel->dislikes->count()}}</p>
-                                                    
-                                                    
+
+
                                                 </div>
                                                 <div class="d-inline-block">
-                                                
+
                                             @if (!($rcrel->bookmarkedBy(auth()->user())))
                                                 <a role="button"  href="javascript:void(0);"><i class="far fa-bookmark"></i></a>
                                             @else
-                                               
+
                                                     <button class="bg-dark" role="button"><i class="fas fa-bookmark"></i></button>
-                                                
+
                                             @endif
                                                     <p class="p-style font-eb text-center">{{$rcrel->bookmarks->count()}}</p>
                                                 </div>
@@ -207,7 +207,7 @@
                         @endforeach
                     @endif
                     </div> --}}
-                
+
                     <label class="px-3 py-1 my-3 bg-white font-eb">Risk Control Benchmark</label>
                     <div>
                         @if($rc->benchmarks)
@@ -227,7 +227,7 @@
                         @endforeach
                         @endif
                     </div>
-                    
+
                     <hr>
                     <div class="bg-white br-20 p-4 mx-1 mx-md-5 comment-section">
                         <form action="{{route('create.comment',$rc)}}" method="POST">
@@ -252,12 +252,12 @@
                                 @endif
                                 " class="rounded-circle shadow avatar-img">
                                 <div class="d-inline-block pt-1 pl-2">
-                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user)}}" class="font-eb color-b">{{$com->user->name}}</a> 
-                                        
+                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user)}}" class="font-eb color-b">{{$com->user->name}}</a>
+
                                     </p>
-                                    
+
                                     <p class="p-style font-14 mb-0">{{$com->comment}}</p>
-                                    <div><small>{{$com->created_at}}</small></div>
+                                    <div><small>{{$com->created_at->diffForHumans()}}</small></div>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -265,7 +265,7 @@
                                     <form action="{{route('comment.delete',['comment'=>$com,'rc'=>$rc])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <small><button class="btn badge badge-danger badge-pill float-right d-inline-block" role="button" type="submit">Delete</button></small>                
+                                        <small><button class="btn badge badge-danger badge-pill float-right d-inline-block" role="button" type="submit">Delete</button></small>
                                     </form>
                                 @endif
                             </div>

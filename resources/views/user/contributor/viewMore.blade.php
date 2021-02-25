@@ -11,6 +11,13 @@
             <div class="col-sm-auto col-12 px-0 pr-md-3 sect--title__col">
                 <p class="bg-lblue font-eb d-sm-inline-block font-18 ml-3 py-2 pl-4 pl-md-5 pr-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset($icon)}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Browse By {{$name}}</p>
             </div>
+            <div class="col-sm-auto col-12 text-muted order-xl-2">
+             @if($req == 'industries')
+                <small class="d-block py-3 px-2"><i class="fas fa-info-circle pr-2"></i><span >Based on <a target="_blank" href="https://en.wikipedia.org/wiki/Global_Industry_Classification_Standard">Global Industry Classification Standard</a></span></small>
+             @elseif($req == 'bprocesses')
+             <small class="d-block py-3 px-2"><i class="fas fa-info-circle pr-2"></i><span >Based on <a target="_blank" href="https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-cross-industry-excel-7">APQC Process Classification Framework (PCF)</a></span></small>
+             @endif
+            </div>
         </div>
     </div>
 

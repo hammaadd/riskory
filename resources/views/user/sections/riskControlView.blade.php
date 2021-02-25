@@ -1,5 +1,14 @@
 <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 rcreveal">
     <div class="row">
+        {{-- Delete option for riskcontrol --}}
+        @if($rc->user_id == Auth::id())
+        <span class="ml-0 float-left">
+
+            <button class="btn-risk-edit delete-button d-inline" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button>
+            <button class="btn-risk-edit d-inline" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
+        </span>
+
+        @endif
         <span class="br-tr-7 bg-red text-white font-14 font-e px-3 py-1 ml-auto no-hover">
             @if($rc->status == 'U')
                 <span>Under Discussion</span>
@@ -13,19 +22,12 @@
                 <span>Our next bigthing</span>
             @endif
         </span>
+
     </div>
 
     <div class="row">
         <div class="col-12 col-sm-10 mb-2">
-            {{-- Delete option for riskcontrol --}}
-            @if($rc->user_id == Auth::id())
-            <div>
 
-                <button class="btn-risk-edit delete-button d-inline" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button>
-                <button class="btn-risk-edit d-inline" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
-            </div>
-
-            @endif
             <h5 class="rc-title mb-0">
                 <a href="{{route('rc.view',$rc->id)}}" class="color-cc">{{$rc->title}}</a>
             </h5>
@@ -42,7 +44,7 @@
             <div class="rc-rating d-inline-block my-2" onclick="doRating({{$rc->id}})" id="showRating{{$rc->id}}">
                 @include('user.sections.showRating')
             </div>
-            <button class="btn bg-white color-r box-shadow br-7 font-12 ml-3 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
+            <button class="btn bg-white color-r box-shadow br-7 font-12 ml-3 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'" data-toggle="tooltip" data-placement="top" title="Do benchmark">Add Benchmark</button>
         </div>
         <div class="col-12 my-2">
             <p class="p-style mb-0 font-16 text-black-50">{{strip_tags(Str::words($rc->objective,30))}} <a class="btn--readMore" href="{{route('rc.view',$rc->id)}}">Read more.</a></p>

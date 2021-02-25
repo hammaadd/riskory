@@ -25,22 +25,22 @@
 
     <div class="row px-xl-5 mx-0 mx-md-5 mb-4">
         @if(isset($control))
-            @livewire('by-control',['control'=>$control,'page'=>1,'perPage'=>6])  
-        @endif 
+            @livewire('by-control',['control'=>$control,'page'=>1,'perPage'=>6])
+        @endif
         @if(isset($tag))
-            @livewire('by-tag',['tag'=>$tag,'page'=>1,'perPage'=>6])  
-        @endif 
+            @livewire('by-tag',['tag'=>$tag,'page'=>1,'perPage'=>6])
+        @endif
     </div>
-    
+
     <div class="row px-xl-5 mx-0 mx-md-5">
          {{-- Risk control starts here --}}
     @if(isset($control))
-        @if($data->count()<1)
+        @if($rcs->count()<1)
             <h6 class="lead">No riskcontrols found for "{{$control->name}}" </h6>
         @endif
     @endif
     @if(isset($tag))
-        @if($data->count()<1)
+        @if($rcs->count()<1)
             <h6 class="lead">No riskcontrols found for "{{$tag->name}}" </h6>
         @endif
     @endif

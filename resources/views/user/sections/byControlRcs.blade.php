@@ -1,6 +1,6 @@
-@if($data)
-@foreach($data as $dt)
-@php $rc = $dt->rc; @endphp
+@if($rcs)
+@foreach($rcs as $dt)
+@php $rc = $dt; @endphp
  @include('user.sections.riskControlView')
 
 @endforeach

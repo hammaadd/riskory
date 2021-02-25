@@ -86,9 +86,14 @@ class UserController extends Controller
     }
 
     public function byControl(Control $control ){
-       $data =  $control->rccontrols->whereNotIn('rc.status',['P','R']);
+    //    $data =  $control->rccontrols->whereNotIn('rc.status',['R']);
+       $cont = $control;
+       $rcs = RiskControl::wherehas('controls',function ($query) use ($control){
+            $query->where('control_id','=',$control->id);
+       })->whereNotIn('status',['R'])->paginate(10);
+    //    dd($rcs);
        $childs = Control::where('parent_id',$control->id)->paginate(6);
-       return view('user.rc.viewByControl',compact('data','control','childs'));
+       return view('user.rc.viewByControl',compact('rcs','control','childs'));
     }
 
     public function byTag(Tag $tag){

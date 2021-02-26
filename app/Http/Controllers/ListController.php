@@ -164,7 +164,14 @@ class ListController extends Controller
 
     public function exportList(Request $request , Rlist $list){
         // dd($list->listrcs);
-        return Excel::download(new ListExport($list->id), 'user-list.xlsx');
+        if($list->listrcs->count() > 0){
+            $request->session()->flash('success','List exported successfully.');
+            return Excel::download(new ListExport($list->id), 'user-list.xlsx');
+        }else{
+            $request->session()->flash('error','Unable to export list. Try again later.');
+            return back();
+        }
+
     }
 
 

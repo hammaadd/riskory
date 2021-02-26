@@ -2095,3 +2095,16 @@ button.select-image {
 .sm-delete-btn:hover{
     background: #000;
 }
+
+.sm-export-btn{
+    outline: #016E38;
+    border: 2px solid #016E38;
+    border-radius: 7px;
+    padding: 2px;
+    color: white !important;
+    background: #016E38;
+}
+
+.sm-export-btn:hover{
+    background: #000;
+}

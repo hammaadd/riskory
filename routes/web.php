@@ -245,6 +245,7 @@ Route::get('user/delete/notification/{notification}','NotificationController@del
 Route::post('list/create','ListController@create')->name('add.list');
 Route::get('list/get/all','ListController@getAllLists')->name('get.all.lists');
 Route::delete('list/delete','ListController@deleteList')->name('delete.list');
+Route::get('list/export/{list}/risk-controls','ListController@exportList')->name('export.list');
 
 
 Route::post('fetch/user/lists','ListController@fetchUserLists')->name('fetch.user.lists');

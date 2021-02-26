@@ -2087,7 +2087,8 @@ button.select-image {
     outline: #e90000;
     border: 2px solid #e90000;
     border-radius: 7px;
-    padding: 2px;
+    font-size:12px;
+    padding: 4px 4px;
     color: white !important;
     background: #e90000;
 }
@@ -2100,7 +2101,8 @@ button.select-image {
     outline: #016E38;
     border: 2px solid #016E38;
     border-radius: 7px;
-    padding: 2px;
+    font-size:12px;
+    padding: 4px 4px;
     color: white !important;
     background: #016E38;
 }

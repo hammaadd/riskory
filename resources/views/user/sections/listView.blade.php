@@ -15,7 +15,7 @@ $i=1;
             {{-- <a type="button" href="javascript:void(0)" class="btn btn-lg btn-danger" data-toggle="popover" title="Description & actions" data-content="And here's some amazing content. It's very engaging. Right?"><i class="fas fa-caret-right"></i></a> --}}
 
             <p class="p-style mb-0 font-eb font-18"><a href="{{route('rcs.of.list',$ls)}}" class="color-b">{{$ls->name}} </a> <small><a href="javascript:void(0)" data-id="{{$ls->id}}" class="sm-delete-btn" title="Delete list" data-toggle="modal" id="delListBtn" onclick="assignIdOfList({{$ls->id}})" data-target="#deleteModal" ><span data-toggle="tooltip" data-placement="top" title="Delete list">Delete <i class="fas fa-trash"></i></span></a>
-            <a class="sm-export-btn ml-1" href="javascript(0)">Export <i class="fas fa-file-excel"></i></a>
+            <a class="sm-export-btn ml-1" href="{{route('export.list',$ls)}}">Export <i class="fas fa-file-excel"></i></a>
             </small></p>
             <small class="text-secondary">{{$ls->description}}</small>
             <p class="p-style font-eb color-r font-14 mb-0">{{$ls->listrcs->count()}} risks</p>

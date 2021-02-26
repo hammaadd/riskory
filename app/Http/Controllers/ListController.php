@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ListExport;
 use App\Models\Listrc;
 use App\Models\RiskControl;
 use App\Models\Rlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ListController extends Controller
 {
@@ -157,6 +159,12 @@ class ListController extends Controller
         else:
             return back();
         endif;
+    }
+
+
+    public function exportList(Request $request , Rlist $list){
+        // dd($list->listrcs);
+        return Excel::download(new ListExport($list->id), 'user-list.xlsx');
     }
 
 

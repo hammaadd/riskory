@@ -351,7 +351,7 @@ li>a:hover {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 20px 0; 
+  padding: 20px 0;
 }
 
 .icon-bar a {
@@ -364,11 +364,11 @@ li>a:hover {
 }
 
 .icon-bar a:hover {
-  background-color: #E90000; 
+  background-color: #E90000;
 }
 
 .icon-bar.active {
-  background-color: #E90000; 
+  background-color: #E90000;
 }
 .footer-btn {
     background: #E90000;
@@ -760,7 +760,7 @@ li.select2-selection__choice {
     font-size: 16px;
     font-family: 'Ebrima';
     font-weight: bold;
-    outline: none !important; 
+    outline: none !important;
 }
 .btn-next:hover {
     background: #212529 !important;
@@ -905,7 +905,7 @@ li.select2-selection__choice {
     border: none;
     text-shadow: none;
 }
-.modal-icon-2 a, 
+.modal-icon-2 a,
 .modal-icon-2 button {
     padding: 4px 8px;
     width: 47px;
@@ -1504,7 +1504,7 @@ button.select-image {
 .rating>label:hover~label:before {
     opacity: 1 !important;
     color: #FFD600;
-    
+
 }
 
 .rating>input:checked~label:before {
@@ -1594,7 +1594,7 @@ button.select-image {
     .topbar-icon a img{
         object-fit: contain;
     }
-    
+
     .user-cover{
         height: 30vh;
         max-height: 30vh;
@@ -2081,4 +2081,17 @@ button.select-image {
     .contact-captcha-field {
         padding-right: 0;
     }
+}
+
+.sm-delete-btn{
+    outline: #e90000;
+    border: 2px solid #e90000;
+    border-radius: 7px;
+    padding: 2px;
+    color: white !important;
+    background: #e90000;
+}
+
+.sm-delete-btn:hover{
+    background: #000;
 }

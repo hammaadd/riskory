@@ -189,7 +189,7 @@ Route::get('rc/bookmark/{riskControl}','RcActionControllers@bookmark')->name('rc
 Route::delete('rc/unbookmark/{riskControl}','RcActionControllers@unbookmark')->name('rc.unbookmark');
 Route::get('rc/all/bookmarks','RcActionControllers@allBookmarks')->name('rc.bookmarks');
 
-//Riskcontrol like dislike 
+//Riskcontrol like dislike
 Route::get('rc/like/{riskControl}','RcActionControllers@like')->name('rc.like');
 Route::delete('rc/unlike/{riskControl}','RcActionControllers@unlike')->name('rc.unlike');
 Route::get('rc/dislike/{riskControl}','RcActionControllers@dislike')->name('rc.dislike');
@@ -251,7 +251,7 @@ Route::post('fetch/user/lists','ListController@fetchUserLists')->name('fetch.use
 Route::post('add/riskcontrol/to/list','ListController@addRcToList')->name('add.rc.to.list');
 Route::delete('remove/riskcontrol/from/list','ListController@removeRcFromList')->name('remove.rc.from.list');
 Route::post('change/list/type','ListController@changeListType')->name('change.list.type');
-Route::get('riskcontrol/list/{list}','ListController@rcByList')->name('rcs.of.list');
+Route::get('riskcontrols/list/{list}','ListController@rcByList')->name('rcs.of.list');
 
 
 Route::post('riskcontrol/do/rating','RatingController@doRating')->name('do.rating');

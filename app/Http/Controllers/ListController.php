@@ -97,10 +97,10 @@ class ListController extends Controller
             }else{
                 return ['type'=>'error','message'=>'Unable to add to list try again later'];
             }
-            
 
-            
-            
+
+
+
         }
     }
 
@@ -120,7 +120,7 @@ class ListController extends Controller
             }else{
                 return ['type'=>'error','message'=>'Unable to remove try again later'];
             }
-            
+
         }
     }
 
@@ -149,6 +149,9 @@ class ListController extends Controller
 
     public function rcByList(Request $request, Rlist $list){
         if($list->user_id == Auth::id()):
+            $data = $list->listrcs;
+            return view('user.list.rcByList',compact('data'));
+        elseif($list->type == 1):
             $data = $list->listrcs;
             return view('user.list.rcByList',compact('data'));
         else:
@@ -183,7 +186,7 @@ class ListController extends Controller
    // }
 
 
-    
+
 
 
 

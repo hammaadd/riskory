@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,12 +13,22 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use LaratrustUserTrait;
     use HasFactory, Notifiable;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
+    }
     protected $fillable = [
         'name',
         'email',
@@ -120,8 +131,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function recommendedTags(){
         return $this->hasMany(Tag::class,'created_by');
     }
-    
 
 
-    
+
+
 }

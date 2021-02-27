@@ -47,12 +47,12 @@
             <div class="row mx-0 mb-4">
                 <div class="col-12 col-xl-4 mb-3 mb-xl-0">
                     <div class="rc---user d-inline-block align-top bg-white br-7 p-3 box-shadow border-1">
-                        <a href="{{route('visit.profile',$rc->user)}}" class="d-inline-block align-middle text-decoration-none" data-toggle="tooltip" data-placement="top" title="Goto user profile">
+                        <a href="{{route('visit.profile',$rc->user->slug)}}" class="d-inline-block align-middle text-decoration-none" data-toggle="tooltip" data-placement="top" title="Goto user profile">
                             <img src="@if($rc->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$rc->user->name) }} @else {{asset('userAvat/'.$rc->user->avatar)}} @endif" class="rounded-circle shadow avatar-img-xl">
                         </a>
                         <div class="d-inline-block align-middle pl-2">
                             <p class="p-style mb-0" data-toggle="tooltip" data-placement="right" title="Goto user profile">
-                                <a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a>
+                                <a href="{{route('visit.profile',$rc->user->slug)}}" class="font-eb color-b">{{$rc->user->name}}</a>
                             </p>
                             <p class="p-style color-r font-14 mb-0">{{$rc->user->rcs->count()}} Riskcontrols</p>
                             <p class="p-style color-r font-14 mb-0">{{$rc->user->userFollowers->count()}} Followers</p>

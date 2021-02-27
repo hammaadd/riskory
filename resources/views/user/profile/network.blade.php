@@ -31,7 +31,7 @@
                 $i = 1;
             @endphp
             @foreach($user->userFollowing as $fol)
-                <div class="row 
+                <div class="row
                 @if($i%2 == 0)
                 bg-dgray
                 @else
@@ -46,7 +46,7 @@
                     @endif
                     "  class="rounded-circle shadow avatar-img-lg bg-white align-top">
                     <div class="d-inline-block pt-1 pl-2">
-                        <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fol->user)}}" class="color-b">{{$fol->user->name}}</a></p>
+                        <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fol->user->slug)}}" class="color-b">{{$fol->user->name}}</a></p>
                         <p class="p-style font-eb color-r font-14 mb-0">{{$fol->user->rcs->count()}} new risks</p>
                     </div>
                 </div>
@@ -70,17 +70,17 @@
             @endphp
             @endforeach
             @endif
-            
-            
+
+
         </div>
 
-        <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-5 p-md-5" style="display:none;" id="followerU">    
+        <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-5 p-md-5" style="display:none;" id="followerU">
         @if($user->userFollowers->count())
             @php
                 $i = 1;
             @endphp
             @foreach($user->userFollowers as $fols)
-                <div class="row 
+                <div class="row
                 @if($i%2 == 0)
                 bg-dgray
                 @else
@@ -95,7 +95,7 @@
                     @endif
                     "  class="rounded-circle shadow avatar-img-lg bg-white align-top">
                     <div class="d-inline-block pt-1 pl-2">
-                        <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fols->follower)}}" class="color-b">{{$fols->follower->name}}</a></p>
+                        <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fols->follower->slug)}}" class="color-b">{{$fols->follower->name}}</a></p>
                         <p class="p-style font-eb color-r font-14 mb-0">12 new risks</p>
                     </div>
                 </div>
@@ -121,10 +121,10 @@
             @endif
         </div>
 
-        <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-5 p-md-5" style="display:none;" id="findotherU">    
-           
+        <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 py-1 px-5 p-md-5" style="display:none;" id="findotherU">
+
             @livewire('search-user')
-            
+
         </div>
 
 
@@ -138,7 +138,7 @@
 <script>
     function toggleNetwork(id){
         div = document.getElementById(id);
-        
+
             if(id == 'following'){
                 tab = document.getElementById('followerU');
                 tabHide = document.getElementById('followingU');
@@ -146,7 +146,7 @@
                 tabHide.style.display = 'block';
                 tab.style.display = 'none';
                 tabHide2.style.display = 'none';
-                
+
             }else if(id == 'follower'){
                 tab = document.getElementById('followerU');
                 tabHide = document.getElementById('followingU');
@@ -162,7 +162,7 @@
                 tab.style.display = 'none';
                 tabHide2.style.display = 'block';
             }
-        
+
     }
 </script>
 @endsection

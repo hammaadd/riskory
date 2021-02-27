@@ -54,16 +54,16 @@
                     @endif
                 </span>
             </div>
-            
+
             <div class="row mx-0 mb-4">
                 <div class="col-12 col-xl-4 mb-3 mb-xl-0">
                     <div class="rc---user d-inline-block align-top bg-white br-7 p-3 box-shadow border-1">
-                        <a href="{{route('visit.profile',$rc->user)}}" class="d-inline-block align-middle text-decoration-none">
+                        <a href="{{route('visit.profile',$rc->user->slug)}}" class="d-inline-block align-middle text-decoration-none">
                             <img src="@if($rc->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$rc->user->name) }} @else {{asset('userAvat/'.$rc->user->avatar)}} @endif" class="rounded-circle shadow avatar-img-xl">
                         </a>
                         <div class="d-inline-block align-middle pl-2">
                             <p class="p-style mb-0">
-                                <a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a>
+                                <a href="{{route('visit.profile',$rc->user->slug)}}" class="font-eb color-b">{{$rc->user->name}}</a>
                             </p>
                             <p class="p-style color-r font-14 mb-0">{{$rc->user->rcs->count()}} Riskcontrols</p>
                             <p class="p-style color-r font-14 mb-0">{{$rc->user->userFollowers->count()}} Followers</p>
@@ -81,7 +81,7 @@
                             </a>
                         </div> --}}
                         @include('visitor.sections.rcactions')
-                        
+
                         <div class="d-inline-block align-bottom">
                             <a class="box-shadow" href="javascript:void(0);">
                                 <i class="fas fa-eye"></i>
@@ -184,7 +184,7 @@
                             @if($bprocesses)
                                 @foreach($bprocesses as $bp)
                                     <button class="btn bg-white color-r box-shadow br-7 font-14 px-2 text-capitalize mb-2 btn-hover" onclick="return parent.location='{{route('byControlPublic',['control'=>$bp->control,'type'=>$bp->control->type])}}'">{{$bp->control->name}}</button>
-                                @endforeach 
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                 </div>
             </div>
 
-            {{-- 
+            {{--
             <div class="row mb-3">
                 <div class="col-12 px-0 mb-3">
                     <div class="d-inline-block rc-sec-title font-18 font-eb">Recommendations</div>
@@ -270,7 +270,7 @@
                             @if($rc->testingsteps)
                                 <ol class="p-style font-14">
                                     @foreach($rc->testingsteps as $tstep)
-                                        <li>{!!nl2br($tstep->step)!!}</li>    
+                                        <li>{!!nl2br($tstep->step)!!}</li>
                                     @endforeach
                                 </ol>
                             @endif
@@ -278,7 +278,7 @@
                     </div>
                 </div>
 
-                
+
 
                 <div class="card" id="riskBenchmarks">
                     <div class="card-header p-0" id="headingBenchmarks">
@@ -333,7 +333,7 @@
                                                 <img src="@if($com->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$com->user->name) }} @else {{asset('userAvat/'.$com->user->avatar)}} @endif" class="rounded-circle shadow avatar-img">
 
                                                 <div class="d-inline-block pt-1 pl-2">
-                                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user)}}" class="font-eb color-b">{{$com->user->name}}</a> </p>
+                                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user->slug)}}" class="font-eb color-b">{{$com->user->name}}</a> </p>
                                                     <p class="p-style font-14 mb-0">{{$com->comment}}</p>
                                                     <div><small>{{$com->created_at}}</small></div>
                                                 </div>
@@ -372,19 +372,19 @@
 @section('script')
 <script type="text/javascript">
     $('#riskDefinition').click(function(e) {
-        $('#collapseDefinition').collapse('show');        
+        $('#collapseDefinition').collapse('show');
     });
     $('#riskProcedure').click(function(e) {
-        $('#collapseProcedure').collapse('show');        
+        $('#collapseProcedure').collapse('show');
     });
     $('#riskRelations').click(function(e) {
-        $('#collapseRelations').collapse('show');        
+        $('#collapseRelations').collapse('show');
     });
     $('#riskBenchmarks').click(function(e) {
-        $('#collapseBenchmarks').collapse('show');        
+        $('#collapseBenchmarks').collapse('show');
     });
     $('#riskComments').click(function(e) {
-        $('#collapseComments').collapse('show');        
+        $('#collapseComments').collapse('show');
     });
 
 function toggleIcon(e) {
@@ -396,5 +396,5 @@ function toggleIcon(e) {
 $(".accordion").on("hidden.bs.collapse", toggleIcon);
 $(".accordion").on("shown.bs.collapse", toggleIcon);
 
-</script>    
+</script>
 @endsection

@@ -207,7 +207,8 @@ class UserController extends Controller
             return redirect()->route('userProfile');
         }
 
-        public function visitProfile(User $user){
+        public function visitProfile($slug){
+            $user = User::where('slug','=',$slug)->first();
             $bookmarks = Bookmark::where('user_id',$user->id)->with('rcs')->paginate(10);
             $rcs = RiskControl::where('user_id',$user->id)->with('likes')->with('dislikes')->whereNotIn('status',['P','R'])->with('bookmarks')->paginate(10);
             $likes = Like::where('user_id',$user->id)->with('rcs')->paginate(10);

@@ -26,7 +26,7 @@
                     @endif
                     " class="rounded-circle shadow avatar-img-lg">
                     <div class="d-inline-block pt-1 pl-0 pl-md-2">
-                        <p class="font-eb mt-2 font-16 color-b"><a href="{{route('visit.profile',$follower)}}" class="color-r">{{$follower->name}}</a> Followed You </p>
+                        <p class="font-eb mt-2 font-16 color-b"><a href="{{route('visit.profile',$follower->slug)}}" class="color-r">{{$follower->name}}</a> Followed You </p>
                     </div>
                     <span class="float-md-right">
                         @if($follower->followedBy(Auth::user()))
@@ -34,7 +34,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2" type="submit">Unfollow</button>
-                            </form> 
+                            </form>
                         @else
                             <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2" onclick="parent.location='{{route('follow.user',$follower)}}'">Follow Back</button>
                         @endif
@@ -43,7 +43,7 @@
                           <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-h"></i>
                           </a>
-    
+
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{route('mark.notification.read',$not->id)}}">Mark as read</a>
                             <a class="dropdown-item" href="{{route('delete.notification',$not->id)}}">Delete</a>
@@ -70,13 +70,13 @@
                         <p class="font-eb mt-2 font-16 color-b"><a href="{{route('visit.profile',$likedBy)}}" class="color-r">{{$likedBy->name}}</a> Liked your <a href="{{route('rc.view',$rc->slug)}}" class="color-r">risk control</a>  </p>
                     </div>
                     <span class="float-md-right">
-                    
+
                         {{-- <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mr-4 btn-hover mt-2">Follow Back</button> --}}
                         <div class="d-inline-block float-md-right mt-3">
                           <a class="color-dg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-h"></i>
                           </a>
-    
+
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{route('mark.notification.read',$not->id)}}">Mark as read</a>
                             <a class="dropdown-item" href="{{route('delete.notification',$not->id)}}">Delete</a>
@@ -87,7 +87,7 @@
                 <hr>
                 @endif
             @endforeach
-            
+
             {{-- <div class="row">
                 <p class="col-10 font-eb color-b font-16 d-inline-block">New risk management in <a href="#" class="color-r">Business Process</a>
                 </p>
@@ -105,7 +105,7 @@
                         </div>
                 </span>
             </div> --}}
-            
+
         </div>
     </div>
 </div>

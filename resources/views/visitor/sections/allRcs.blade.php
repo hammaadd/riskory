@@ -16,12 +16,12 @@
         <div class="pl-0 col-12 col-sm-auto">
             <p class="bg-lblue font-eb font-18 py-2 px-5 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;All Risk Controls</p>
         </div>
-        
-   
+
+
         <div class="col-lg-3 col-md-6 col-sm-12 col-12 ml-auto">
             <div class="topbar-icon text-center text-md-right mt-3 mt-md-0 mmm">
                 {{-- @include('user.sections.filters') --}}
-              
+
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
         {{-- Risk control starts here --}}
         @include('visitor.sections.riskcontrols')
         {{-- Riskcontrol ends here --}}
-        
+
     </div>
 </div>
 {{-- @include('user.sections.ratingModal') --}}

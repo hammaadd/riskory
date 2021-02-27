@@ -12,7 +12,7 @@
     </style>
     <main role="main" class="py-2">
         <div class="pl-0 col-12 col-md-12 py-5 pr-0 pr-md-3 pr-lg-5">
-          
+
             <!-- Browse By Industry Secion -->
             <div class="sect--title pl-3 pl-md-5">
                 <div class="row mb-4 mb-xl-5 align-items-md-center">
@@ -30,7 +30,7 @@
 
             <div class="row pl-3 pl-md-5">
                 @foreach($industries as $ind)
-                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-2">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControlPublic',['control'=>$ind,'type'=>$ind->type])}}">{{$ind->name}}</a> ({{$ind->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
                         </div>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('publicSeeMore','industries')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Industries</a>
+                <a href="{{route('publicSeeMore','industries')}}" class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold">More Industries</a>
             </div>
 
             <div class="sect--title pl-3 pl-md-5">
@@ -52,10 +52,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row pl-3 pl-md-5">
                 @foreach($bprocesses as $bp)
-                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-2">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControlPublic',['control'=>$bp,'type'=>$bp->type])}}">{{$bp->name}}</a> ({{$bp->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
                         </div>
@@ -63,7 +63,7 @@
                 @endforeach
             </div>
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('publicSeeMore','bprocesses')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Processes</a>
+                <a href="{{route('publicSeeMore','bprocesses')}}" class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold">More Business Processes</a>
             </div>
             <!-- Browse By Framework Section -->
             <div class="sect--title pl-3 pl-md-5">
@@ -76,10 +76,10 @@
                     </div> --}}
                 </div>
             </div>
-            
+
             <div class="row pl-3 pl-md-5">
                 @foreach($bframeworks as $bf)
-                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-3">
+                    <div class="col-12 col-sm-6 col-md-4 px-4 mb-2">
                         <div class="div-hover">
                             <p class="p-style mb-0 d-inline mr-3"><a href="{{route('byControlPublic',['control'=>$bf,'type'=>$bf->type])}}">{{$bf->name}}</a> ({{$bf->rccontrols->whereNotIn('rc.status',['P','R'])->count()}})</p>
                         </div>
@@ -87,7 +87,7 @@
                 @endforeach
             </div>
             <div class="ml-4 ml-md-5 my-2">
-                <a href="{{route('publicSeeMore','bframeworks')}}" class="btn bg-red text-white br-7 font-16 text-capitalize font-weight-bold">More Business Frameworks</a>
+                <a href="{{route('publicSeeMore','bframeworks')}}" class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold">More Business Frameworks</a>
             </div>
 
         </div>

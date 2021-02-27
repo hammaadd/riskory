@@ -39,7 +39,7 @@
                             @endif
                             "  class="rounded-circle shadow avatar-img-lg bg-white align-top">
                             <div class="d-inline-block pt-1 pl-2">
-                                <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fols)}}" class="color-b">{{$fols->name}}</a></p>
+                                <p class="p-style mb-0 font-eb font-18"><a href="{{route('visit.profile',$fols->slug)}}" class="color-b">{{$fols->name}}</a></p>
                                 <p class="p-style font-eb color-r font-14 mb-0">{{$fols->rcs->count()}} risks</p>
                             </div>
                         </div>

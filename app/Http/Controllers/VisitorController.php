@@ -17,11 +17,11 @@ class VisitorController extends Controller
     //
     public function __construct()
     {
-        
+
     }
 
     public function index(){
-        
+
         if(Auth::user()){
             return redirect()->route('user');
         }
@@ -65,7 +65,7 @@ class VisitorController extends Controller
             'captcha' => 'required|captcha',
             'agree'=>'required'
         ]);
-        
+
         $user =  User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -83,7 +83,7 @@ class VisitorController extends Controller
         event(new Registered($user));
         Auth::login($user);
         return redirect()->route('userLogin');
-        
+
     }
 
     public function loginForm(){
@@ -96,7 +96,7 @@ class VisitorController extends Controller
             }
             return view('user.login');
         }
-        
+
     }
 
     // public function authenticate(Request $request){
@@ -192,29 +192,29 @@ class VisitorController extends Controller
         }else{
             $rcs = RiskControl::orderBy('created_at','desc')->whereNotIn('status',['P','R'])->paginate(10);
         }
-          
+
            return view('visitor.sections.allRcs',compact('rcs'));
      }
 
 
      public function seeMore($req = null){
         if($req == 'industries'){
-            $data = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','industry')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Industry';
             $icon = 'assets/images/Mask-Group-55.svg';
             return view('visitor.categories.viewMore',compact('data','name','icon','req'));
         }elseif($req == 'bframeworks'){
-            $data = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','bframework')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Business Framework';
             $icon = 'assets/images/Mask Group 57.svg';
             return view('visitor.categories.viewMore',compact('data','name','icon','req'));
         }elseif($req == 'bprocesses'){
-            $data = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->paginate(15);
+            $data = Control::where('status','=','1')->where('type','bprocess')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate(15);
             $name = 'Business process';
             $icon = 'assets/images/Mask Group 56.svg';
             return view('visitor.categories.viewMore',compact('data','name','icon','req'));
         }else{
-            
+
             return redirect()->route('publicCategories');
         }
 
@@ -225,7 +225,7 @@ class VisitorController extends Controller
         $rc = RiskControl::where('id',$slug)->with('controls.control.parent')->with('benchmarks.user')->with('comments.user')->with('tags.tag')->get()->first();
         // $expiresAt = now()->addHours(10);
 
-        
+
         if($rc){
             // views($rc)
             // ->cooldown($expiresAt)
@@ -237,6 +237,6 @@ class VisitorController extends Controller
         }
     }
 
-    
+
 
 }

@@ -33,11 +33,11 @@
             </h5>
         </div>
         <div class="col-12 col-sm-6">
-            <a href="{{route('visit.profile',$rc->user)}}">
+            <a href="{{route('visit.profile',$rc->user->slug)}}">
                 <img src="@if($rc->user->avatar == 'images/avatars/default.png') https://ui-avatars.com/api/?background=random&name={{ str_replace(' ','+' ,$rc->user->name) }} @else {{asset('userAvat/'.$rc->user->avatar)}} @endif" class="rounded-circle shadow avatar-img">
             </a>
             <div class="d-inline-block pt-2 pl-2">
-                <p class="p-style mb-0 font-14"><small class="font-14">Posted by: </small><a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-cc">{{$rc->user->name}}</a></p>
+                <p class="p-style mb-0 font-14"><small class="font-14">Posted by: </small><a href="{{route('visit.profile',$rc->user->slug)}}" class="font-eb color-cc">{{$rc->user->name}}</a></p>
             </div>
         </div>
         <div class="col-12 col-sm-6 text-sm-right">

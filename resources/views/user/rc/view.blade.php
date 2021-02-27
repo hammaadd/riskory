@@ -45,7 +45,7 @@
                         @endif
                         " class="rounded-circle shadow avatar-img">
                         <div class="d-inline-block pt-1 pl-2">
-                            <p class="p-style mb-0"><a href="{{route('visit.profile',$rc->user)}}" class="font-eb color-b">{{$rc->user->name}}</a>
+                            <p class="p-style mb-0"><a href="{{route('visit.profile',$rc->user->slug)}}" class="font-eb color-b">{{$rc->user->name}}</a>
 
                             </p>
                             <small>Posted on: {{$rc->created_at}}</small>
@@ -252,7 +252,7 @@
                                 @endif
                                 " class="rounded-circle shadow avatar-img">
                                 <div class="d-inline-block pt-1 pl-2">
-                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user)}}" class="font-eb color-b">{{$com->user->name}}</a>
+                                    <p class="p-style mb-0"><a href="{{route('visit.profile',$com->user->slug)}}" class="font-eb color-b">{{$com->user->name}}</a>
 
                                     </p>
 

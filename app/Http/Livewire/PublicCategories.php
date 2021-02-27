@@ -20,13 +20,13 @@ class PublicCategories extends Component
     public function render()
     {
         if($this->req == 'industries'){
-            $controls = Control::where('status','=','1')->where('type','industry')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
-            
+            $controls = Control::where('status','=','1')->where('type','industry')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate($this->perPage, ['*'], null, $this->page);
+
         }elseif($this->req == 'bframeworks'){
-            $controls = Control::where('status','=','1')->where('type','bframework')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
-           
+            $controls = Control::where('status','=','1')->where('type','bframework')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate($this->perPage, ['*'], null, $this->page);
+
         }elseif($this->req == 'bprocesses'){
-            $controls = Control::where('status','=','1')->where('type','bprocess')->with('parent')->with('followers')->paginate($this->perPage, ['*'], null, $this->page);
+            $controls = Control::where('status','=','1')->where('type','bprocess')->where('parent_id','=',null)->with('parent')->with('followers')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->paginate($this->perPage, ['*'], null, $this->page);
         }
         return view('livewire.public-categories',['data'=>$controls,'page' => $this->page]);
     }

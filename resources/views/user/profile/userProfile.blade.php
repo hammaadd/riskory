@@ -13,7 +13,7 @@
                 {{asset('userCover/'.Auth::user()->cover)}}
                 @endif
                 " class="user-cover" alt="cover-image" width="100%"/>
-            
+
                 <button class="select-image" id="coverBtn"><i class="fas fa-camera"></i> 800 x 200</button>
             </div>
         </div>
@@ -28,7 +28,7 @@
                         @else
                         {{asset('userAvat/'.Auth::user()->avatar)}}
                         @endif
-                    " />    
+                    " />
                 </div>
                 <form method="POST" action="{{URL::route('uploadAvatar')}}" enctype="multipart/form-data">
                     @csrf
@@ -53,10 +53,10 @@
                     <input id="coverUpload" type="file" name="cover" placeholder="Photo" required capture style="display: none;">
                     <button class="mt-1 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn"  id="uploadCoverBtn" style="display: none;"><i class="fas fa-camera" ></i> Save</button>
                 </form>
-                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn" title="View public profile" onclick="return parent.location='{{route('visit.profile',Auth::user())}}'"><i class="fas fa-eye"></i></button>
+                <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn" title="View public profile" onclick="return parent.location='{{route('visit.profile',Auth::user()->slug)}}'"><i class="fas fa-eye"></i></button>
                 <button class="mt-lg-4 font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 profiles--btn" onclick="parent.location='{{route('editProfile')}}'">Edit Info</button>
             </div>
-            
+
         </div>
     </div>
     <div class="container-fluid">
@@ -102,7 +102,7 @@
                 <div class="row mx-0 pt-4" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
-                
+
                 {{-- Risk control ends here --}}
             </div>
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
@@ -125,9 +125,9 @@
                 <div class="row mx-0 pt-4" id="likes_data">
                     @include('user.profile.likes')
                 </div>
-                
+
             </div>
-            
+
             <div class="tab-pane fade" id="nav-lists" role="tabpanel" aria-labelledby="nav-lists-tab">
                 <div class="text-center text-md-right pt-4 px-0 px-md-5">
                     <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold" onclick="return parent.location='{{route('all.lists')}}'"><i class="fas fa-plus-circle"></i> New List</button>
@@ -165,8 +165,8 @@
                     @include('user.profile.bookmarks')
                 </div>
             </div>
-           
-           
+
+
         </div>
     </div>
 </div>
@@ -202,15 +202,15 @@ $('#entries').on('change', function (){
         $url = "{{ route('bookmarks.fetch',Auth::user()) }}";
     }
     $(document).ready(function(){
-    
+
      $(document).on('click', '.page-link', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
         fetch_data(page);
      });
-    
-     
-    
+
+
+
     });
 
     function fetch_data(page)
@@ -228,7 +228,7 @@ $('#entries').on('change', function (){
         });
      }
 
-     
+
 
     $("#profileImage").click(function(e) {
          $("#imageUpload").click();
@@ -236,7 +236,7 @@ $('#entries').on('change', function (){
 
     function fasterPreview( uploader ) {
         if ( uploader.files && uploader.files[0] ){
-              $('#profileImage').attr('src', 
+              $('#profileImage').attr('src',
                  window.URL.createObjectURL(uploader.files[0]) );
                  document.getElementById('uploadAvatarBtn').style.display = 'inline';
         }
@@ -252,7 +252,7 @@ $('#entries').on('change', function (){
 
     function fasterCoverPreview( uploader ) {
         if ( uploader.files && uploader.files[0] ){
-              $('#coverImage').attr('src', 
+              $('#coverImage').attr('src',
                  window.URL.createObjectURL(uploader.files[0]) );
                  document.getElementById('uploadCoverBtn').style.display = 'inline';
         }
@@ -264,6 +264,6 @@ $('#entries').on('change', function (){
 
 
 
-    
+
     </script>
 @endsection

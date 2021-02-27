@@ -1,5 +1,8 @@
 @extends('user.layout.visitor')
 @section('SiteTitle','Categories || Riskory')
+@section('tree')
+<link rel="stylesheet" href="{{asset('/assets/css/tree.css')}}"></link>
+@endsection
 @section('content')
 <style>
     html,body {
@@ -23,4 +26,7 @@
     @livewire('public-categories',['data'=>$data,'req'=>$req,'page'=>1,'perPage'=>15])
 </div>
 </main>
+@endsection
+@section('script')
+<script src="{{asset('js/tree.js')}}"></script>
 @endsection

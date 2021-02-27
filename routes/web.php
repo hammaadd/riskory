@@ -230,7 +230,7 @@ Route::delete('comment/{comment}/delete/{rc}','RiskController@deleteComment')->n
 Route::get('all/lists','ListController@index')->name('all.lists');
 
 
-Route::get('user/{user}/','UserController@visitProfile')->name('visit.profile');
+Route::get('user/{slug}/','UserController@visitProfile')->name('visit.profile');
 Route::get('users/network','UserController@userNetwork')->name('user.network');
 //Follow user
 Route::get('follow/{user}/user','FollowController@followUser')->name('follow.user');

@@ -85,9 +85,9 @@
                                 </a>
 
                                 <ul class="rc--share-menu">
-                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="https://wa.me/?text={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://wa.me/?text={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" data-toggle="tooltip" data-placement="bottom" title="Share on whatsapp"><i class="fab fa-whatsapp"></i></a></li>
                                 </ul>
                             </div>
                         </div>

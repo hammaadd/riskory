@@ -28,7 +28,8 @@ Route::get('/categories','VisitorController@categories')->name('publicCategories
 Route::get('/categories/{control}','VisitorController@byControl')->name('byControlPublic');
 Route::get('/visitor/riskcontrols','VisitorController@allRiskcontrols')->name('rc.all.public');
 Route::get('/categories/{req}/see-more','VisitorController@seeMore')->name('publicSeeMore');
-Route::get('/risk-control/{slug}','VisitorController@viewSpecific')->name('rc.view.public');
+Route::get('rc/{slug}','VisitorController@viewSpecific')->name('rc.view');
+// Route::get('/r-c/{slug}','VisitorController@viewSpecific')->name('rc.view.public');
 
 // Route::get('/admin/login',)
 
@@ -181,7 +182,7 @@ Route::delete('rc/delete','RiskController@delete')->name('rc.delete');
 
 //All risk controls feed
 Route::get('/riskcontrols','RiskController@viewAll')->name('rc.all');
-Route::get('rc/{slug}','RiskController@viewSpecific')->name('rc.view');
+
 
 //Riskcontrol bookmark unbookmark
 

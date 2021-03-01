@@ -5,4 +5,5 @@
 
 @endforeach
 @include('user.sections.listModal')
+{!! $rcs->withQueryString()->links() !!}
 @endif

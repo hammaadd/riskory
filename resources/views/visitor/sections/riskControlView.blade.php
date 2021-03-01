@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12 col-sm-10 mb-2">
             <h5 class="rc-title mb-0">
-                <a href="{{route('rc.view.public',$rc->id)}}" class="color-cc">{{$rc->title}}</a>
+                <a href="{{route('rc.view',$rc->id)}}" class="color-cc">{{$rc->title}}</a>
             </h5>
         </div>
         <div class="col-12 col-sm-6">
@@ -36,7 +36,7 @@
             <button class="btn bg-white color-r box-shadow br-7 font-12 px-2 text-capitalize font-weight-bold btn-benchmark" onclick="parent.location='{{route('add.benchmark',$rc)}}'">Add Benchmark</button>
         </div>
         <div class="col-12 my-2">
-            <p class="p-style mb-0 font-16 text-black-50">{{Str::words($rc->objective,30)}} <a class="btn--readMore" href="{{route('rc.view.public',$rc->id)}}">Read more.</a></p>
+            <p class="p-style mb-0 font-16 text-black-50">{{Str::words($rc->objective,30)}} <a class="btn--readMore" href="{{route('rc.view',$rc->id)}}">Read more.</a></p>
         </div>
         <div class="col-12">
             <div class="row align-items-sm-end">
@@ -63,9 +63,9 @@
                                 </a>
 
                                 <ul class="rc--share-menu">
-                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" title="Share on twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="https://wa.me/?text={{route('rc.view.public',$rc->id)}}" target="_blank" class="box-shadow" title="Share on whatsapp"><i class="fab fa-whatsapp" ></i></a></li>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" title="Share on twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://wa.me/?text={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow" title="Share on whatsapp"><i class="fab fa-whatsapp" ></i></a></li>
                                 </ul>
                             </div>
                         </div>

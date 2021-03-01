@@ -1,4 +1,4 @@
-@if($lists)
+@if($lists->count() > 0 )
 @php
 $i=1;
 @endphp
@@ -9,6 +9,7 @@ $i=1;
         @else
         bg-white
         @endif px-1 px-md-5 py-3 py-md-4 br-7 my-3">
+
     <div class="col-9 col-md-9 text-left text-md-left float-md-left d-flex align-items-center justify-content-start">
         <img src="{{asset('assets/images/Mask Group 39@2x.png')}}" class="img-cicle d-inline-block align-top float-left" width="60px">
         <div class="d-inline-block pt-1 pl-2">
@@ -34,11 +35,15 @@ $i=1;
     </div>
 </div>
 
+
 @php
 $i++;
 @endphp
 @endforeach
 {{-- Modal --}}
 
+@else
+
+<p class="lead">No lists to show. Create new list to add risk controls.</p>
 
 @endif

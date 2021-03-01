@@ -14,9 +14,10 @@
     <div class="row px-xl-5 mx-0 mx-md-5 pt-3">
         <div class="col-12 px-0 mb-4">
             {{-- <a href="{{route('mark.all.read')}}">Mark all as read</a> --}}
-            <a href="{{route('user.notifications')}}" class="float-right font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 noti-btn">New notifications</a>
+            <a href="{{route('user.notifications')}}" class="float-right font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 noti-btn" data-toggle="tooltip" data-placement="top" title="View latest or new notifications.">New notifications</a>
         </div>
         <div class="col-12 bg-lgray br-7 border-0 box-shadow mb-4 p-3">
+        @if($user->readNotifications->count() > 0)
             @foreach($user->readNotifications as $not)
                 @if($not->data['type']=='follower')
                 @php
@@ -96,7 +97,9 @@
                 <hr>
                 @endif
             @endforeach
-
+        @else
+        <p class="lead">No old notifications to show.</p>
+        @endif
 
 
         </div>

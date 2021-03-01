@@ -45,7 +45,7 @@ class RcActionControllers extends Controller
             'rc_id'=>$riskControl,
         ]);
         $riskControl->user->notify(new LikedRc($riskControl->id));
-        
+        //return view('user.inc.likeButton',['rc'=>$riskControl])->render();
 
         return back();
     }
@@ -70,7 +70,7 @@ class RcActionControllers extends Controller
     }
 
     public function undislike(RiskControl $riskControl,Request $request){
-        
+
         $request->user()->dislikes()->where('rc_id',$riskControl->id)->delete();
         return back();
     }

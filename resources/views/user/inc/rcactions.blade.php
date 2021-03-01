@@ -1,6 +1,6 @@
 <div class="d-inline-block align-bottom">
     @if (!($rc->likedBy(auth()->user())))
-        <a class="box-shadow" role="button" onclick="parent.location='{{route('rc.like',$rc)}}'" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="Like">
+        <a class="box-shadow" role="button" href="javascript:void(0)" onclick="parent.location='{{route('rc.like',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Like">
             <i class="far fa-thumbs-up"></i>
             <span class="font-eb">{{$rc->likes->count()}}</span>
         </a>

@@ -28,7 +28,7 @@
                     @endif
                     " />
                 </div>
-               
+
                 <p class="font-eb font-18">{{$user->name}}</p>
             </div>
             <div class="col-12 col-lg-9 text-center text-lg-left pt-3">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-12 col-lg-4 pt-lg-1">
                         <p class="font-eb font-16 color-r mb-lg-0">
-                            <span class="d-inline-block">{{$user->userFollowing->count()}} Following</span> 
+                            <span class="d-inline-block">{{$user->userFollowing->count()}} Following</span>
                             <span class="d-inline-block">{{$user->userFollowers->count()}} Followers</span>
                         </p>
                     </div>
@@ -49,8 +49,8 @@
                             @csrf
                             @method('DELETE')
                             <button class="font-eb font-16 text-light bg-red px-4 py-1 border-0 br-7 float-right" type="submit">Unfollow</button>
-                        </form> 
-                        
+                        </form>
+
                         @else
                         <button class="font-eb font-16 color-r bg-transparent px-4 py-1 border-1 br-7 float-right" onclick="parent.location='{{route('follow.user',$user)}}'">Follow</button>
                         @endif
@@ -61,8 +61,8 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
     <div class="container-fluid">
@@ -78,9 +78,9 @@
                     <div class="col-12 d-flex justify-content-around"></div>
                 </div>
                 </div>
-                
-                
-               
+
+
+
             {{-- </div> --}}
         </div>
         <div class="pt-4 px-md-5">
@@ -100,7 +100,7 @@
                 <div class="row mx-0 py-4" id="posts_data">
                     @include('user.profile.riskcontrols')
                 </div>
-                
+
                 {{-- Risk control ends here --}}
             </div>
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
@@ -122,11 +122,11 @@
                 <div class="row mx-0 pt-4" id="likes_data">
                     @include('user.profile.likes')
                 </div>
-                
+
             </div>
             <div class="tab-pane fade" id="nav-lists" role="tabpanel" aria-labelledby="nav-lists-tab">
                 <div class="text-center text-md-right pt-4 px-0 px-md-5">
-                    
+
                     {{-- <button class="btn-list bg-red border-0 br-30 font-eb color-w px-5 py-3 btn-hover" onclick="return parent.location='{{route('all.lists')}}'"><i class="fas fa-plus-circle"></i> New List</button> --}}
                 </div>
                 <div class="row mx-0 mx-md-5 pt-4">
@@ -167,7 +167,6 @@
 </div>
 @endsection
 @section('script')
-
 <script type="text/javascript">
     $idOfData = '#posts_data';
     $url = "{{ route('riskcontrols.fetch',$user) }}";
@@ -191,15 +190,15 @@
         $url = "{{ route('bookmarks.fetch',$user) }}";
     }
     $(document).ready(function(){
-    
+
      $(document).on('click', '.page-link', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
         fetch_data(page);
      });
-    
-     
-    
+
+
+
     });
 
     function fetch_data(page)
@@ -217,7 +216,7 @@
         });
      }
 
-     
+
 
     $("#profileImage").click(function(e) {
          $("#imageUpload").click();
@@ -225,7 +224,7 @@
 
     function fasterPreview( uploader ) {
         if ( uploader.files && uploader.files[0] ){
-              $('#profileImage').attr('src', 
+              $('#profileImage').attr('src',
                  window.URL.createObjectURL(uploader.files[0]) );
                  document.getElementById('uploadAvatarBtn').style.display = 'inline';
         }
@@ -241,7 +240,7 @@
 
     function fasterCoverPreview( uploader ) {
         if ( uploader.files && uploader.files[0] ){
-              $('#coverImage').attr('src', 
+              $('#coverImage').attr('src',
                  window.URL.createObjectURL(uploader.files[0]) );
                  document.getElementById('uploadCoverBtn').style.display = 'inline';
         }

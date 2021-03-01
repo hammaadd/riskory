@@ -47,7 +47,7 @@
         {{-- Risk control starts here --}}
         @include('user.sections.riskcontrols')
         {{-- Riskcontrol ends here --}}
-        
+
     </div>
 </div>
 @include('user.sections.ratingModal')
@@ -55,6 +55,7 @@
 @endsection
 @section('script')
 <script>
+
     $(document).ready(function(){
         ScrollReveal().reveal('.rcreveal',{interval:16, delay:100});
     });

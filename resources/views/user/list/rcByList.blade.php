@@ -6,7 +6,7 @@
         <div class="pl-0 col-12 col-sm-auto">
             <p class="bg-lblue font-eb font-18 py-2 px-5 mb-0 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;Listed risk controls</p>
         </div>
-   
+
         <div class="col-lg-3 col-md-6 col-sm-12 col-12">
             {{-- <div class="topbar-icon text-center text-md-right mt-3 mt-md-0">
               <a href="#" class="text-center mx-2 my-1 bg-lblue color-r"><i class="fas fa-sort-amount-up-alt"></i></a>
@@ -24,13 +24,14 @@
         @endif
         @include('user.sections.rcByList')
         {{-- Riskcontrol ends here --}}
-        
+
     </div>
 </div>
 @include('user.sections.ratingModal')
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
+<script src="{{asset('js/reaction.js')}}"></script>
 <script>
     $(document).ready(function(){
     });

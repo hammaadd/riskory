@@ -1,18 +1,18 @@
 @extends('user.layout.contributor')
 @section('SiteTitle','Risk controls feed || Riskory')
 
-@section('content') 
+@section('content')
 <div class="px-0 col-12 col-md-9 py-2">
     <div class="row pt-4 mx-0">
         <div class="pl-0 col-12 col-sm-auto">
             <p class="bg-lblue font-eb font-18 py-2 px-5 rounded-right-xl shadow-sm"><i><img src="{{asset('assets/images/Mask Group 10@2x.png')}}" class="align-bottom" width="35px"></i>&nbsp;&nbsp;All Risk Controls</p>
         </div>
-   
+
         <div class="col-lg-3 col-md-6 col-sm-12 col-12 ml-auto">
             <div class="topbar-icon text-center text-md-right mt-3 mt-md-0">
                 @include('user.sections.filters')
 
-                
+
               </div>
         </div>
     </div>
@@ -28,13 +28,14 @@
         {{-- Risk control starts here --}}
         @include('user.sections.riskcontrols')
         {{-- Riskcontrol ends here --}}
-        
+
     </div>
 </div>
 @include('user.sections.ratingModal')
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
+<script src="{{asset('js/reaction.js')}}"></script>
 <script>
     $(document).ready(function(){
         ScrollReveal().reveal('.rcreveal',{interval:16, delay:100});

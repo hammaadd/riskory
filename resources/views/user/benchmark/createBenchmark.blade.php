@@ -20,7 +20,7 @@
                                 <input type="radio" id="rsuccess" name="benchmark" value="Success" checked="">
                                 <label for="rsuccess">Success</label>
                             </div>
-                            <div class="radio-item ml-5 mb-4"> 
+                            <div class="radio-item ml-5 mb-4">
                                 <input type="radio" id="rfailed" name="benchmark" value="Failed">
                                 <label for="rfailed">Failed</label>
                             </div>
@@ -41,7 +41,7 @@
                                 <label class="font-eb font-14 mb-1">Description</label>
                                 <input type="text" name="description" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Benchmark Description">
                             </div>
-                            
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Response</label>
                                 <input type="text" name="response" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Risk Response">
@@ -53,7 +53,7 @@
                                 <input type="text" name="reason" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter The Reason">
                                 <small id="response" class="form-text text-muted mt-3">If any then mention reason for failure or success.</small>
                             </div>
-                            
+
                             <div class="mb-4">
                                 <label class="font-eb font-14 mb-1">Notes</label>
                                 <input type="text" name="notes" class="form-control br-10 box-shadow border-0 font-14 font-e color-dg" placeholder="Enter any additional notes">
@@ -63,7 +63,7 @@
                                 <button class="btn-create py-2 px-5" type="submit">Create</button>
                             </div>
                         </fieldset>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>

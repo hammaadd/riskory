@@ -102,7 +102,7 @@
                     <div class="d-inline-block mr-2" onclick="doRating({{$rc->id}})" id="showRating{{$rc->id}}">
                         @include('user.sections.showRating')
                     </div>
-                    <small class="font-14">Posted on: {{$rc->created_at}}</small>
+                    <small class="font-14">Posted on: {{$rc->created_at}} ({{$rc->created_at->diffForHumans()}})</small>
                 </div>
             </div>
 
@@ -423,6 +423,7 @@
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
+<script src="{{asset('js/reaction.js')}}"></script>
 <script type="text/javascript">
     $('#riskDefinition').click(function(e) {
         $('#collapseDefinition').collapse('show');

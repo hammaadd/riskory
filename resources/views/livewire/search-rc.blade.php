@@ -4,7 +4,7 @@
     <div class="input-group search-bar">
 
 
-      <input type="text" wire:model.debounce.500ms="search" name="search" class="form-control" placeholder="Search Here" aria-label="Search Here" aria-describedby="basic-addon2">
+      <input type="text" wire:model.debounce.400ms="search" name="search" class="form-control" placeholder="Search Here" aria-label="Search Here" aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn-search" type="submit"><i class="fas fa-search"></i></button>
       </div>
@@ -12,21 +12,39 @@
     </div>
   </form>
 
-<div class="row position-absolute search-dropdown style-2 scrollbar shadow">
-  <div class="col-12 mx-0 border-right">
-    <div class="list-group w-100 list-group-flush">
+<div class="row position-absolute search-dropdown style-2 scrollbar shadow br-7">
+  <div class="mx-1 w-100" >
+    <div wire:loading.inline>
+        <img src="{{asset('loaders/svg-loaders/oval.svg')}}" class="my-2" width="40" height="40">
+        Loading....
+    </div>
+    @if(isset($rcs))
+    @if($rcs->count() > 0)
+    <p class="font-18 font-bold">Risk Controls</p>
       @foreach($rcs as $rc)
-      <a href="{{route('rc.view',$rc->id)}}" class="list-group-item list-group-item-action text-left mt-1">
-        <img src="{{$rc->user->avatar}}" alt="">
-        <h5>{{$rc->title}} </h5>
-          {{-- <p >{{Str::words($rc->description,5)}}</p>
-          <small><span class="badge  badge-secondary">{{views($rc)->count()}} Views</span>  <span class="badge badge-secondary">{{$rc->likes->count()}} Likes </span> <span class="badge badge-secondary">Posted on: {{$rc->created_at}}</span></small> --}}
+      <a href="{{route('rc.view',$rc->id)}}" class="text-left d-block text-decoration-none search--anchor br-7 p-1 my-1 color-r">
+       {{$rc->title}}
       </a>
 
       {{-- <a href="#" class="list-group-item list-group-item-action"></a> --}}
       @endforeach
+    @endif
+    @endif
 
-
-    </div>
   </div>
+  @if(isset($controls))
+
+  <div class="mx-1 mt-2 w-100">
+    @if($controls->count() > 0)
+        <p class="font-18 font-bold">Categories</p>
+        @foreach($controls as $cont)
+        <button class="btn bg-white color-r box-shadow br-7 font-14 px-2 text-capitalize mb-2 btn-hover" onclick="return parent.location='{{route('byControl',['control'=>$cont,'type'=>$cont->type])}}'">{{$cont->name}}</button>
+        @endforeach
+    @elseif(!($controls->count() > 0) && !($rcs->count() > 0))
+        <p  class="font-18 font-bold">No results to show for "{{$search}}"</p>
+    @endif
+  </div>
+
+
+  @endif
 </div>

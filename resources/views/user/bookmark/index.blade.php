@@ -46,7 +46,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/reaction.js')}}"></script>
+
 @endsection
 
 

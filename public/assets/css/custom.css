@@ -1674,7 +1674,7 @@ button.select-image {
     .scrollbar
 {
 	float: left;
-	max-height: 300px;
+	max-height: 400px;
 	background: #F5F5F5;
 }
 
@@ -2109,4 +2109,17 @@ button.select-image {
 
 .sm-export-btn:hover{
     background: #000;
+}
+
+/* Search bar styling */
+.search--anchor{
+    border: 1px solid white;
+    background: white;
+}
+
+
+
+.search--anchor:hover{
+border: 1px solid #e90000;
+background: #fdfdfd;
 }

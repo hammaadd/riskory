@@ -74,13 +74,13 @@
 </header>
 
 <script>
-  $( document ).ajaxStart(function() {
-    document.getElementById("loader").style.display = "flex";
- });
+//   $( document ).ajaxStart(function() {
+//     document.getElementById("loader").style.display = "flex";
+//  });
 
- $( document ).ajaxComplete(function() {
-  document.getElementById("loader").style.display = "none";
- });
+//  $( document ).ajaxComplete(function() {
+//   document.getElementById("loader").style.display = "none";
+//  });
 </script>
 <div class="container-loader" id="loader">
 	<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">

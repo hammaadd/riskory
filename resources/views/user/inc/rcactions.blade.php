@@ -8,13 +8,15 @@
         <form action="{{route('rc.unlike',$rc)}}" name="unlike" method="POST">
             @csrf
             @method('DELETE')
-            <button class="box-shadow" role="button" type="submit" data-toggle="tooltip" data-placement="bottom" title="Unlike">
+            <button class="box-shadow" role="button" type="submit" data-toggle="tooltip"data-placement="bottom" title="Unlike">
                 <i class="fas fa-thumbs-up"></i>
                 <span class="font-eb">{{$rc->likes->count()}}</span>
             </button>
         </form>
     @endif
 </div>
+
+
 
 <div class="d-inline-block align-bottom">
     @if (!($rc->dislikedBy(auth()->user())))

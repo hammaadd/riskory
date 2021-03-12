@@ -473,7 +473,32 @@ class RiskController extends Controller
     public function searchQuery(Request $request){
        $search = $request->search;
        if(!empty($search)){
-       $rcs = RiskControl::where('title', 'like', '%'.$search.'%')->whereNotIn('status',['P','R'])->orWhere('description', 'like', '%'.$search.'%')->paginate(10);
+
+        $riskcontrol = RiskControl::query();
+
+            $riskcontrol->whereNotIn('status',['P','R']);
+            $riskcontrol->where('title', 'like','%'.$search.'%');
+            $riskcontrol->orWhere('title', 'like',$search.'%');
+            $riskcontrol->orWhere('description', 'like', '%'.$search.'%');
+            $riskcontrol->orWhere('objective', 'like', '%'.$search.'%');
+            $riskcontrol->orWhere('business_impact', 'like', '%'.$search.'%');
+            $rcs = $riskcontrol->orWhereHas('controls',function ($query1) use($search){
+                return $query1->whereHas('control', function ($query11) use($search){
+                    return $query11->where('name','like',$search.'%')
+                    ->orWhere('name','like','%'.$search.'%');
+                });
+            })->paginate(10);
+
+
+            $controls = Control::select('name','status','id','type')
+                        ->where('status','=','1')
+                        ->where('name','like',$search.'%')
+                        ->orWhere('name','like','%'.$search.'%')
+                        ->take(8)
+                        ->get();
+
+
+    //    $rcs = RiskControl::where('title', 'like', '%'.$search.'%')->whereNotIn('status',['P','R'])->orWhere('description', 'like', '%'.$search.'%')->paginate(10);
        if($rcs){
         return view('user.rc.searchResults',compact('rcs','search'));
         }else{

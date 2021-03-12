@@ -175,7 +175,7 @@
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
-<script src="{{asset('js/reaction.js')}}"></script>
+
 <script type="text/javascript">
 $('#entries').on('change', function (){
         $('#rcs_entries').submit();

@@ -173,12 +173,12 @@ Route::get('/tag/{tag}/follow','FollowController@followTag')->name('tag.follow')
 Route::delete('/tag/{tag}/unfollow','FollowController@unfollowTag')->name('tag.unfollow');
 
 //Risk control User side
-Route::get('/rc/create','RiskController@create')->name('rc.create');
-Route::post('/rc/create','RiskController@store')->name('rc.store');
+Route::get('create/riskcontrol','RiskController@create')->name('rc.create');
+Route::post('create/riskcontrol','RiskController@store')->name('rc.store');
 Route::get('/rc/show/{slug}','RiskController@show')->name('rc.show');
 Route::get('rc/{riskcontrol}/edit','RiskController@edit')->name('rc.edit');
 Route::put('rc/{riskcontrol}/edit','RiskController@update')->name('rc.update');
-Route::delete('rc/delete','RiskController@delete')->name('rc.delete');
+Route::delete('riskcontrol/delete','RiskController@delete')->name('rc.delete');
 
 //All risk controls feed
 Route::get('/riskcontrols','RiskController@viewAll')->name('rc.all');
@@ -225,7 +225,6 @@ Route::get('riskcontrol/view/{benchmark}/benchmark','BenchmarkController@view')-
 //Comments
 Route::post('comment/{riskcontrol}/create','RiskController@createComment')->name('create.comment');
 Route::delete('comment/{comment}/delete/{rc}','RiskController@deleteComment')->name('comment.delete');
-
 //Lists
 
 Route::get('all/lists','ListController@index')->name('all.lists');

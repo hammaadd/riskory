@@ -35,7 +35,6 @@
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
-<script src="{{asset('js/reaction.js')}}"></script>
 <script>
     $(document).ready(function(){
         ScrollReveal().reveal('.rcreveal',{interval:16, delay:100});

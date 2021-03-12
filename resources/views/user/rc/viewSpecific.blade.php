@@ -423,7 +423,6 @@
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
-<script src="{{asset('js/reaction.js')}}"></script>
 <script type="text/javascript">
     $('#riskDefinition').click(function(e) {
         $('#collapseDefinition').collapse('show');

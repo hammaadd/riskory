@@ -31,7 +31,7 @@
 @include('user.sections.rcDeleteModal')
 @endsection
 @section('script')
-<script src="{{asset('js/reaction.js')}}"></script>
+
 <script>
     $(document).ready(function(){
     });

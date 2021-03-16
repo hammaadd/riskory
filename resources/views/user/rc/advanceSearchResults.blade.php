@@ -28,7 +28,7 @@
                 <div class="col-12 col-md-6 col-xl-6 my-2">
                     <label class="font-eb font-14 mb-1">Industry</label>
                     <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="industry">
-                        <option>Select option....</option>
+                        <option></option>
                         @if(isset($controls))
                         @foreach($controls as $con)
                             @if($con->type=='industry')
@@ -42,7 +42,7 @@
                 <div class="col-12 col-md-6 col-xl-6 my-2">
                     <label class="font-eb font-14 mb-1">Business framework</label>
                     <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="framework">
-                        <option>Select option....</option>
+                        <option></option>
                         @if(isset($controls))
                         @foreach($controls as $con)
                             @if($con->type=='bframework')
@@ -56,7 +56,7 @@
                 <div class="col-12 col-md-6 col-xl-6 my-2">
                     <label class="font-eb font-14 mb-1">Business process</label>
                     <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="process">
-                        <option>Select option....</option>
+                        <option></option>
                         @if(isset($controls))
                         @foreach($controls as $con)
                             @if($con->type=='bprocess')
@@ -70,7 +70,7 @@
                 <div class="col-12 col-md-6 col-xl-6 my-2">
                     <label class="font-eb font-14 mb-1">Tag</label>
                     <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="tag">
-                        <option>Select option....</option>
+                        <option></option>
                         @if(isset($tags))
                         @foreach($tags as $tag)
                             <option value="{{$tag->id}}" @if(isset($_GET['tag'])) @if($_GET['tag'] == $tag->id) selected @endif @endif><strong>{{$tag->name}} ({{$tag->rctags_count}})</strong> </option>
@@ -82,7 +82,7 @@
                 <div class="col-12 col-md-6 col-xl-6 my-2">
                     <label class="font-eb font-14 mb-1">User</label>
                     <select class="js-example-basic-multiple form-control p-5 br-7 box-shadow border-0 font-16 font-e color-dg" name="user">
-                        <option>Select option....</option>
+                        <option></option>
                         @if(isset($users))
                         @forelse($users as $user)
                             <option value="{{$user->id}}" @if(isset($_GET['user'])) @if($_GET['user'] == $user->id) selected @endif @endif>{{$user->name}}</option>
@@ -93,8 +93,9 @@
                     </select>
                 </div>
 
-                <div class="col-12 col-md-6 col-xl-6 my-2 d-flex flex-column align-items-end justify-content-end">
-                    <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold">Search <i class="fas fa-search"></i></button>
+                <div class="col-12 col-md-6 col-xl-6 my-2 d-flex flex-row align-items-end justify-content-end">
+                    <a href="{{route('advanced.search')}}" class="btn border-1 color-r br-7 font-12 text-capitalize font-weight-bold mx-1" >Reset <i class="fas fa-reset"></i></a>
+                    <button class="btn bg-red text-light br-7 font-12 text-capitalize font-weight-bold mx-1">Search <i class="fas fa-search"></i></button>
                 </div>
 
 

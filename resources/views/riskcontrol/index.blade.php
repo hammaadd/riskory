@@ -14,7 +14,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary d-inline-block">Data table of all riskcontrols.</h6>
-    
+
 
     </div>
     <div class="card-body">
@@ -36,11 +36,11 @@
           <div class="card-body">
             <div class="row">
                 <div class="col-12"><h4><strong>Title:</strong> {{$rc->title}}</h4></div>
-                
+
             </div>
             <div class="col-12"><p><strong>Objective Summary: </strong>{{$rc->obj_summary}}</p></div>
             <div class="col-12">
-                
+
                 <?php $conts = $rc->controls->where('type','industry');?>
                 @if($conts)
                 <small><strong>Industries</strong></small><br>
@@ -50,7 +50,7 @@
                 @endif
             </div>
             <div class="col-12">
-                
+
                 <?php $conts = $rc->controls->where('type','bframework');?>
                 @if($conts)
                 <small><strong>Business frameworks</strong></small><br>
@@ -60,7 +60,7 @@
                 @endif
             </div>
             <div class="col-12">
-                
+
                 <?php $conts = $rc->controls->where('type','bprocess');?>
                 @if($conts)
                 <small><strong>Business processs</strong></small><br>
@@ -95,17 +95,17 @@
                 @csrf
                 @method('PUT')
                 <label for="status">Update Status</label>
-               
+
                     <select name="status" id="" class="form-control">
-                     
+
                       <option value="A" @if($rc->status=='A') selected @endif class="text-success">Approved</option>
                       <option value="R" @if($rc->status=='R') selected @endif class="text-danger">Rejected</option>
                       <option value="P" @if($rc->status=='P') selected @endif class="text-warning">Pending</option>
                     </select>
-                
+
                     <button type="submit" class="btn btn-block btn-secondary mt-1 btn-sm"  >Update Status <i class="fas fa-pen"></i></button>
-                 
-                
+
+
               </form>
               <hr>
               <button class="btn btn-sm btn-block btn-primary mt-1" onclick="return parent.location='{{route('admin.view.rc',$rc)}}'">View <i class="fas fa-eye"></i></button>
@@ -115,7 +115,7 @@
 
                 <button class="btn btn-sm btn-block btn-danger mt-1" type="submit" title="Delete"><i class="fas fa-trash"></i></button>
               </form> --}}
-              
+
             </td>
             </tr>
 

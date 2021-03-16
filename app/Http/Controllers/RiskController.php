@@ -11,6 +11,7 @@ use App\Models\Relation;
 use App\Models\RiskControl;
 use App\Models\Tag;
 use App\Models\Testingstep;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -569,6 +570,69 @@ class RiskController extends Controller
                 return back();
              }
 
+
+
+    }
+
+
+    public function advanceSearch(Request $request){
+        $controls = Control::where('status','1')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->having('rccontrols_count','>',0)->get();
+        $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
+        $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
+        return view('user.rc.advanceSearch',compact('controls','tags','users'));
+    }
+
+    public function advanceSearchResults(Request $request){
+        $rcs = Riskcontrol::query();
+        $controls = Control::where('status','1')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->having('rccontrols_count','>',0)->get();
+        $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
+        $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
+        $status = 0;
+        if($request->get('industry')!= null){
+            $industry = Control::find($request->get('industry'));
+            if($industry):
+                $status = 1;
+                $rcs->orWherehas('controls',function ($query) use ($industry){
+                    $query->where('control_id','=',$industry->id);
+            })->whereNotIn('status',['R']);
+            endif;
+        }
+        if($request->get('framework')!= null){
+            $framework = Control::find($request->get('framework'));
+            if($framework):
+                $status = 1;
+                $rcs->orWherehas('controls',function ($query) use ($framework){
+                    $query->where('control_id','=',$framework->id);
+                })->whereNotIn('status',['R']);
+            endif;
+        }
+        if($request->get('process')!= null){
+            $process = Control::find($request->get('process'));
+            if($process):
+                $status = 1;
+                $rcs->orWherehas('controls',function ($query) use ($process){
+                    $query->where('control_id','=',$process->id);
+                })->whereNotIn('status',['R']);
+            endif;
+        }
+
+        if($request->get('user')!= null){
+            $user = User::select('id')->find($request->get('user'));
+            if($user):
+                $status = 1;
+                $rcs->orWhere('user_id','=',$user->id)->whereNotIn('status',['R']);
+            endif;
+        }
+
+
+        if($status > 0):
+            $rcs = $rcs->paginate(10);
+            return view('user.rc.advanceSearchResults',compact('rcs','controls','tags','users'));
+        else:
+            $request->session()->flash('error','Select something for advance search results');
+            return redirect()->route('advanced.search');
+        endif;
+        // dd($rcs);
 
 
     }

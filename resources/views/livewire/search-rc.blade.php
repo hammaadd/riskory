@@ -13,6 +13,11 @@
   </form>
 
 <div class="row position-absolute search-dropdown style-2 scrollbar shadow br-7">
+    @if(isset($rcs) || isset($controls))
+    <div class="col-12 ">
+        <a href="{{route('advanced.search')}}" class="float-right"><small class="color-r">Advanced Search <i class="fas fa-cog"></i></small></a>
+    </div>
+    @endif
   <div class="mx-1 w-100" >
     <div wire:loading.inline>
         <img src="{{asset('loaders/svg-loaders/oval.svg')}}" class="my-2" width="40" height="40">
@@ -47,4 +52,6 @@
 
 
   @endif
+
 </div>
+

@@ -273,3 +273,7 @@ Route::post('do/feedback','FeedbackController@doFeedback')->name('do.feedback');
 //ADmin Side feedback
 Route::get('admin/feedback/all','AdminController@feedback')->name('feedback.index');
 Route::delete('admin/feedback/{feedback}/delete','AdminController@destroyFeedback')->name('destroy.feedback');
+
+
+Route::get('advanced/search/riskcontrols','RiskController@advanceSearch')->name('advanced.search');
+Route::get('advanced/search-results/','RiskController@advanceSearchResults')->name('advance.search.results');

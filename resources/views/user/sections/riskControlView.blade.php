@@ -4,8 +4,7 @@
         @if($rc->user_id == Auth::id())
         <span class="ml-0 float-left">
 
-            <button class="btn-risk-edit delete-button d-inline" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button>
-            <button class="btn-risk-edit d-inline" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
+
         </span>
 
         @endif
@@ -86,7 +85,8 @@
 
                 <div class="col-12 col-lg-4 pl-0 order-lg-1">
                     <div class="rc-date bg-red text-white font-14 px-3 py-1 d-inline-block br-bl-7 no-hover">Posted on: {{$rc->created_at->toDateString()}}</div>
-
+                    <button class="btn-risk-edit delete-button d-inline" data-toggle="tooltip" data-placement="bottom" title="Delete risk control" data-rc="{{$rc->id}}">Delete <i class="fas fa-trash"></i></button>
+                    <button class="btn-risk-edit d-inline" onclick="parent.location='{{route('rc.edit',$rc)}}'" data-toggle="tooltip" data-placement="bottom" title="Edit risk control">Edit</button>
 
                 </div>
             </div>

@@ -6,7 +6,7 @@
 
 @yield('confirmJs')
 @yield('star-rating')
-@yield('select2')
+
 @yield('tree')
 <body class="bg-white" style="overflow-x:hidden; ">
 	<div class="d-flex w-100 flex-column">

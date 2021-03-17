@@ -10,12 +10,18 @@
       </div>
 
     </div>
+    {{-- <a href="{{route('advanced.search')}}" class="float-right"><small class="color-r">Advanced Search <i class="fas fa-cog"></i></small></a> --}}
   </form>
 
-<div class="row position-absolute search-dropdown style-2 scrollbar shadow br-7">
+<div class="row position-absolute search-dropdown style-2 scrollbar shadow br-7" id="search---dropdown">
     @if(isset($rcs) || isset($controls))
-    <div class="col-12 ">
-        <a href="{{route('advanced.search')}}" class="float-right"><small class="color-r">Advanced Search <i class="fas fa-cog"></i></small></a>
+    <div class="col-12 mt-2 ">
+        @if(isset($rcs))
+        @if($rcs->count() > 0)
+            <p class="font-18 font-bold float-left d-inline-block">Risk Controls</p>
+        @endif
+        @endif
+        <a href="{{route('advanced.search')}}" class="float-right d-inline-block"><span class="color-r">Advanced Search <i class="fas fa-cog"></i></span></a>
     </div>
     @endif
   <div class="mx-1 w-100" >
@@ -25,7 +31,7 @@
     </div>
     @if(isset($rcs))
     @if($rcs->count() > 0)
-    <p class="font-18 font-bold">Risk Controls</p>
+
       @foreach($rcs as $rc)
       <a href="{{route('rc.view',$rc->id)}}" class="text-left d-block text-decoration-none search--anchor br-7 p-1 my-1 color-r">
        {{$rc->title}}

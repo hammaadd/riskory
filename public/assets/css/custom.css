@@ -668,7 +668,8 @@ li>a:hover {
     font-family: 'Ebrima' !important;
 } */
 
-span.select2-selection.select2-selection--multiple {
+span.select2-selection.select2-selection--multiple,
+.select2-container--default .select2-selection--single {
     border-color: #ffffff;
     border-radius: 7px;
     padding: 6px 15px;

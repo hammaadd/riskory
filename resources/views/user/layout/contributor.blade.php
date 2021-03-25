@@ -1,5 +1,5 @@
 @include('user.inc.header')
-@include('user.inc.jqueryScript')
+
 @include('user.inc.bootstrapScript')
 
 @include('user.inc.toastr')

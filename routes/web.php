@@ -277,3 +277,6 @@ Route::delete('admin/feedback/{feedback}/delete','AdminController@destroyFeedbac
 
 Route::get('advanced/search/riskcontrols','RiskController@advanceSearch')->name('advanced.search');
 Route::get('advanced/search-results/','RiskController@advanceSearchResults')->name('advance.search.results');
+
+
+Route::get('advanced/search/fetch','RiskController@fetchAdvancedSearch')->name('fetch.adv.data');

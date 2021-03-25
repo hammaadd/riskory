@@ -28,14 +28,18 @@
                 <form action="{{route('advance.search.results')}}" method="GET" class="create-risk-form risk-form" >
                     <fieldset class="form-group">
                         <div class="row mx-0">
+                            <div class="col-12 col-md-12 col-xl-12 my-2">
+                                <label class="font-eb font-14 mb-1">Search</label>
+                                <input class="form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="search" placeholder="Enter query here." value="@if(isset($_GET['search'])){{$_GET['search']}}@endif">
+                            </div>
                             <div class="col-12 col-md-6 col-xl-6 my-2">
                                 <label class="font-eb font-14 mb-1">Industry</label>
-                                <select class="js-example-basic-multiple form-control br-7 box-shadow border-0 font-14 font-e color-dg " name="industry">
-                                    <option value="None"></option>
+                                <select class="js-example-basic-multiple form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="industry[]" multiple>
+                                    <option></option>
                                     @if(isset($controls))
                                     @foreach($controls as $con)
                                         @if($con->type=='industry')
-                                        <option value="{{$con->id}}" @if(isset($_GET['industry'])) @if($_GET['industry'] == $con->id) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
+                                        <option value="{{$con->id}}" @if(isset($_GET['industry'])) @if(in_array($con->id,$_GET['industry'])) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
                                         @endif
                                     @endforeach
                                     @endif
@@ -44,12 +48,12 @@
 
                             <div class="col-12 col-md-6 col-xl-6 my-2">
                                 <label class="font-eb font-14 mb-1">Business framework</label>
-                                <select class="js-example-basic-multiple form-control br-7 box-shadow border-0 font-14 font-e color-dg" name="framework">
+                                <select class="js-example-basic-multiple form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="framework[]" multiple>
                                     <option></option>
                                     @if(isset($controls))
                                     @foreach($controls as $con)
                                         @if($con->type=='bframework')
-                                        <option value="{{$con->id}}" @if(isset($_GET['framework'])) @if($_GET['framework'] == $con->id) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
+                                        <option value="{{$con->id}}" @if(isset($_GET['framework'])) @if(in_array($con->id,$_GET['framework'])) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
                                         @endif
                                     @endforeach
                                     @endif
@@ -58,12 +62,12 @@
 
                             <div class="col-12 col-md-6 col-xl-6 my-2">
                                 <label class="font-eb font-14 mb-1">Business process</label>
-                                <select class="js-example-basic-multiple form-control br-7 box-shadow border-0 font-14 font-e color-dg" name="process">
+                                <select class="js-example-basic-multiple form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="process[]" multiple>
                                     <option></option>
                                     @if(isset($controls))
                                     @foreach($controls as $con)
                                         @if($con->type=='bprocess')
-                                        <option value="{{$con->id}}" @if(isset($_GET['process'])) @if($_GET['process'] == $con->id) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
+                                        <option value="{{$con->id}}" @if(isset($_GET['process'])) @if(in_array($con->id,$_GET['process'])) selected @endif @endif><strong>{{$con->name}} ({{$con->rccontrols_count}})</strong> </option>
                                         @endif
                                     @endforeach
                                     @endif
@@ -72,11 +76,11 @@
 
                             <div class="col-12 col-md-6 col-xl-6 my-2">
                                 <label class="font-eb font-14 mb-1">Tag</label>
-                                <select class="js-example-basic-multiple form-control br-7 box-shadow border-0 font-14 font-e color-dg" name="tag">
+                                <select class="js-example-basic-multiple form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="tag[]" multiple>
                                     <option></option>
                                     @if(isset($tags))
                                     @foreach($tags as $tag)
-                                        <option value="{{$tag->id}}" @if(isset($_GET['tag'])) @if($_GET['tag'] == $tag->id) selected @endif @endif><strong>{{$tag->name}} ({{$tag->rctags_count}})</strong> </option>
+                                        <option value="{{$tag->id}}" @if(isset($_GET['tag'])) @if(in_array($tag->id,$_GET['tag'])) selected @endif @endif><strong>{{$tag->name}} ({{$tag->rctags_count}})</strong> </option>
                                     @endforeach
                                     @endif
                                 </select>
@@ -84,11 +88,11 @@
 
                             <div class="col-12 col-md-6 col-xl-6 my-2">
                                 <label class="font-eb font-14 mb-1">User</label>
-                                <select class="js-example-basic-multiple form-control br-7 box-shadow border-0 font-14 font-e color-dg" name="user">
+                                <select class="js-example-basic-multiple form-control p-4 br-7 box-shadow border-0 font-14 font-e color-dg" name="user[]" multiple>
                                     <option></option>
                                     @if(isset($users))
                                     @forelse($users as $user)
-                                        <option value="{{$user->id}}" @if(isset($_GET['user'])) @if($_GET['user'] == $user->id) selected @endif @endif>{{$user->name}}</option>
+                                        <option value="{{$user->id}}" @if(isset($_GET['user'])) @if(in_array($user->id,$_GET['user'])) selected @endif @endif>{{$user->name}}</option>
                                     @empty
 
                                     @endforelse

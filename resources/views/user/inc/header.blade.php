@@ -19,6 +19,7 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 	<!-- Custom CSS Styling -->
+    @include('user.inc.jqueryScript')
     @yield('select2')
 	<link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 	{{-- Loader css styling sheet --}}

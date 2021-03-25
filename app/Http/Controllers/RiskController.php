@@ -561,6 +561,8 @@ class RiskController extends Controller
 
 
 
+
+
         $rcs = $riskcontrols->paginate(10);
 
         if($rcs){
@@ -583,47 +585,76 @@ class RiskController extends Controller
     }
 
     public function advanceSearchResults(Request $request){
+
         $rcs = Riskcontrol::query();
         $controls = Control::where('status','1')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->having('rccontrols_count','>',0)->get();
         $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
         $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
         $status = 0;
-        if($request->get('industry')!= null){
-            $industry = Control::find($request->get('industry'));
-            if($industry):
+        $dataAll= [];
+        if($request->industry!= null):
+            $dataAll = $request->industry;
+        endif;
+
+        if($request->framework!= null):
+            $dataAll = array_merge($dataAll,$request->framework);
+        endif;
+
+        if($request->process!= null):
+            $dataAll = array_merge($dataAll,$request->process);
+        endif;
+
+        if($dataAll){
+            $dataAll = Control::select('id')->whereIn('id',$dataAll)->get()->toArray();
+
+            if($dataAll):
                 $status = 1;
-                $rcs->orWherehas('controls',function ($query) use ($industry){
-                    $query->where('control_id','=',$industry->id);
-            })->whereNotIn('status',['R']);
-            endif;
-        }
-        if($request->get('framework')!= null){
-            $framework = Control::find($request->get('framework'));
-            if($framework):
-                $status = 1;
-                $rcs->orWherehas('controls',function ($query) use ($framework){
-                    $query->where('control_id','=',$framework->id);
-                })->whereNotIn('status',['R']);
-            endif;
-        }
-        if($request->get('process')!= null){
-            $process = Control::find($request->get('process'));
-            if($process):
-                $status = 1;
-                $rcs->orWherehas('controls',function ($query) use ($process){
-                    $query->where('control_id','=',$process->id);
+                $rcs->orWherehas('controls',function ($query) use ($dataAll){
+                    $query->whereIn('control_id',[$dataAll]);
                 })->whereNotIn('status',['R']);
             endif;
         }
 
-        if($request->get('user')!= null){
-            $user = User::select('id')->find($request->get('user'));
+        if($request->tag!= null){
+            $tag = Tag::select('id')->whereIn('id',$request->tag)->get()->toArray();
+
+            if($tag):
+                $status = 1;
+                $rcs->orWherehas('tags',function ($query) use ($tag){
+                    $query->whereIn('tag_id',[$tag]);
+                })->whereNotIn('status',['R']);
+            endif;
+        }
+
+        if($request->user!= null){
+            $user = User::select('id')->whereIn('id',$request->user)->get()->toArray();
+
             if($user):
                 $status = 1;
-                $rcs->orWhere('user_id','=',$user->id)->whereNotIn('status',['R']);
+                $rcs->orWhereIn('user_id',[$user])->whereNotIn('status',['R']);
             endif;
         }
 
+        if(isset($request->search))
+        {
+            $search = $request->search;
+        }else{
+            $search = '';
+        }
+       if(!empty($search)){
+        $status = 1;
+            $rcs->orWhere('title', 'like','%'.$search.'%');
+            $rcs->orWhere('title', 'like',$search.'%');
+            $rcs->orWhere('description', 'like', '%'.$search.'%');
+            $rcs->orWhere('objective', 'like', '%'.$search.'%');
+            $rcs->orWhere('business_impact', 'like', '%'.$search.'%');
+            // $rcs->orWhereHas('controls',function ($query1) use($search){
+            //     return $query1->whereHas('control', function ($query11) use($search){
+            //         return $query11->where('name','like',$search.'%')
+            //         ->orWhere('name','like','%'.$search.'%');
+            //     });
+            // });
+        }
 
         if($status > 0):
             $rcs = $rcs->paginate(10);
@@ -634,8 +665,59 @@ class RiskController extends Controller
         endif;
         // dd($rcs);
 
+        // dd($rcs->with('controls')->get());
+
+        // if($request->industry!= null){
+        //     $industry = Control::select('id')->whereIn('id',$request->industry)->get()->toArray();
+
+        //     if($industry):
+        //         $status = 1;
+        //         $rcs->orWherehas('controls',function ($query) use ($industry){
+        //             $query->orWhereIn('control_id',[$industry]);
+        //     })->whereNotIn('status',['R']);
+        //     endif;
+
+        //     // dd($rcs->get());
+        // }
+        // if($request->framework!= null){
+        //     $framework = Control::select('id')->whereIn('id',$request->framework)->get()->toArray();
+        //     if($framework):
+        //         $status = 1;
+        //         $rcs->orWherehas('controls',function ($query) use ($framework){
+        //             $query->orWhereIn('control_id',[$framework]);
+        //         })->whereNotIn('status',['R']);
+        //     endif;
+        // }
+        // if($request->process!= null){
+        //     $process = Control::select('id')->whereIn('id',$request->process)->get()->toArray();
+        //     if($process):
+        //         $status = 1;
+        //         $rcs->orWherehas('controls',function ($query) use ($process){
+        //             $query->orWhereIn('control_id',[$process]);
+        //         })->whereNotIn('status',['R']);
+        //     endif;
+        // }
+
 
     }
+
+    // Logic implement for related search data in the advanced search
+
+    // public function fetchAdvancedSearch(Request $request){
+    //     dd($request->get('ids'));
+    //     $industry = $request->get('ids');
+    //     $rcs = Riskcontrol::query();
+    //     $rcs->select('id')->orWherehas('controls',function ($query) use ($industry){
+    //         $query->whereIn('control_id',$industry);
+    // })->whereNotIn('status',['R']);
+    // $rcs = $rcs->get()->toArray();
+
+    //     $rcs = Rccontrol::select('control_id')->whereIn('rc_id',$rcs)->distinct('control_id')->get()->toArray();
+    //     $controls = Control::whereIn('id',$rcs)->get()->toArray();
+
+    //     dd($controls);
+
+    // }
 
 
 

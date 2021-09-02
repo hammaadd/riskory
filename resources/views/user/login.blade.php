@@ -24,7 +24,7 @@
                 <div class="bg-lgray br-7 mt-3 py-5 px-3 px-md-5 box-shadow">
                   <p class="p-style font-18 font-b color-n">Login With</p>
                   <div class="signup-icon">
-                    <a class="tw--icon" href="#">
+                    <a class="tw--icon" href="{{route('twitterLogin')}}">
                       <i class="fab fa-twitter"></i>
                       <span class="ic---text">Twitter</span>
                     </a>

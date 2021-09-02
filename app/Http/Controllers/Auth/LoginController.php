@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 Use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\UploadedFile;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class LoginController extends Controller
 {
@@ -120,7 +121,12 @@ class LoginController extends Controller
     }
 
     public function googleProviderCallback(){
-        $user = Socialite::driver('google')->user();
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (InvalidStateException $e) {
+            $user = Socialite::driver('google')->stateless()->user();
+        }
+        //$user = Socialite::driver('google')->user();
 
         $found_user = User::where('email',$user->getEmail())->first();
         
@@ -192,6 +198,7 @@ class LoginController extends Controller
             $new_user->name  = $user->getName();
             $new_user->email = $user->getEmail();
             $new_user->avatar = $info['basename'].'.jpg';
+            $new_user->email_verified_at = now();
             
             $password = rand(1000,1000000);
             $new_user->password = $password = Hash::make($password);

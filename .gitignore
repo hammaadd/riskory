@@ -8,9 +8,6 @@
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
-npm-debug.log 
+npm-debug.log
 yarn-error.log
-riskory2.zip
-riskoryoldbackupwithlaratrust.zip
-vendor.zip
-vendorOld.zip
+*.zip

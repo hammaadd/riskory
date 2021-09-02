@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -280,3 +281,13 @@ Route::get('advanced/search-results/','RiskController@advanceSearchResults')->na
 
 
 Route::get('advanced/search/fetch','RiskController@fetchAdvancedSearch')->name('fetch.adv.data');
+
+
+Route::get('/clear/cache/server', function () {
+
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+
+    dd("Cache is cleared");
+
+});

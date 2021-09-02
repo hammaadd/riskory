@@ -12,6 +12,7 @@ use App\Models\RiskControl;
 use App\Models\Tag;
 use App\Models\Testingstep;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -591,29 +592,154 @@ class RiskController extends Controller
         $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
         $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
         $status = 0;
-        $dataAll= [];
+        $dataAll= array();
+
+        // $check = 1;
+        // $rc_ind = RiskControl::whereHas('controls',function ($query) use ($request,$check){
+        //     if($request->industry!= null){
+        //     foreach($request->industry as $id):
+        //         if($check == 1):
+        //             $query->where('control_id','=',$id);
+        //             $check = 2;
+        //         else:
+        //             $query->orWhere('control_id','=',$id);
+        //         endif;
+        //     endforeach;
+        // }
+        // })->whereNotIn('status',['R'])->get();
+
+        // $rc_frame = RiskControl::whereHas('controls',function ($query) use ($request,$check){
+        //     if($request->framework!= null){
+        //     foreach($request->framework as $id):
+        //         if($check == 1):
+        //             $query->where('control_id','=',$id);
+        //             $check = 2;
+        //         else:
+        //             $query->orWhere('control_id','=',$id);
+        //         endif;
+        //     endforeach;
+        // }
+        // })->whereNotIn('status',['R'])->get();
+
+        // $rc_process = RiskControl::whereHas('controls',function ($query) use ($request,$check){
+        //     if($request->process!= null){
+        //     foreach($request->process as $id):
+        //         if($check == 1):
+        //             $query->where('control_id','=',$id);
+        //             $check = 2;
+        //         else:
+        //             $query->orWhere('control_id','=',$id);
+        //         endif;
+        //     endforeach;
+        // }
+        // })->whereNotIn('status',['R'])->get();
+
+
+
+        // whereHas('controls',function ($query) use ($request){
+        //     $query->whereIn('control_id',[$request->framework]);
+        // })->whereHas('controls',function ($query) use ($request){
+        //     $query->whereIn('control_id',[$request->process]);
+        // })->whereNotIn('status',['R']);
+        // $status = 1;
+
+        // if($request->industry!= null){
+        //     $industry = Control::select('id')->whereIn('id',$request->industry)->get()->toArray();
+
+        //     if($industry):
+        //         $status = 1;
+        //         $rcs->whereHas('controls',function ($query) use ($industry){
+        //             $query->orWhereIn('control_id',[$industry]);
+        //     })->whereNotIn('status',['R']);
+        //     endif;
+
+        //     // dd($rcs->get());
+        // }
+        // if($request->framework!= null){
+        //     $framework = Control::select('id')->whereIn('id',$request->framework)->get()->toArray();
+        //     if($framework):
+        //         $status = 1;
+        //         $rcs->whewhereHasre('controls',function ($query) use ($framework){
+        //             $query->orWhereIn('control_id',[$framework]);
+        //         })->whereNotIn('status',['R']);
+        //     endif;
+        // }
+        // if($request->process!= null){
+        //     $process = Control::select('id')->whereIn('id',$request->process)->get()->toArray();
+        //     if($process):
+        //         $status = 1;
+        //         $rcs->whereHas('controls',function ($query) use ($process){
+        //             $query->orWhereIn('control_id',[$process]);
+        //         })->whereNotIn('status',['R']);
+        //     endif;
+        // }
+        // if($request->industry!= null):
+        //     $dataAll = $request->industry;
+        // endif;
+
+        // if($request->framework!= null):
+        //     $dataAll = array_merge($dataAll,$request->framework);
+        // endif;
+
+        // if($request->process!= null):
+        //     $dataAll = array_merge($dataAll,$request->process);
+        // endif;
+
+        // if($dataAll){
+        //     $dataAll = Control::select('id')->whereIn('id',$dataAll)->get()->toArray();
+
+        //     if($dataAll):
+        //         $check = 1;
+        //         $status = 1;
+        //         $rcs->wherehas('controls',function ($query) use ($dataAll , $check){
+        //             foreach($dataAll as $id):
+        //                 if($check == 1):
+        //                     $query->where('control_id','=',$id);
+        //                     $check = 2;
+        //                 else:
+        //                     $query->orWhere('control_id','=',$id);
+        //                 endif;
+        //             endforeach;
+        //         })->whereNotIn('status',['R']);
+        //     endif;
+        // }
+
         if($request->industry!= null):
-            $dataAll = $request->industry;
+            $dataAll = Rccontrol::select('rc_id')->whereIn('control_id',$request->industry)->get();
         endif;
 
         if($request->framework!= null):
-            $dataAll = array_merge($dataAll,$request->framework);
+            $rcc = Rccontrol::select('rc_id')->whereIn('control_id',$request->framework)->get();
+            
+            if(empty($dataAll)):
+                $dataAll = $rcc;
+            else:
+                $dataAll = $rcc->intersect($dataAll);
+            endif;
         endif;
 
         if($request->process!= null):
-            $dataAll = array_merge($dataAll,$request->process);
-        endif;
-
-        if($dataAll){
-            $dataAll = Control::select('id')->whereIn('id',$dataAll)->get()->toArray();
-
-            if($dataAll):
-                $status = 1;
-                $rcs->orWherehas('controls',function ($query) use ($dataAll){
-                    $query->whereIn('control_id',[$dataAll]);
-                })->whereNotIn('status',['R']);
+            $rcc = Rccontrol::select('rc_id')->whereIn('control_id',$request->process)->get();
+            if(empty($dataAll)):
+                $dataAll = $rcc;
+            else:
+                $arrofarr = [$dataAll,$rcc];
+                $dataAll = $rcc->intersect($dataAll);
+                // $dataAll = array_intersect($dataAll,$rcc);
             endif;
+        endif;
+        // dd($dataAll);
+        if(!empty($dataAll)){
+            $status=1;
+            $dataAll = $dataAll->toArray();
+            $rc_ids = array();
+            foreach($dataAll as $da){
+                $rc_ids[]=$da['rc_id'];
+            }
+            // dd($rc_ids);
+            $rcs->whereIn('id',$rc_ids);
         }
+
 
         if($request->tag!= null){
             $tag = Tag::select('id')->whereIn('id',$request->tag)->get()->toArray();
@@ -655,6 +781,7 @@ class RiskController extends Controller
             //     });
             // });
         }
+        // $rcs = $rcs->intersect($rc_process,$rc_frame,$rc_ind);
 
         if($status > 0):
             $rcs = $rcs->paginate(10);
@@ -667,36 +794,7 @@ class RiskController extends Controller
 
         // dd($rcs->with('controls')->get());
 
-        // if($request->industry!= null){
-        //     $industry = Control::select('id')->whereIn('id',$request->industry)->get()->toArray();
 
-        //     if($industry):
-        //         $status = 1;
-        //         $rcs->orWherehas('controls',function ($query) use ($industry){
-        //             $query->orWhereIn('control_id',[$industry]);
-        //     })->whereNotIn('status',['R']);
-        //     endif;
-
-        //     // dd($rcs->get());
-        // }
-        // if($request->framework!= null){
-        //     $framework = Control::select('id')->whereIn('id',$request->framework)->get()->toArray();
-        //     if($framework):
-        //         $status = 1;
-        //         $rcs->orWherehas('controls',function ($query) use ($framework){
-        //             $query->orWhereIn('control_id',[$framework]);
-        //         })->whereNotIn('status',['R']);
-        //     endif;
-        // }
-        // if($request->process!= null){
-        //     $process = Control::select('id')->whereIn('id',$request->process)->get()->toArray();
-        //     if($process):
-        //         $status = 1;
-        //         $rcs->orWherehas('controls',function ($query) use ($process){
-        //             $query->orWhereIn('control_id',[$process]);
-        //         })->whereNotIn('status',['R']);
-        //     endif;
-        // }
 
 
     }

@@ -19,6 +19,33 @@
     {{-- @php
     $noLinks = 1;
     @endphp --}}
+    <div class="row px-xl-5 mx-0 mx-md-5 mb-4">
+        @if(isset($tags))
+           <div class="col-12">
+            <div class="row">
+                @foreach($tags as $tg)
+                <div class="col-12 col-sm-6 col-lg-6 mb-3">
+                    {{-- <div class="row align-items-center bg-lgray box-shadow py-2"> --}}
+                        <div class="div-hover">
+                            <p class="p-style mb-0 d-inline mr-2"><a href="{{route('byTag',['tag'=>$tg])}}" data-toggle="tooltip" data-placement="top" title="{{$tg->name}}">{{Str::limit($tg->name,30)}}</a> ({{$tg->rctags->whereNotIn('rc.status',['P','R'])->count()}})</p>
+
+                            @if (!($tg->followedBy(auth()->user())))
+                                <button class="btn-follow btn-follow-2" onclick="parent.location='{{route('tag.follow',$tg->id)}}'">Follow</button>
+                            @else
+                                <form class="d-inline" action="{{route('tag.unfollow',$tg->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-follow bg-dgray btn-follow-2" type="submit">Unfollow</button>
+                                </form>
+                            @endif
+                        </div>
+                </div>
+                @endforeach
+                {{-- <a wire:click="load" href="#">Load more..</a> --}}
+            </div>
+        </div>
+        @endif
+    </div>
     @if(isset($search))
     <div class="row px-2 px-md-5 mx-0 mx-md-5 pt-3">
         <p class="lead">Search results for "{{$search}}"</p>

@@ -21,10 +21,13 @@
         </div>
     </div>
 
-        <div class="row px-xl-5 mx-0 mx-md-5 mb-5">
+        <div class="row px-xl-5 mx-0 mx-md-5 mb-2">
 
-            <div class="col-12"><p class="lead">Narrow your search results by..</p></div>
-            <div class="col-12 bg-lgray br-7 mt-3 px-0 box-shadow">
+            <div class="col-12">
+                {{-- <p class="lead">Narrow your search results by..</p> --}}
+                <a onclick="$('#advanced-search-fields').toggle()" href="javascript:void(0)"><p class="lead">Show Advanced Search Fields.</p></a>
+            </div>
+            <div class="col-12 bg-lgray br-7 mt-2 mb-2 px-0 box-shadow" id="advanced-search-fields" style="display:none;">
                 <form action="{{route('advance.search.results')}}" method="GET" class="create-risk-form risk-form" >
                     <fieldset class="form-group">
                         <div class="row mx-0">

@@ -9,7 +9,14 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-4 ml-auto">
+      <div class="row col-12 mx-0">
+
+
+                @include('user.inc.public-search-rc')
+
+
+        </div>  
+        <ul class="navbar-nav mr-4 ml-auto align-items-center">
           {{-- <li class="nav-item active">
           <a class="nav-link nav-link-style" href="{{route('homePage')}}">Home</a>
           </li> --}}
@@ -26,13 +33,15 @@
             <a class="nav-link nav-link-style" href="{{route('contactUs')}}">Contact Us</a>
           </li>
         </ul>
-      @if(Auth::user())
+        <div class="d-flex align-items-center">
+          @if(Auth::user())
 
-      <button class="btn-join-now m-2" onclick="parent.location='{{route('user')}}'" >Dashboard</button>
-      @else
-      <button class="btn-join-now" onclick="parent.location='{{route('userRegister')}}'" type="submit">Join Now</button>
-      <button class="btn-join-now m-2" onclick="parent.location='{{route('userLogin')}}'" >Login</button>
-      @endif
+          <button class="btn-join-now m-2" onclick="parent.location='{{route('user')}}'" >Dashboard</button>
+          @else
+          <button class="btn-join-now m-2" onclick="parent.location='{{route('userRegister')}}'" type="submit">Join Now</button>
+          <button class="btn-join-now m-2" onclick="parent.location='{{route('userLogin')}}'" >Login</button>
+          @endif
+        </div>
       </div>
     </nav>
 </header>

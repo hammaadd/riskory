@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Control;
 use App\Models\RiskControl;
+use App\Models\Tag;
 use App\Models\User;
 use Livewire\Component;
 
@@ -59,10 +60,11 @@ class SearchRc extends Component
                         ->orWhere('name','like','%'.$this->search.'%')
                         ->take(8)
                         ->get();
+            
+            $tags = Tag::where('status','1')->where('name','like','%'.$this->search.'%')->limit(8)->get();
 
 
-
-            return view('livewire.search-rc',compact('rcs','controls'));
+            return view('livewire.search-rc',compact('rcs','controls','tags'));
         endif;
 
         return view('livewire.search-rc');

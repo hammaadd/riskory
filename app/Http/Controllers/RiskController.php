@@ -498,11 +498,12 @@ class RiskController extends Controller
                         ->orWhere('name','like','%'.$search.'%')
                         ->take(8)
                         ->get();
+            $tags = Tag::where('status','1')->where('name','like','%'.$search.'%')->get();
 
 
     //    $rcs = RiskControl::where('title', 'like', '%'.$search.'%')->whereNotIn('status',['P','R'])->orWhere('description', 'like', '%'.$search.'%')->paginate(10);
        if($rcs){
-        return view('user.rc.searchResults',compact('rcs','search'));
+        return view('user.rc.searchResults',compact('rcs','search','tags'));
         }else{
             $request->session()->flash('error','No results to show');
             return back();

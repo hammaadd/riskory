@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Control;
+use App\Models\Rccontrol;
 use App\Models\RiskControl;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -251,6 +253,110 @@ class VisitorController extends Controller
 
 
 
+    }
+
+    public function advanceSearchResults(Request $request){
+        $rcs = Riskcontrol::query();
+        $controls = Control::where('status','1')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->having('rccontrols_count','>',0)->get();
+        $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
+        $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
+        $status = 0;
+        $dataAll= array();
+
+        if($request->industry!= null):
+            $dataAll = Rccontrol::select('rc_id')->whereIn('control_id',$request->industry)->get();
+        endif;
+
+        if($request->framework!= null):
+            $rcc = Rccontrol::select('rc_id')->whereIn('control_id',$request->framework)->get();
+            
+            if(empty($dataAll)):
+                $dataAll = $rcc;
+            else:
+                $dataAll = $rcc->intersect($dataAll);
+            endif;
+        endif;
+
+        if($request->process!= null):
+            $rcc = Rccontrol::select('rc_id')->whereIn('control_id',$request->process)->get();
+            if(empty($dataAll)):
+                $dataAll = $rcc;
+            else:
+                $arrofarr = [$dataAll,$rcc];
+                $dataAll = $rcc->intersect($dataAll);
+                // $dataAll = array_intersect($dataAll,$rcc);
+            endif;
+        endif;
+        // dd($dataAll);
+        if(!empty($dataAll)){
+            $status=1;
+            $dataAll = $dataAll->toArray();
+            $rc_ids = array();
+            foreach($dataAll as $da){
+                $rc_ids[]=$da['rc_id'];
+            }
+            // dd($rc_ids);
+            $rcs->whereIn('id',$rc_ids);
+        }
+
+
+        if($request->tag!= null){
+            $tag = Tag::select('id')->whereIn('id',$request->tag)->get()->toArray();
+
+            if($tag):
+                $status = 1;
+                $rcs->orWherehas('tags',function ($query) use ($tag){
+                    $query->whereIn('tag_id',[$tag]);
+                })->whereNotIn('status',['R']);
+            endif;
+        }
+
+        if($request->user!= null){
+            $user = User::select('id')->whereIn('id',$request->user)->get()->toArray();
+
+            if($user):
+                $status = 1;
+                $rcs->orWhereIn('user_id',[$user])->whereNotIn('status',['R']);
+            endif;
+        }
+
+        if(isset($request->search))
+        {
+            $search = $request->search;
+        }else{
+            $search = '';
+        }
+       if(!empty($search)){
+        $status = 1;
+            $rcs->orWhere('title', 'like','%'.$search.'%');
+            $rcs->orWhere('title', 'like',$search.'%');
+            $rcs->orWhere('description', 'like', '%'.$search.'%');
+            $rcs->orWhere('objective', 'like', '%'.$search.'%');
+            $rcs->orWhere('business_impact', 'like', '%'.$search.'%');
+            // $rcs->orWhereHas('controls',function ($query1) use($search){
+            //     return $query1->whereHas('control', function ($query11) use($search){
+            //         return $query11->where('name','like',$search.'%')
+            //         ->orWhere('name','like','%'.$search.'%');
+            //     });
+            // });
+        }
+        // $rcs = $rcs->intersect($rc_process,$rc_frame,$rc_ind);
+
+        if($status > 0):
+            $rcs = $rcs->paginate(10);
+            return view('visitor.sections.search-results',compact('rcs','controls','tags','users'));
+        else:
+            $request->session()->flash('error','Select something for advance search results');
+            return redirect()->route('public.advanced.search');
+        endif;
+    }
+
+
+    public function advanceSearch(Request $request){
+        $controls = Control::where('status','1')->with('rccontrols')->withCount('rccontrols')->orderBy('rccontrols_count','DESC')->having('rccontrols_count','>',0)->get();
+        $tags = Tag::where('status','=','1')->with('followers')->with('rctags')->withCount('rctags')->orderBy('rctags_count','DESC')->having('rctags_count','>',0)->get();
+        $users = User::whereNotIn('id',[2])->with('rcs')->withCount('rcs')->orderBy('rcs_count')->having('rcs_count','>',0)->get();
+        return view('visitor.sections.advance-search',compact('controls','tags','users'));
     }
 
 

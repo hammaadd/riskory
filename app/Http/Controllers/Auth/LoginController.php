@@ -113,7 +113,41 @@ class LoginController extends Controller
 
     public function facebookProviderCallback(){
         $user = Socialite::driver('facebook')->user();
-        dd($user);
+        dd($user->getAvatar());
+        $found_user = User::where('email',$user->getEmail())->first();
+        
+        if ($found_user) {
+
+            Auth::login($found_user);
+            session()->flash('success', 'Welcome Back '.Auth::user()->name);
+            return redirect()->route('user');
+        }
+        else{
+            $url = preg_replace('/\?sz=[\d]*$/', '', $user->getAvatar());
+            $info = pathinfo($url);
+            $contents = file_get_contents($url);
+            $file = 'public/userAvat/' . $info['basename'].'.jpg';
+            file_put_contents($file, $contents);
+            $uploaded_file = new UploadedFile($file, $info['basename']);
+            //dd($uploaded_file);
+
+            $new_user = new User;
+            
+            $new_user->name  = $user->getName();
+            $new_user->email = $user->getEmail();
+            $new_user->avatar = $info['basename'].'.jpg';
+            $new_user->email_verified_at = now();
+            
+            $password = rand(1000,1000000);
+            $new_user->password = $password = Hash::make($password);
+
+            if ($new_user->save()) {
+                session()->flash('success', 'Profile Created successfully!');
+                $new_user->attachRole('user');
+                 Auth::login($new_user);
+                 return redirect()->route('user');
+             } 
+        }
     }
 
     public function googleRedirectToProvider(){

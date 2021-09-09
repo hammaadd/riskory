@@ -71,10 +71,32 @@
                                     <i class="fas fa-share-alt"></i>
                                     <span class="font-eb">Share</span>
                                 </a>
+                    @php
+                        $url = route('rc.view',$rc->id);
+                        $rc_title = $rc->title;
+                        $shareable = \App\Models\Shareable::where('type','twitter')->first();
+                        $hashtags = json_decode($shareable->hashtags);
+                        $people = json_decode($shareable->people);
+                        $content = $shareable->content;
+                        $content = str_replace("**RC_TITLE**",$rc->title,$content);
+                        $content = str_replace("**RC_URL**",$url,$content);
+                        $content = urlencode($content);
 
+                        $string = 'https://twitter.com/intent/tweet?text=';
+                        $string.=$content;
+                        if($hashtags != null && count($hashtags) > 0 ){
+                            $string.='&hashtags=';
+                            $string.=implode(',',$hashtags);
+                        }
+                        if($people != null && count($people) > 0 ){
+                            $string.='&related=';
+                            $string.=implode(',',$people);
+                        }
+
+                    @endphp
                                 <ul class="rc--share-menu">
                                     <li><a href="https://www.facebook.com/sharer/sharer.php?display=page&u={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{$rc->title}}&amp;url={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{$string}}" target="_blank" class="box-shadow"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="https://wa.me/?text={{route('rc.view',$rc->id)}}" target="_blank" class="box-shadow"><i class="fab fa-whatsapp"></i></a></li>
                                 </ul>
                             </div>

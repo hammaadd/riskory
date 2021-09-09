@@ -113,7 +113,7 @@ class LoginController extends Controller
 
     public function facebookProviderCallback(){
         $user = Socialite::driver('facebook')->user();
-        dd($user->getAvatar());
+        //dd($user->getAvatar());
         $found_user = User::where('email',$user->getEmail())->first();
         
         if ($found_user) {
@@ -123,19 +123,20 @@ class LoginController extends Controller
             return redirect()->route('user');
         }
         else{
-            $url = preg_replace('/\?sz=[\d]*$/', '', $user->getAvatar());
-            $info = pathinfo($url);
+            $url = $user->getAvatar();
+            //$info = pathinfo($url);
             $contents = file_get_contents($url);
-            $file = 'public/userAvat/' . $info['basename'].'.jpg';
+            $name_file = $user->getId().'.jpg';
+            $file = 'public/userAvat/' .$name_file;
             file_put_contents($file, $contents);
-            $uploaded_file = new UploadedFile($file, $info['basename']);
+            $uploaded_file = new UploadedFile($file, $name_file);
             //dd($uploaded_file);
 
             $new_user = new User;
             
             $new_user->name  = $user->getName();
             $new_user->email = $user->getEmail();
-            $new_user->avatar = $info['basename'].'.jpg';
+            $new_user->avatar = $name_file;
             $new_user->email_verified_at = now();
             
             $password = rand(1000,1000000);

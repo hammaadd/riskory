@@ -46,6 +46,8 @@ Route::get('/admin/account/password/edit','AdminProfileController@editPassword')
 Route::post('/admin/account/password/update','AdminProfileController@updatePassword')->name('updateAdminPassword');
 Route::get('/admin/profile/avatar','AdminProfileController@editAvatar')->name('admin.edit.avatar');
 Route::post('/admin/profile/avatar','AdminProfileController@uploadAvatar')->name('admin.upload.avatar');
+Route::get('/admin/shareable','ContentController@shareableIndex')->name('shareable.content');
+Route::post('/admin/shareable/update','ContentController@shareableUpdate')->name('shareable.update');
 
 Route::put('/admin/change/status/user/{user}','AdminController@updateStatus')->name('change.status.user');
 

@@ -185,6 +185,18 @@
           </div>
         </li>
 
+        <li class="nav-item {{Request::is('admin/shareable/*') ? 'active' : ''}} {{Request::is('admin/shareable') ? 'active' : ''}}">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShare" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-share-alt"></i>
+            <span>Share content</span>
+          </a>
+          <div id="collapseShare" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('shareable.content')}}">Shareable Content</a> 
+            </div>
+          </div>
+        </li>
+
         <li class="nav-item {{Request::is('admin/contact/*') ? 'active' : ''}} {{Request::is('admin/contact') ? 'active' : ''}}">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContact" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fab fa-fw fa-wpforms"></i>

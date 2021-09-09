@@ -28,7 +28,7 @@
                       <i class="fab fa-twitter"></i>
                       <span class="ic---text">Twitter</span>
                     </a>
-                    <a class="fb--icon" href="#">
+                    <a class="fb--icon" href="{{route('facebookLogin')}}">
                       <i class="fab fa-facebook-f"></i>
                       <span class="ic---text">Facebook</span>
                     </a>

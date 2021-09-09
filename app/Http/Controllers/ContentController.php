@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Content;
+use App\Models\Shareable;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -153,6 +154,39 @@ class ContentController extends Controller
             session()->flash('error', 'Unable to delete submission');
         }
         return redirect()->route('contact.index');
+    }
+
+    public function shareableIndex(Request $request){
+
+        $shareable = Shareable::where('type','twitter')->first();
+        return view('controls.shareable.index',compact('shareable'));
+    }
+
+    public function shareableUpdate(Request $request){
+
+        //dd($request);
+        // $data['content_encoded'] = urlencode($request->content);
+        // $data['content'] = $request->content;
+        // $content = json_encode($data);
+        $hashtags = $request->hashtags;
+        //dd($hashtags);
+        $people = $request->people;
+
+        $shareable = Shareable::where('type','twitter')->first();
+        $shareable->content =  $request->content;
+        $shareable->hashtags = $hashtags;
+        $shareable->people = $people;
+        $res = $shareable->update();
+        if($res){
+            session()->flash('success', 'Sahreable content updated successfully');
+
+        }else{
+            session()->flash('error', 'Unable to update shareable content');
+        }
+
+        return back();
+
+
     }
 
 }

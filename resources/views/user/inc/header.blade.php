@@ -24,5 +24,6 @@
 	<link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 	{{-- Loader css styling sheet --}}
 	<link rel="stylesheet" href="{{asset('assets/css/loader.css')}}">
+  @yield('alpinejs')
 	@livewireStyles
 </head>

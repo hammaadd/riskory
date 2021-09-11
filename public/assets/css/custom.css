@@ -1966,7 +1966,7 @@ button.select-image {
     .captcha-field {
         max-width: inherit;
     }
-    
+
 }
 @media (max-width: 575px) {
     .tab--rc .tab-rc {
@@ -2179,11 +2179,11 @@ background: #fdfdfd;
         justify-content: flex-end !important;
         margin-right: 1.7rem;
     }*/
-    .riskory--header div.div--btns {
+    /* .riskory--header div.div--btns {
         width: 100%;
         justify-content: flex-end !important;
         margin-right: 1.7rem;
-    }
+    } */
 
 }
 
@@ -2197,6 +2197,23 @@ background: #fdfdfd;
         top: 40px !important;
         right: 8px !important;
         left: unset !important;
+    }
+    .riskory--header .navbar--row {
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+    }
+    .riskory--header .navbar--row .advanced-search-form-wrapper {
+        width: inherit;
+        max-width: 440px;
+        padding-right: 20px;
+    }
+    .riskory--header .navbar--row .navigation--row {
+        flex-shrink: inherit;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .riskory--header .btn-join-now {
+      padding: 8px 10px;
     }
 }
 @media (max-width: 992px) {
@@ -2220,4 +2237,37 @@ background: #fdfdfd;
         right: 8px !important;
         left: unset !important;
     }
+}
+@media (max-width: 991px) {
+  .riskory--header .navbar--row .advanced-search-form-wrapper {
+    width: 100%;
+  }
+  .riskory--header .navbar--row .advanced-search-form {
+    max-width: 360px;
+    margin: auto;
+  }
+  .riskory--header .navbar--row .navigation--row {
+    width: 100%;
+  }
+}
+
+/* Login Register Tabs */
+.join--tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.join--tabs span.join--tabs-item {
+  font-family: 'Ebrima';
+  font-size: 18px;
+  font-weight: 600;
+  width: 50%;
+  border-bottom: solid 3px #efefef;
+  padding: 6px;
+  cursor: pointer;
+}
+.join--tabs span.join--tabs-item.active,
+.join--tabs span.join--tabs-item:hover {
+  border-color: #e90000;
+  color: #e90000;
 }

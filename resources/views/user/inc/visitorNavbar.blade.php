@@ -9,38 +9,41 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="row col-12 mx-0">
+      <div class="row col-12 mx-0 navbar--row">
 
 
                 @include('user.inc.public-search-rc')
 
 
-        </div>  
-        <ul class="navbar-nav mr-lg-4 ml-auto align-items-center">
-          {{-- <li class="nav-item active">
-          <a class="nav-link nav-link-style" href="{{route('homePage')}}">Home</a>
-          </li> --}}
-          <li class="nav-item">
-            <a class="nav-link nav-link-style" href="{{route('publicCategories')}}">Categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-style" href="http://skiller.com/" target="_blank">Jobs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-style" href="{{route('aboutUs')}}">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-style" href="{{route('contactUs')}}">Contact Us</a>
-          </li>
-        </ul>
-        <div class="div--btns d-flex align-items-center justify-content-center justify-content-lg-start">
-          @if(Auth::user())
+        </div>
+        <div class="navigation--row">
+          <ul class="navbar-nav mr-lg-1 ml-auto align-items-center">
+            {{-- <li class="nav-item active">
+            <a class="nav-link nav-link-style" href="{{route('homePage')}}">Home</a>
+            </li> --}}
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="{{route('publicCategories')}}">Categories</a>
+            </li>
+            {{-- <li class="nav-item">
+              <a class="nav-link nav-link-style" href="http://skiller.com/" target="_blank">Jobs</a>
+            </li> --}}
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="{{route('aboutUs')}}">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-style" href="{{route('contactUs')}}">Contact Us</a>
+            </li>
+          </ul>
+          <div class="div--btns d-flex align-items-center justify-content-center justify-content-lg-start">
+            @if(Auth::user())
 
-          <button class="btn-join-now m-2" onclick="parent.location='{{route('user')}}'" >Dashboard</button>
-          @else
-          <button class="btn-join-now m-2" onclick="parent.location='{{route('userRegister')}}'" type="submit">Join Now</button>
-          <button class="btn-join-now m-2" onclick="parent.location='{{route('userLogin')}}'" >Login</button>
-          @endif
+            <button class="btn-join-now" onclick="parent.location='{{route('user')}}'" >Dashboard</button>
+            @else
+            {{-- <button class="btn-join-now m-2" onclick="parent.location='{{route('userRegister')}}'" type="submit">Join Now</button>
+            <button class="btn-join-now m-2" onclick="parent.location='{{route('userLogin')}}'" >Login</button> --}}
+            <button class="btn-join-now" onclick="parent.location='{{route('userRegister')}}'" >Join</button>
+            @endif
+          </div>
         </div>
       </div>
     </nav>

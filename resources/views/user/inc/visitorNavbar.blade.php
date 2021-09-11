@@ -1,5 +1,5 @@
 @section('visitorNavbar')
-<header>
+<header class="riskory--header">
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2 pt-sm-4 pt-2">
       <a class="navbar-brand" href="{{route('homePage')}}">
       <img class="brand-logo" src="{{asset('assets/images/logo.png')}}">
@@ -16,7 +16,7 @@
 
 
         </div>  
-        <ul class="navbar-nav mr-4 ml-auto align-items-center">
+        <ul class="navbar-nav mr-lg-4 ml-auto align-items-center">
           {{-- <li class="nav-item active">
           <a class="nav-link nav-link-style" href="{{route('homePage')}}">Home</a>
           </li> --}}
@@ -33,7 +33,7 @@
             <a class="nav-link nav-link-style" href="{{route('contactUs')}}">Contact Us</a>
           </li>
         </ul>
-        <div class="d-flex align-items-center">
+        <div class="div--btns d-flex align-items-center justify-content-center justify-content-lg-start">
           @if(Auth::user())
 
           <button class="btn-join-now m-2" onclick="parent.location='{{route('user')}}'" >Dashboard</button>

@@ -281,8 +281,8 @@ Route::delete('admin/feedback/{feedback}/delete','AdminController@destroyFeedbac
 Route::get('advanced/search/riskcontrols','RiskController@advanceSearch')->name('advanced.search');
 Route::get('advanced/search-results/','RiskController@advanceSearchResults')->name('advance.search.results');
 //Route for public search results
-Route::get('public/search/riskcontrols','VisitorController@advanceSearch')->name('public.advanced.search');
-Route::get('public/search-results','VisitorController@advanceSearchResults')->name('public.advance.search.results');
+Route::get('public-search/riskcontrols','VisitorController@advanceSearch')->name('public.advanced.search');
+Route::get('advanced/public-search/results','VisitorController@advanceSearchResults')->name('public.advance.search.results');
 
 
 Route::get('advanced/search/fetch','RiskController@fetchAdvancedSearch')->name('fetch.adv.data');

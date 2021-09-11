@@ -1,6 +1,6 @@
 
 @section('navbarUser')
-<header>
+<header class="riskory--header-user">
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-sm-5 px-2 pt-sm-2 pt-2 box-shadow">
     <a class="navbar-brand" href="{{route('user')}}">
       <img class="brand-logo" src="{{asset('assets/images/logo.png')}}">
@@ -17,7 +17,7 @@
 
 
             </div>
-            <div class="col-lg-8 py-4 py-lg-0 pr-0">
+            <div class="col-lg-8 py-2 py-lg-0 pr-0 menu--bar">
                 <div class="topbar-icon text-right">
                 <a href="{{route('rc.create')}}" class="mx-2 my-1" data-toggle="tooltip" data-placement="bottom" title="Create risk control">
                   <i class="fas fa-plus-circle"></i>

@@ -100,8 +100,8 @@ src: local('Georgia Bold Italic'), url('../fonts/georgiaz.woff') format('woff');
     font-display: swap;
 }
 * {
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-rendering: optimizeLegibility;
 }
 p>a:hover {
     color: #E90000 !important;
@@ -1380,14 +1380,14 @@ button.select-image {
         margin: 3px;
     }
     /*#firstfieldset div>div>div>input {
-	    padding: 5px !important;
-	}
-	#firstfieldset div>input {
-	    padding: 30px 12px !important;
-	}*/
-	span.select2-selection.select2-selection--multiple {
-		padding: 1rem;
-	}
+        padding: 5px !important;
+    }
+    #firstfieldset div>input {
+        padding: 30px 12px !important;
+    }*/
+    span.select2-selection.select2-selection--multiple {
+        padding: 1rem;
+    }
     #profileImage
     {
         cursor: pointer;
@@ -1675,30 +1675,30 @@ button.select-image {
 
     .scrollbar
 {
-	float: left;
-	max-height: 400px;
-	background: #F5F5F5;
+    float: left;
+    max-height: 400px;
+    background: #F5F5F5;
 }
 
 
     .style-2::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
 }
 
 .style-2::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: #F5F5F5;
+    width: 12px;
+    background-color: #F5F5F5;
 }
 
 .style-2::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #D62929;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #D62929;
 }
 
 .append-inp{
@@ -1955,11 +1955,18 @@ button.select-image {
         font-size: 16px;
         padding: .5rem;
     }
+    .riskory--header ul.navbar-nav {
+        width: 100%;
+    }
+    .riskory--header div.div--btns {
+        width: 100%;
+    }
 }
 @media (max-width: 767px) {
     .captcha-field {
         max-width: inherit;
     }
+    
 }
 @media (max-width: 575px) {
     .tab--rc .tab-rc {
@@ -2124,4 +2131,93 @@ button.select-image {
 .search--anchor:hover{
 border: 1px solid #e90000;
 background: #fdfdfd;
+}
+
+@media (min-width: 1315px){
+    .navbar-expand-custom {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .navbar-expand-custom .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-expand-custom .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+    .navbar-expand-custom .navbar-collapse {
+        display: flex!important;
+    }
+    .navbar-expand-custom .navbar-toggler {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1315px) {
+    /*.advanced-search-form-wrapper {
+        width: 100% !important;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .advanced-search-form {
+        width: 70%;
+        margin: auto;
+    }
+    .riskory--header ul.navbar-nav {
+        flex: 0 0 50%;
+        display: flex;
+        margin-left: 0 !important;
+        flex-direction: row;
+        gap: 25px;
+        justify-content: flex-end;
+    }
+    .riskory--header div.div--btns {
+        flex: 0 0 45%;
+        justify-content: flex-end !important;
+        width: 100%;
+        justify-content: flex-end !important;
+        margin-right: 1.7rem;
+    }*/
+    .riskory--header div.div--btns {
+        width: 100%;
+        justify-content: flex-end !important;
+        margin-right: 1.7rem;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .riskory--header-user .menu--bar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .topbar-icon .dropdown-menu {
+        top: 40px !important;
+        right: 8px !important;
+        left: unset !important;
+    }
+}
+@media (max-width: 992px) {
+    .riskory--header-user .menu--bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+    .riskory--header-user .menu--bar .topbar-icon {
+        display: flex;
+        align-items: center;
+    }
+    .riskory--header-user .advanced-search-btn-user {
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+    }
+    .topbar-icon .dropdown-menu {
+        top: 50px !important;
+        right: 8px !important;
+        left: unset !important;
+    }
 }

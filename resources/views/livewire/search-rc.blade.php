@@ -10,8 +10,8 @@
       </div>
 
     </div>
-    <div>
-    <a href="{{route('advanced.search')}}" class="float-right d-inline-block"><span class="color-r">Advanced Search <i class="fas fa-cog"></i></span></a>
+    <div class="advanced-search-btn-user">
+    <a href="{{route('advanced.search')}}" class="float-md-right d-inline-block"><span class="color-r">Advanced Search <i class="fas fa-cog"></i></span></a>
     </div>
     {{-- <a href="{{route('advanced.search')}}" class="float-right"><small class="color-r">Advanced Search <i class="fas fa-cog"></i></small></a> --}}
   </form>

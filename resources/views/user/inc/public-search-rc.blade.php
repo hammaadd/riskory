@@ -1,4 +1,4 @@
- <div class="col-lg-4 pt-4 pt-lg-2 text-center position-relative advanced-search-form-wrapper">
+ <div class="pt-4 pt-lg-2 text-center position-relative advanced-search-form-wrapper">
  <form action="{{route('public.advance.search.results')}}" method="GET" autocomplete="off" class="advanced-search-form">
     <input autocomplete="false" name="hidden" type="text" style="display:none;">
     <div class="input-group search-bar">
